@@ -1,4 +1,6 @@
 <template>
-  <h3>hi</h3>
+  <v-layout >
+    <Hero />
+  </v-layout>
 </template>
 
