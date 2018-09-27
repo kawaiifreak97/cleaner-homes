@@ -1,6 +1,7 @@
 <template>
-  <div>
+  <div class="testuk">
     <v-toolbar
+      fixed
       dark
       flat 
       color="transparent"
@@ -96,7 +97,10 @@
   .logo{
       display: none
     }
-
+  .testuk{
+    top:10;
+    z-index:100;
+  }
   @media only screen and (min-width: 600px) {
     .burger{
       display: none;

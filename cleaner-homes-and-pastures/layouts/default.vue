@@ -1,7 +1,11 @@
 <template>
   <v-app >
-    <Header absolute/>
-    <v-content app>
+    <Header 
+      app 
+    />
+    <v-content 
+      class="behind"
+    >
       <nuxt/>
     </v-content>
   </v-app>
@@ -11,8 +15,18 @@
   export default {
     data() {
       return {
-        
       }
     }
   }
 </script>
+
+<style>
+  .test{
+    
+  }
+  .behind{
+    z-index: 0;
+
+  }
+</style>
+
