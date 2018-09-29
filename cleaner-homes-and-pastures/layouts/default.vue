@@ -21,12 +21,6 @@
 </script>
 
 <style>
-  .test{
-    
-  }
-  .behind{
-    z-index: 0;
 
-  }
 </style>
 
