@@ -11,6 +11,11 @@
       style="min-height:70vh">
       <HowItWorks />
     </v-flex>
+    <v-flex 
+      xs12
+      style="min-height:70vh">
+      <ServicesSection/>
+    </v-flex>
     
   </v-layout>
 </template>

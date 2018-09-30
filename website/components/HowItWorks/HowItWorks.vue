@@ -6,9 +6,8 @@
   > 
     <v-flex xs12>
       <Title
-        :text="title"  
+        :text="title" 
       />
-      <h2 class="text-xs-center letitle accent--text my-4">How It works</h2>
     </v-flex>
     <v-flex 
       v-for="step in steps"
@@ -32,6 +31,7 @@ export default {
   },
   data(){
     return{
+      title: 'How it works',
       steps:[
         {
           title: 'Make a Booking',
