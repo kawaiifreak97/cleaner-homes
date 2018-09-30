@@ -6,6 +6,11 @@
     <v-flex xs12>
       <Hero />
     </v-flex>
+    <v-flex 
+      xs12
+      style="min-height:70vh">
+      <HowItWorks />
+    </v-flex>
     
   </v-layout>
 </template>

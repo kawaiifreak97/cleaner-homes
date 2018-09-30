@@ -44,7 +44,7 @@
                 xs12 
                 hidden-sm-and-down
               >
-                <h3>
+                <h3 style="font-weight: 200">
                   Freeing up your time so you can focus <br>
                   on what really matters
                 </h3>
