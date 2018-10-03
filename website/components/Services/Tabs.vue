@@ -34,9 +34,12 @@
             my-2
             mx-4
           >
-            <div style="position: relative"> 
+            <div 
+              style="position: relative"
+              class="service-prev"
+            > 
               <v-card
-                class="rounded"
+                class="rounded "
                 width="25vw"
               >
                 <v-img
@@ -46,13 +49,14 @@
                 />
                 <v-card-title primary-title>
                   <div>
-                    <h3 class="headline mb-0">Kangaroo Valley Safari</h3>
+                    <h3 class="service-prev-title" >Kangaroo Valley Safari</h3>
                   </div>
                 </v-card-title>
               </v-card>
               <v-card
+              
                 width="25vw"
-                class="rouded overlay"
+                class="rouded overlay hidden-xs-and-up"
               >
                 <v-img 
                   src="https://cdn.vuetifyjs.com/images/cards/desert.jpg"
@@ -65,8 +69,7 @@
                     align-end
                     justify-center
                   >
-                    <v-flex
-                      
+                    <v-flex                 
                       xs7>
                       <h1 class="white--text">More info</h1>
                     </v-flex>
@@ -92,20 +95,35 @@
   export default {
     data () {
       return {
+        overlay: false,
         model: 'tab-2',
         text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.'
       }
     }
+    // methods:{
+    //   overlay(){
+    //     console.log('working')
+    //     this.overlay = !overlay
+
+    //   }
+    // }
   }
 </script>
 
 <style>
  .overlay{
+   display: none;
    position: absolute;
    top:0;
    left: 0;
    z-index: 100;
    border-top-left-radius: 10px;
    border-top-right-radius: 10px;
+ }
+ .service-prev:hover .overlay{
+   display: block
+ }
+ .service-prev:hover .service-prev-title{
+   color: #30d3c5;
  }
 </style>
