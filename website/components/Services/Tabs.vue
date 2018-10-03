@@ -15,24 +15,34 @@
         Item {{ i }}
       </v-tab>
     </v-tabs>
-
     <v-tabs-items v-model="model">
       <v-tab-item
         v-for="i in 3"
         :id="`tab-${i}`"
         :key="i"
-      >
+      > 
         <v-layout 
           row 
-          justify-center>
-          <v-flex xs6>
+          wrap
+          justify-center
+          my-2
+        >
+          <v-flex 
+            v-for="i in 6"
+            :key="i"
+            xs3
+            my-2
+            mx-4
+          >
             <div style="position: relative"> 
               <v-card
                 class="rounded"
+                width="25vw"
               >
                 <v-img
                   src="https://cdn.vuetifyjs.com/images/cards/desert.jpg"
                   height="150px"
+                  
                 />
                 <v-card-title primary-title>
                   <div>
@@ -41,13 +51,13 @@
                 </v-card-title>
               </v-card>
               <v-card
+                width="25vw"
                 class="rouded overlay"
               >
                 <v-img 
                   src="https://cdn.vuetifyjs.com/images/cards/desert.jpg"
                   gradient="to top right, rgba(48, 211, 197, 1), rgba(18, 235, 75, 1)"
                   height="150px"
-                  width="400px"
                 >
                   <v-layout 
                     row
@@ -55,22 +65,23 @@
                     align-end
                     justify-center
                   >
-                    <v-flex xs10>
+                    <v-flex
+                      
+                      xs7>
                       <h1 class="white--text">More info</h1>
+                    </v-flex>
+                    <v-flex xs4>
                       <v-icon 
                         color="white" 
-                        large
+                        x-large
                       >arrow_forward</v-icon>
                     </v-flex>
                   </v-layout>
                 </v-img>
               </v-card>
             </div>
-            
-            
           </v-flex>
         </v-layout>
-        
       </v-tab-item>
     </v-tabs-items>
   </div>
@@ -94,5 +105,7 @@
    top:0;
    left: 0;
    z-index: 100;
+   border-top-left-radius: 10px;
+   border-top-right-radius: 10px;
  }
 </style>
