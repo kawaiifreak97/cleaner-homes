@@ -26,19 +26,21 @@ module.exports = {
   loading: { color: '#fff' },
 
   /*
-  ** Global CSS
-  */
-  css: [
-    '~/assets/style/app.styl'
-  ],
-
-  /*
   ** Plugins to load before mounting the App
   */
   plugins: [
     '@/plugins/vuetify',
-    '@/plugins/globalComponents'
+    '@/plugins/globalComponents',
+    { src: '~/plugins/swiper.js', ssr: false },
   ],
+
+  /*
+  ** Global CSS
+  */
+ css: [
+  '~/assets/style/app.styl',
+  'swiper/dist/css/swiper.css'
+],
 
   /*
   ** Nuxt.js modules

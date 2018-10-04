@@ -1,11 +1,12 @@
 <template>
   <v-footer
     height="auto"
-    color="white"
+    color="#fafafa"
   >
     <v-layout
       row
       wrap
+      justify-center
     >
       <v-flex xs12>
         <v-layout 
@@ -39,10 +40,12 @@
             </v-layout>
           </v-flex>
           <v-flex xs3>
-            <v-layout column>
+            <v-layout 
+              column
+              class="text-xs-center"
+            >
               <v-flex 
                 mb-2
-                class="text-xs-center"
               >
                 <v-icon>home</v-icon>
               </v-flex>
@@ -67,14 +70,38 @@
         </v-layout>
       </v-flex>
 
-      <v-flex>
-        <v-divider/>
+      <v-flex 
+        xs9
+        my-3
+      > 
+        <div>
+          <v-divider />
+        </div>
       </v-flex>
 
-      <v-flex xs12>
-        <p>Admin</p>
+      <v-flex xs9>
+        <v-layout
+          row
+          justify-space-between  
+        >
+          <v-flex 
+            offset-xs-4
+            xs6
+          >
+            <p>Admin</p>
+          </v-flex>
+          <v-spacer/>
+          <v-flex xs2>
+            <p>@2018 trademark</p>
+          </v-flex>
+        </v-layout>
+
+        <!-- <div style="width: 20vw">admin</div>
         <v-spacer/>
-        <p>@2018 trademark</p>
+        <div style="width: 20vw">yes</div> -->
+        
+        
+        
       </v-flex>
       
     </v-layout>

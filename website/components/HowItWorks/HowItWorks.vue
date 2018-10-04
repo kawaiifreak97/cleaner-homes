@@ -5,9 +5,9 @@
     justify-center
   > 
     <v-flex xs12>
-      <Title
-        :text="title" 
-      />
+      <Title>
+        {{ title }}
+      </Title>
     </v-flex>
     <v-flex 
       v-for="step in steps"

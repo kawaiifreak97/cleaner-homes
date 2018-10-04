@@ -19,6 +19,23 @@
     <v-flex 
       xs12
       style="min-height:70vh">
+      <About/>
+    </v-flex>
+    <v-flex 
+      xs12
+      style="min-height:70vh">
+      <Testimonial/>
+    </v-flex>
+
+    <v-flex 
+      xs12
+    >
+      <Add/>
+    </v-flex>
+    <v-flex 
+      mt-4
+      xs12
+      style="min-height:70vh">
       <Footer/>
     </v-flex>
     

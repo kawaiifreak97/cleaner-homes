@@ -66,14 +66,7 @@
                 md12
                 class="border">
                 <div class="text-xs-center">
-                  <v-btn 
-                    :large="$vuetify.breakpoint.smAndUp"
-                    round   
-                    ma-0   
-                    class="primary--text"            
-                  >
-                    {{ test2 }}
-                  </v-btn>
+                  <Button>{{ test2 }}</Button>
                 </div>
               </v-flex>
               <v-flex 
@@ -81,14 +74,9 @@
                 md12
                 class="border">
                 <div class="text-xs-center">
-                  <v-btn 
-                    :large="$vuetify.breakpoint.smAndUp"
-                    round   
-                    ma-0      
-                    class="primary--text"         
-                  >
-                    {{ test }}
-                  </v-btn>
+                  <div class="text-xs-center">
+                    <Button>{{ test }}</Button>
+                  </div>
                 </div>
               </v-flex>
             </v-layout>
