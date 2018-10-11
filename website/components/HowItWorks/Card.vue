@@ -9,6 +9,7 @@
       class="rounded stepCard"
     >
       <v-btn 
+        :small="$vuetify.breakpoint.xsOnly"
         color="white"
         despressed  
         fab
@@ -27,15 +28,21 @@
       >
         <v-flex 
           xs12
+          hidden-xs-only
         >
           <div class="text-xs-center">
             <v-icon 
               color="primary"
-              style="font-size:6em"
-              x-large
+              class="icon-responsive"
             > home </v-icon>
           </div>
           
+        </v-flex>
+        <v-flex 
+          hidden-sm-and-up
+          xs12
+        >
+          <div style="height:25px;"/>
         </v-flex>
         <v-flex xs12>
           <h1>title</h1>
@@ -74,10 +81,16 @@ export default {
   .stepCard{
     width: 50vw;
   }
+  .icon-responsive{
+    font-size: 4em;
+  }
 
   @media only screen and (min-width: 600px) {
     .stepCard{
       width: 20vw;
+    }
+    .icon-responsive{
+      font-size: 5em;
     }
   }
 </style>

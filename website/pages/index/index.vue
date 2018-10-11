@@ -1,33 +1,43 @@
 <template>
-  <div> 
-    <v-layout 
-      v-for="i in 3"
-      :id="`tab-${i}`"
-      :key="i"
-      row 
-      wrap
-      justify-center
-      my-2 
+  <v-layout
+    v-show="tabsShow"
+    row
+    wrap
+    justify-center
+  >
+    <v-flex
+      pb-4
+      xs12
     >
-      <v-flex 
-        v-for="i in 3"
-        :key="i"
-        xs3
-        my-2
-        mx-4
-      >
-        <ServicePrev/>
-      </v-flex>
-    </v-layout>
-  </div>
+      <ServiceTabs/>
+    </v-flex>
+  </v-layout>
 </template>
 
 <script>
-import ServicePrev from '@/components/Services/ServicePrev.vue'
-export default {
-  components:{
-    ServicePrev
+  import ServiceTabs from '@/components/Services/ServiceTabs.vue'
+  export default{
+    components:{
+      ServiceTabs
+    },
+    data(){
+      return {
+        title: 'Services',
+        tabsShow: true
+      }
+    },
+    // beforeRouteEnter (to, from, next) {
+    //   this.tabsShow = true;
+    // },
+    beforeRouteUpdate (to, from, next) {
+      console.log('router')
+      this.tabsShow = false;
+    }
+    // watch: {
+    //   '$route' (to,from){
+    //     console.log('change')
+    //     this.tabsShow = !this.tabsShow
+    //   }
+    // }
   }
-}
 </script>
-

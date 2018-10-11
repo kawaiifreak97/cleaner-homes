@@ -2,10 +2,11 @@
   <v-layout 
     justify-center
     row
-    mb-4
-    pb-4
   >
-    <v-flex xs6>
+    <v-flex 
+      xs11
+      sm7
+    >
       <v-card 
         class="rounded"
         width="50vw">
@@ -15,6 +16,8 @@
           style="position:relative"
         >
           <v-btn
+            nuxt
+            to="/"
             class="buttonuk"
             flat
             icon
@@ -86,19 +89,19 @@ export default {
       show: false,
       tags:[
         {
-          name: 'windows'
+          name: 'window'
         },
         {
           name: 'windows'
         },
         {
-          name: 'windows'
+          name: 'windws'
         },
         {
-          name: 'windows'
+          name: 'widows'
         },
         {
-          name: 'windows'
+          name: 'winws'
         },
       ]
     }

@@ -16,7 +16,7 @@
         xs12 
         sm6
       >
-        <div style="font-size: 2.3em; font-weight: bold">
+        <div class="add-text">
           What are you <br>
           waiting for?
         </div>
@@ -30,3 +30,17 @@
     </v-layout>
   </v-img>
 </template>
+
+<style scoped>
+  .add-text{
+    font-size: 2rem;
+    font-weight: bold;
+  }
+  @media only screen and (min-width: 600px) {
+  .add-text{
+    font-size: 2.4rem;
+  }
+}
+
+</style>
+

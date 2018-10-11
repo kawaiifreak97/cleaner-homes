@@ -40,7 +40,7 @@ module.exports = {
  css: [
   '~/assets/style/app.styl',
   'swiper/dist/css/swiper.css'
-],
+  ],
 
   /*
   ** Nuxt.js modules

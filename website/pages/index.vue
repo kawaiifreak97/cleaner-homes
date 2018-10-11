@@ -8,37 +8,53 @@
     </v-flex>
     <v-flex 
       xs12
-      style="min-height:70vh">
+    >
       <HowItWorks />
     </v-flex>
     <v-flex 
       xs12
-      style="min-height:70vh">
-      <ServicesSection/>
+    >
+      <v-layout
+        row
+        wrap
+        justify-center
+      >
+        <v-flex xs12>
+          <Title>{{ title }}</Title>
+        </v-flex>
+        <v-flex xs12>
+          <nuxt-child/>
+        </v-flex>
+      </v-layout>
     </v-flex>
-    <v-flex 
-      xs12
-      style="min-height:70vh">
-      <About/>
-    </v-flex>
-    <v-flex 
-      xs12
-      style="min-height:70vh">
-      <Testimonial/>
-    </v-flex>
-
     <v-flex 
       xs12
     >
-      <Add/>
+      <About/>
+    </v-flex>
+    <!-- <v-flex 
+      xs12
+    >
+
+      <swipertest/>
     </v-flex>
     <v-flex 
-      mt-4
       xs12
-      style="min-height:70vh">
-      <Footer/>
-    </v-flex>
-    
+      mb-4
+    >
+      <Add/>
+    </v-flex> -->
+
   </v-layout>
 </template>
+
+<script>
+  export default{
+    data(){
+      return{
+        title: 'Services'
+      }
+    }
+  }
+</script>
 

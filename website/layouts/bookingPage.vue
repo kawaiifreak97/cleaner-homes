@@ -8,11 +8,6 @@
     >
       <nuxt/>
     </v-content>
-    <Testimonials
-      app
-    />
-    <Add app/>
-    <Footer app/>
   </v-app>
 </template>
 

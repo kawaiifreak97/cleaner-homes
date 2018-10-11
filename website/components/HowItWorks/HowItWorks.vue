@@ -38,11 +38,11 @@ export default {
           description: 'nfdfjsdofsldnljsdn'
         },
         {
-          title: 'Make a Booking',
+          title: 'Make a Bookin',
           description: 'nfdfjsdofsldnljsdn'
         },
         {
-          title: 'Make a Booking',
+          title: 'Make a Booki',
           description: 'nfdfjsdofsldnljsdn'
         }
       ]

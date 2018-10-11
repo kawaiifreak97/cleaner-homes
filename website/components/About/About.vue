@@ -10,7 +10,10 @@
         {{ title }}
       </Title>
     </v-flex>
-    <v-flex xs6>
+    <v-flex 
+      xs10 
+      sm6
+    >
       <p>
         Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ullam nulla fugit nihil enim tempora est eligendi voluptas magnam architecto a nobis corporis nostrum, dicta repudiandae itaque, incidunt cumque dolore quae.
       </p>

@@ -6,6 +6,11 @@
 
 <style>
   .letitle{
-    font-size: 3em !important;
+    font-size: 2.5em  ;
   }
+  @media only screen and (min-width: 600px) {
+  .leTitle{
+    font-size: 3em;
+  }
+}
 </style>

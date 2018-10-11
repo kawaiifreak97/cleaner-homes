@@ -2,14 +2,18 @@
   <v-layout>
     <v-img
       src="http://www.riversongcochrane.com/assets/HeroImages/15-SRV-108-Riversong-Homepage-Hero-Banner.jpg"
-      gradient="to top right, rgba(48, 211, 197, 1), rgba(18, 235, 75, 1)"
-      style="height:90vh"
+      style="height:90vh; position: relative; z-index: 0;"
     >
-
+      <div
+        fill-height
+        class="bottom-gradient"
+      />
       <!--  put fill height on v-container, if put on v-layout code breaks -->
       <v-container 
         fluid
-        fill-height   
+        fill-height  
+        style="position:relative; z-index:100;"
+
       >
         <!-- set max width to vh, if set to % code breaks -->
         <v-layout
@@ -17,13 +21,12 @@
           wrap 
           align-center
           justify-center
-          class="border"
           style="max-width: 90vw; max-height: 60vh"
         >
           <v-flex 
             xs10
             md6
-            class="border">
+          >
             <v-layout 
               row   
               wrap 
@@ -44,7 +47,7 @@
                 xs12 
                 hidden-sm-and-down
               >
-                <h3 style="font-weight: 200">
+                <h3 class="hero-subtitle">
                   Freeing up your time so you can focus <br>
                   on what really matters
                 </h3>
@@ -56,7 +59,6 @@
             md2
           >
             <v-layout 
-              class="border"
               row 
               wrap
               justify-center  
@@ -64,7 +66,7 @@
               <v-flex 
                 xs6
                 md12
-                class="border">
+              >
                 <div class="text-xs-center">
                   <Button>{{ test2 }}</Button>
                 </div>
@@ -72,7 +74,7 @@
               <v-flex 
                 xs6
                 md12
-                class="border">
+              >
                 <div class="text-xs-center">
                   <div class="text-xs-center">
                     <Button>{{ test }}</Button>
@@ -102,18 +104,26 @@ export default {
 </script>
 
 <style>
-/* .border{
-  border: thin solid red;
-} */
+.bottom-gradient {
+  background-image: linear-gradient(to top right, rgba(48,211,197,.9), rgba(18,235,75,.89));
+  position: absolute;
+  z-index: 50;
+  height:100%;
+  width: 100%;
+}
 .heroTitle{
   font-weight: bold;
   color: white;
-  font-size: 2em;
+  font-size: 1.85em;
+}
+.hero-subtitle{
+  font-weight: 200;
+  font-size: 1.2em;
 }
 
 @media only screen and (min-width: 600px) {
   .heroTitle{
-    font-size: 48px;
+    font-size: 3em;
   }
 }
 </style>

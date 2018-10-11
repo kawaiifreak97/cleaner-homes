@@ -22,11 +22,13 @@
                 v-for="link in links"
                 :key="link.name"
               >
-                {{ link.name }}
+                <span class="footer-links">
+                  {{ link.name }}
+                </span>
               </v-flex>
             </v-layout>
           </v-flex>
-          <v-flex xs3>
+          <v-flex xs3 >
             <v-layout column>
               <v-flex mb-2>
                 <h4>Contact us</h4>
@@ -34,8 +36,11 @@
               <v-flex
                 v-for="contactLink in contactLinks"  
                 :key="contactLink.value"
+                class="footer-links"
               >
-                {{ contactLink.value }}
+                <span >
+                  {{ contactLink.value }}
+                </span>
               </v-flex>
             </v-layout>
           </v-flex>
@@ -85,25 +90,60 @@
           justify-space-between  
         >
           <v-flex 
-            offset-xs-4
-            xs6
+            xs4
           >
-            <p>Admin</p>
+            <div class="text-xs-left">
+              <v-btn
+                flat
+              >
+                Admin
+              </v-btn>
+            </div>
           </v-flex>
           <v-spacer/>
-          <v-flex xs2>
-            <p>@2018 trademark</p>
+          <v-flex xs4>
+            <div class="text-xs-center">
+              <v-dialog
+                v-model="dialog"
+                width="500"
+              >
+                <v-btn
+                  slot="activator"
+                  flat
+                >
+                  @2018 trademark
+                </v-btn>
+
+                <v-card>
+                  <v-card-title
+                    class="headline grey lighten-2"
+                    primary-title
+                  >
+                    Privacy Policy
+                  </v-card-title>
+
+                  <v-card-text>
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                  </v-card-text>
+
+                  <v-divider/>
+
+                  <v-card-actions>
+                    <v-spacer/>
+                    <v-btn
+                      color="primary"
+                      flat
+                      @click="dialog = false"
+                    >
+                      I accept
+                    </v-btn>
+                  </v-card-actions>
+                </v-card>
+              </v-dialog>
+            </div>
           </v-flex>
         </v-layout>
-
-        <!-- <div style="width: 20vw">admin</div>
-        <v-spacer/>
-        <div style="width: 20vw">yes</div> -->
-        
-        
-        
-      </v-flex>
-      
+      </v-flex>     
     </v-layout>
   </v-footer>
 </template>
@@ -112,6 +152,7 @@
 export default {
   data(){
     return{
+      dialog: false,
       links:[
         {
           name: 'company'
@@ -153,8 +194,10 @@ export default {
 </script>
 
 
-<style>
-.border{
-  border: thin solid red
-}
+<style scoped>
+  .footer-links{
+    font-size: 1em;
+    overflow: hidden;
+    text-overflow:ellipsis;
+  }
 </style>

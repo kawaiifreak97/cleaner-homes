@@ -8,7 +8,7 @@ import Footer from '@/components/Footer/Footer.vue'
 import About from '@/components/About/About.vue'
 import Add from '@/components/Add/Add.vue'
 import Button from '@/components/Button/Button.vue'
-import Testimonial from '@/components/Testimonials/Testimonial.vue'
+import Testimonials from '@/components/Testimonials/Testimonials.vue'
 
 
 Vue.component('Header', Header)
@@ -20,4 +20,4 @@ Vue.component('About',About)
 Vue.component('Add', Add)
 Vue.component('Footer', Footer)
 Vue.component('Button', Button)
-Vue.component('Testimonial', Testimonial)
+Vue.component('Testimonials', Testimonials)
