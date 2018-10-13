@@ -1,16 +1,16 @@
 <template>
   <v-app >
-    <Header 
+    <!-- <Header 
       app 
-    />
+    /> -->
     <v-content 
       class="behind"
     >
       <nuxt/>
     </v-content>
-    <Testimonials
+    <!-- <Testimonials
       app
-    />
+    /> -->
     <Add app/>
     <Footer app/>
   </v-app>

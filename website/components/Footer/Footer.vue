@@ -101,8 +101,12 @@
             </div>
           </v-flex>
           <v-spacer/>
-          <v-flex xs4>
-            <div class="text-xs-center">
+          <v-flex 
+            xs6
+            sm4
+            md3
+          >
+            <div class="text-xs-left  ">
               <v-dialog
                 v-model="dialog"
                 width="500"
@@ -111,7 +115,7 @@
                   slot="activator"
                   flat
                 >
-                  @2018 trademark
+                  trademark
                 </v-btn>
 
                 <v-card>

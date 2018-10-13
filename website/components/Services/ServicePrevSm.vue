@@ -1,12 +1,15 @@
 <template>
   <div class="text-xs-center">
     <v-btn
+      :class="{selected : selectedService}" 
+      :large= "$vuetify.breakpoint.smAndUp"
       round
       color="white"
-      large
+      @click="select()"
     >
       {{ id }}
       <v-icon 
+        :class="{selected : selectedService}" 
         right
         color="primary"
       >cloud_upload</v-icon>
@@ -21,19 +24,32 @@ export default {
       required: true,
       type: String
     }
+  },  
+  data(){
+    return{
+      selectedService: false
+    }
   },
+
   methods:{
     link(id){
       this.$router.push("/" + this.id)
+    },
+    select(id){
+      this.selectedService = !this.selectedService;
     }
   },
 }
 </script>
-<style>
+<style scoped>
 .small-card:hover{
   color: #30d3c5;
 }
 .small-title{
   font-weight: 600;
+}
+.selected{
+  background-color: #30d3c5 !important;
+  color: white !important;
 }
 </style>  

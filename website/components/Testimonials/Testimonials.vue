@@ -23,7 +23,8 @@
             mb-4
           >
             <v-flex 
-              xs10
+              xs12
+              sm10  
               mb-4
             >
               <Testimonial/>

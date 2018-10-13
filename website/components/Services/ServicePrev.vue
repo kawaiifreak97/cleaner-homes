@@ -10,7 +10,7 @@
       <v-img
         src="http://jennian.co.nz/wp-content/uploads/2016/07/Queenstown-Showhome-Interior.jpg"
         height="150px"
-      />
+      />  
       <v-card-title primary-title>
         <div>
           <h3 class="thisTitle" >Kangaroo Valley Safari</h3>
@@ -98,8 +98,8 @@ export default {
     z-index: 100;
     border-top-left-radius: 10px;
     border-top-right-radius: 10px;
-    min-width: 75vw;
-    max-width: 75vw;
+    min-width: 37.5vw;
+    max-width: 37.5vw;
     cursor: pointer;
   }
   .thisCard:hover .overlay{
@@ -110,6 +110,10 @@ export default {
   }
   @media only screen and (min-width: 959px) {
     .prev-card{
+      min-width: 25vw;
+      max-width: 25vw;
+    }
+    .overlay{
       min-width: 25vw;
       max-width: 25vw;
     }
