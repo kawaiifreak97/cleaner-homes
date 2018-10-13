@@ -19,12 +19,11 @@
             class="swiper-slide"
             fill-height
             row
-            justify-center 
             mb-4
+            justify-center
           >
             <v-flex 
-              xs12
-              sm10  
+              xs11 
               mb-4
             >
               <Testimonial/>
@@ -32,14 +31,14 @@
           </v-layout>
         </div>
         <div class="swiper-pagination"/>
-        <div 
+        <!-- <div 
           slot="button-prev"
           class="swiper-button-prev" 
         />
         <div 
           slot="button-next"
           class="swiper-button-next" 
-        />
+        /> -->
       </div>
     </v-flex>
   </v-layout>
@@ -82,7 +81,7 @@
           },
           centeredSlides: true,
           autoplay: {
-            delay: 4000,
+            delay: 3000,
             disableOnInteraction: true
           },
           slidesPerView: 3,

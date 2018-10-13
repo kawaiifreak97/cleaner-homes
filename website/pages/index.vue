@@ -32,18 +32,17 @@
     >
       <About/>
     </v-flex>
-    <!-- <v-flex 
+    <v-flex 
       xs12
     >
-
-      <swipertest/>
+      <Testimonials/>
     </v-flex>
     <v-flex 
       xs12
       mb-4
     >
       <Add/>
-    </v-flex> -->
+    </v-flex>
 
   </v-layout>
 </template>

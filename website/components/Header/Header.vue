@@ -1,10 +1,10 @@
 <template>
-  <div class="testuk">
+  <div >
     <v-toolbar
+      :color="HeaderColor"
       fixed
       dark
       flat 
-      color="transparent"
     >
       <v-toolbar-side-icon 
         class="burger"
@@ -83,6 +83,12 @@
 
 <script>
   export default {
+    props:{
+      HeaderColor:{
+        required: true,
+        type: String
+      }
+    },
     data () {
       return {
         drawer: null,

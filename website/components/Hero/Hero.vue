@@ -96,10 +96,7 @@ export default {
       test: 'Services',
       test2: 'Book now'
     }
-  },
-  mounted () {
-    console.log(this.$vuetify.breakpoint)
-  },
+  }
 }
 </script>
 

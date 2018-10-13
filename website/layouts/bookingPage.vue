@@ -1,6 +1,7 @@
 <template>
   <v-app >
     <Header 
+      :HeaderColor="fillHeader"
       app 
     />
     <v-content 
@@ -15,12 +16,10 @@
   export default {
     data() {
       return {
+        fillHeader: 'transparent'
       }
     }
   }
 </script>
 
-<style>
-
-</style>
 

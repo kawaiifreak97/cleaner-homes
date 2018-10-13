@@ -2,14 +2,16 @@
   <v-layout 
     justify-center
     row
+    fill-height
   >
     <v-flex 
-      xs11
-      sm7
+      xs12
+      sm9
+      md7
     >
       <v-card 
-        class="rounded"
-        width="50vw">
+        class="rounded serviceFull"
+      >
         <v-img
           src="https://cdn.vuetifyjs.com/images/cards/desert.jpg"
           height="200px"
@@ -33,6 +35,7 @@
 
         <v-card-title style="position:relative">
           <v-btn
+            :large="$vuetify.breakpoint.smAndUp"
             absolute
             right
             top
@@ -43,8 +46,8 @@
             book now
           </v-btn>
           <div> 
-            <h3 class="headline mb-0">Kangaroo Valley Safari</h3>
-            <div>Located two hours south of Sydney in the <br>Southern Highlands of New South Wales, ...</div>
+            <h1 class="mb-0"> {{ name }} </h1>
+            <div>Located two hours south of Sydney in the Southern Highlands of New South Wales</div>
           </div>
           <v-spacer/>
           <v-btn 
@@ -66,13 +69,14 @@
             <v-flex
               v-for="tag in tags"  
               :key="tag.name"
-              xs3
+              xs6
+              sm4
             >
               <v-chip 
                 color="primary"
                 class="white--text"
               > 
-                <span style="font-size: 0.75em;">{{ tag.name }}</span>
+                <span style="font-size: 1em;">{{ tag.name }}</span>
               </v-chip>
             </v-flex>
           </v-layout>
@@ -87,12 +91,13 @@ export default {
   data(){
     return{
       show: false,
+      name: 'Commercial cleaning',
       tags:[
         {
           name: 'window'
         },
         {
-          name: 'windows'
+          name: 'windows interior'
         },
         {
           name: 'windws'
@@ -109,12 +114,20 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
   .buttonuk{
     position: relative;
     top: 0px;
     left: 0px;
   }
+  /* .serviceFull{
+    width: 80vw
+  }
+  @media only screen and (min-width: 600px) {
+    .serviceFull{
+      width: 50vw
+    }
+  } */
 </style>
 
 

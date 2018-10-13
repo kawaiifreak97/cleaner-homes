@@ -1,17 +1,15 @@
 <template>
   <v-app >
-    <!-- <Header 
+    <Header 
+      :HeaderColor="transparentHeader"
       app 
-    /> -->
+    />
     <v-content 
       class="behind"
     >
       <nuxt/>
     </v-content>
-    <!-- <Testimonials
-      app
-    /> -->
-    <Add app/>
+
     <Footer app/>
   </v-app>
 </template>
@@ -20,6 +18,7 @@
   export default {
     data() {
       return {
+        transparentHeader: 'transparent'
       }
     }
   }
