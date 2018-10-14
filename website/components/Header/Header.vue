@@ -2,6 +2,7 @@
   <div >
     <v-toolbar
       :color="HeaderColor"
+      scroll-off-screen
       fixed
       dark
       flat 

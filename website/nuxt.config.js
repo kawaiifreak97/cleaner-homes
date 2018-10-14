@@ -29,8 +29,9 @@ module.exports = {
   ** Plugins to load before mounting the App
   */
   plugins: [
-    '@/plugins/vuetify',
-    '@/plugins/globalComponents',
+    '@/plugins/vuetify.js',
+    '@/plugins/globalComponents.js',
+    '@/plugins/scrollto.js',
     { src: '~/plugins/swiper.js', ssr: false },
   ],
 
