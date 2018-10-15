@@ -9,6 +9,7 @@
     >
       <nuxt/>
     </v-content>
+    
   </v-app>
 </template>
 

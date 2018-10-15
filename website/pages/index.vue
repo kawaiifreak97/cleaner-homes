@@ -11,7 +11,8 @@
     >
       <HowItWorks />
     </v-flex>
-    <v-flex 
+    <v-flex
+      id="services"
       xs12
     >
       <v-layout

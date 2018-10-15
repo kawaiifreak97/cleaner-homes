@@ -28,14 +28,16 @@
 
       <v-toolbar-items class="hidden-sm-and-down">
         <v-btn
+          v-scroll-to="'#' + link.scrollto"
           v-for="link in links"
           :key="link.name"
           :to="'/' + link.path"
           flat
           nuxt
+          
         >
           {{ link.name }}
-        </v-btn>
+        </v-btn>       
       </v-toolbar-items>
     </v-toolbar>
     <v-navigation-drawer
@@ -47,7 +49,6 @@
         class="pt-4" 
         dense
       >
-
         <v-list-tile>
           <v-list-tile-action>
             <v-btn
@@ -55,7 +56,6 @@
               fab
               nuxt
               to="/"
-
             >
               <v-icon>home</v-icon>
             </v-btn>          
@@ -99,17 +99,15 @@
         ],
         links:[
           {
-            name: 'services',
-            path:'services'
+            name: 'How it works',
+            path:'',
+            scrollto: 'how-it-works'
+          },
+          {
+            name: 'Book now',
+            path:'bookingPage',
+            scrollto: ''
             
-          },
-          {
-            name: 'contact',
-            path:'services'
-          },
-          {
-            name: 'book now',
-            path:'services'
           }
         ]
       }

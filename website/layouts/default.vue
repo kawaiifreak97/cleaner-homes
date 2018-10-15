@@ -4,12 +4,14 @@
       :HeaderColor="transparentHeader"
       app 
     />
+    
     <v-content 
       class="behind"
     >
       <nuxt/>
     </v-content>
-
+    <ContactForm/>
+    
     <Footer app/>
   </v-app>
 </template>

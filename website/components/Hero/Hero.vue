@@ -68,7 +68,18 @@
                 md12
               >
                 <div class="text-xs-center">
-                  <Button>{{ test2 }}</Button>
+                  <v-dialog
+                    v-model="dialog"
+                    width="500"
+                  >
+                    <Button 
+                      slot="activator"
+                    >
+                      {{ test2 }}
+                    </Button>
+                    <ContactForm/>
+                  </v-dialog>
+                  
                 </div>
               </v-flex>
               <v-flex 
@@ -77,7 +88,7 @@
               >
                 <div class="text-xs-center">
                   <div class="text-xs-center">
-                    <Button>{{ test }}</Button>
+                    <Button :scrollto="test.scrollto">{{ test.name }}</Button>
                   </div>
                 </div>
               </v-flex>
@@ -93,8 +104,11 @@
 export default {
   data(){
     return{
-      test: 'Services',
-      test2: 'Book now'
+      test:{
+        name: 'Services',
+        scrollto: 'services'
+      },
+      test2: 'Contact us'
     }
   }
 }

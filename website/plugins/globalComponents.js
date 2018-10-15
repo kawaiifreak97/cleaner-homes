@@ -9,6 +9,7 @@ import About from '@/components/About/About.vue'
 import Add from '@/components/Add/Add.vue'
 import Button from '@/components/Button/Button.vue'
 import Testimonials from '@/components/Testimonials/Testimonials.vue'
+import ContactForm from '@/components/ContactForm/ContactForm.vue'
 
 
 Vue.component('Header', Header)
@@ -21,3 +22,4 @@ Vue.component('Add', Add)
 Vue.component('Footer', Footer)
 Vue.component('Button', Button)
 Vue.component('Testimonials', Testimonials)
+Vue.component('ContactForm', ContactForm)

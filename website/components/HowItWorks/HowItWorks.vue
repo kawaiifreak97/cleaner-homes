@@ -1,8 +1,10 @@
 <template>
   <v-layout 
+    id="how-it-works"
     row
     wrap
     justify-center
+    
   > 
     <v-flex xs12>
       <Title>
