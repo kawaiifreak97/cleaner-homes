@@ -12,7 +12,8 @@
         @click.stop="drawer = !drawer"
       />
 
-      <div text-xs-center>
+      <div 
+        text-xs-center>
         <v-btn
           nuxt
           to="/"
@@ -20,11 +21,15 @@
           icon
           class="logo"
         >
-          <v-icon>home</v-icon>
+          <v-img
+            src="https://i.imgur.com/72mgggY.png?1"
+            width="66px"
+            height="66px"
+          />
         </v-btn>
       </div>
 
-      <v-spacer/>
+      <v-spacer />
 
       <v-toolbar-items class="hidden-sm-and-down">
         <v-btn
@@ -34,7 +39,6 @@
           :to="'/' + link.path"
           flat
           nuxt
-          
         >
           {{ link.name }}
         </v-btn>       
@@ -52,10 +56,12 @@
         <v-list-tile>
           <v-list-tile-action>
             <v-btn
+              :v-scroll-to="scrollto"
               icon
               fab
               nuxt
               to="/"
+              @click.stop="drawer = !drawer"
             >
               <v-icon>home</v-icon>
             </v-btn>          
@@ -93,6 +99,7 @@
     data () {
       return {
         drawer: null,
+        scrollto: '#services',  
         items: [
           { title: 'Home', icon: 'dashboard' },
           { title: 'About', icon: 'question_answer' }

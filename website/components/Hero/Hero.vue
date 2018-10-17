@@ -39,8 +39,8 @@
                 md12
               >
                 <h1 class="heroTitle text-xs-center text-sm-left">
-                  House cleaning & <br>
-                  Farm spraying
+                  Cleaner Homes  <br>
+                  & Pastures
                 </h1>
               </v-flex>
               <v-flex 
@@ -79,7 +79,6 @@
                     </Button>
                     <ContactForm/>
                   </v-dialog>
-                  
                 </div>
               </v-flex>
               <v-flex 
@@ -106,7 +105,7 @@ export default {
     return{
       test:{
         name: 'Services',
-        scrollto: 'services'
+        scrollto: '#services'
       },
       test2: 'Contact us'
     }

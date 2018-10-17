@@ -35,7 +35,8 @@
         
         <v-flex 
           xs12
-          sm11>
+          sm11
+        >
           <v-layout
             style="overflow-x: scroll"
             row
@@ -45,7 +46,7 @@
             <v-flex 
               v-for="roomType in roomTypes"  
               :key="roomType.name" 
-              xs5
+              xs6
               sm3
               mx-1
             > 
@@ -83,8 +84,8 @@
             <v-flex 
               v-for="Addon in Addons"  
               :key="Addon.name" 
-              xs4
-              sm2
+              xs6
+              sm3
               mx-1
               my-1
             > 

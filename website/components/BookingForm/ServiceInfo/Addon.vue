@@ -1,7 +1,6 @@
 <template>
   <v-card 
-    :class="{selected : selectedAddon}"
-    class="rounded cursor-pointer"
+    class="rounded cursor-pointer addon-card"
     ripple 
   >
     <v-layout
@@ -13,8 +12,8 @@
     >
       <v-flex xs12>
         <v-icon 
-          :class="[{ 'white--text' : selectedAddon}, 'secondary--text']"
-          large
+          :class="[{ 'secondary--text' : selectedAddon}, 'accent--text']"
+          :large="$vuetify.breakpoint.smAndUp"
           style="font-size: 3em"
         >
           home
@@ -24,9 +23,9 @@
         xs12
       >
         <h4
-          :class="{ 'white--text' : selectedAddon}"
+          :class="[{ 'secondary--text' : selectedAddon}, 'accent--text']"
           pa-1
-          class="text-xs-center secondary--text"
+          class="text-xs-center"
         >
           {{ name }}
         </h4>
@@ -59,8 +58,17 @@ export default {
 
 <style scoped>
   .selected{
-    background-color: #30d3c5 !important;
+    background-color: #12EB4B !important;
   }
+  .addon-card{
+    min-width: 25vw;
+  }
+
+  @media only screen and (min-width: 600px) {
+  .addon-card{
+    min-width: 15vw;
+  }
+}
 </style>
 
 

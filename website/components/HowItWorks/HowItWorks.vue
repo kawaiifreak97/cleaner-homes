@@ -20,6 +20,7 @@
       <Card
         :title="step.title"
         :description="step.description"
+        :step="2"
       />
     </v-flex>
   </v-layout>
@@ -36,16 +37,16 @@ export default {
       title: 'How it works',
       steps:[
         {
-          title: 'Make a Booking',
-          description: 'nfdfjsdofsldnljsdn'
+          title: 'Contact us',
+          description: 'Call, email or fill out our booking form'
         },
         {
-          title: 'Make a Bookin',
-          description: 'nfdfjsdofsldnljsdn'
+          title: 'Free quote',
+          description: 'Well come and quote the job for free!'
         },
         {
-          title: 'Make a Booki',
-          description: 'nfdfjsdofsldnljsdn'
+          title: 'Rest easy',
+          description: 'Well have the job finished in not time!'
         }
       ]
 

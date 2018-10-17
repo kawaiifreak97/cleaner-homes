@@ -49,7 +49,7 @@ export default {
   font-weight: 600;
 }
 .selected{
-  background-color: #30d3c5 !important;
+  background-color: #12EB4B !important;
   color: white !important;
 }
 </style>  

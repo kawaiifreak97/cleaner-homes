@@ -42,6 +42,7 @@
             color="white"
             round
             class="primary--text"
+            to="/bookingPage"
           >
             book now
           </v-btn>

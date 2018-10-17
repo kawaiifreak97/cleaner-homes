@@ -99,6 +99,7 @@
       company: '',
       email: '',
       number: '',
+      location: '',
       select: null,
       items: [
         'Item 1',

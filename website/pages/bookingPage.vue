@@ -1,36 +1,32 @@
 <template>
-  <div>
+  <div >
     <v-img
       src="http://www.riversongcochrane.com/assets/HeroImages/15-SRV-108-Riversong-Homepage-Hero-Banner.jpg"
-      style="height:90vh; position: fixed; z-index: 0;"
+      style="min-height:80vh"
     >
       <div
         fill-height
         class="bottom-gradient"
       />
     </v-img>
-    <v-img
-      src="https://cdn.vuetifyjs.com/images/parallax/material2.jpg"
-      gradient="to top right, rgba(100,115,201,.33), rgba(25,32,72,.7)"
-    />
-    <v-layout 
-      row
-      wrap
-      justify-center
-      my-4
-      style="position:relative; z-index:10"
-    >
-      <v-flex xs10>
-        <Title>Booking request</Title>
-      </v-flex>
-      <v-flex 
-        xs12
-        sm11
-        md10
+    <div class="form-overlay">
+      <v-layout 
+        row
+        wrap
+        justify-center
       >
-        <BookingForm/>
-      </v-flex>
-    </v-layout>
+        <v-flex xs10>
+          <Title ><span style="color:white"> Booking request</span></Title>
+        </v-flex>
+        <v-flex 
+          xs12
+          sm11
+          md10
+        >
+          <BookingForm/>
+        </v-flex>
+      </v-layout>
+    </div>
   </div>
 </template>
 
@@ -44,4 +40,20 @@ export default {
 }
 </script>
 
+<style scoped>
+  .bottom-gradient {
+    background-image: linear-gradient(to top right, rgba(48,211,197,.9), rgba(18,235,75,.89));
+    position: absolute;
+    z-index: 50;
+    height:100%;
+    width: 100%;
+  }
+  .form-overlay{
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    max-width: 100vw;
+  }
+</style>
 

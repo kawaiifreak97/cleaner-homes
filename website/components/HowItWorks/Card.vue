@@ -17,7 +17,7 @@
         bottom
         style="left: 50%;transform: translateX(-50%)"
       >
-        <span class="primary--text">1</span>
+        <span class="primary--text">{{ step }}</span>
       </v-btn>
       <v-layout
         pb-4
@@ -45,14 +45,12 @@
           <div style="height:25px;"/>
         </v-flex>
         <v-flex xs12>
-          <h1>title</h1>
+          <h1>{{ title }}</h1>
         </v-flex>
         <v-flex xs12>
-          <p>description</p>
+          <p>{{ description }} </p>
         </v-flex>
       </v-layout>
-
-
     </v-card>
   </v-layout>
 </template>
@@ -65,6 +63,10 @@ export default {
       type: String
     },
     description:{
+      required: true,
+      type: String
+    },
+    step:{
       required: true,
       type: String
     }

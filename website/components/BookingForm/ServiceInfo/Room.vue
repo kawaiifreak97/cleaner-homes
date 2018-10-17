@@ -1,6 +1,6 @@
 <template>
   <v-card 
-    class="rounded"
+    class="rounded room-card"
   >
     <v-layout
       row
@@ -97,5 +97,14 @@ export default{
     border-bottom-left-radius: 10px;
     border-bottom-right-radius: 10px;
   }
+  .room-card{
+    min-width: 25vw;
+  }
+
+  @media only screen and (min-width: 600px) {
+  .room-card{
+    min-width: 10vw;
+  }
+}
 
 </style>

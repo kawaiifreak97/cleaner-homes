@@ -152,7 +152,7 @@ import StepFour from '@/components/BookingForm/StepFour'
     data () {
       return {
         e6: 1,
-        e1: 2,
+        e1: 1,
         services:[
           {
             name: 'Farm spraying'
@@ -168,6 +168,13 @@ import StepFour from '@/components/BookingForm/StepFour'
     }
   }
 </script>
+
+<style scoped>
+  .booking-form{
+    max-width: 90vw;
+  }
+</style>
+
 
 
 

@@ -10,8 +10,6 @@
     >
       <nuxt/>
     </v-content>
-    <ContactForm/>
-    
     <Footer app/>
   </v-app>
 </template>
