@@ -1,6 +1,6 @@
 <template>
   <v-btn
-    :v-scroll-to="scrollto"
+    :v-scroll-to="'#' + scrollto"
     :large="$vuetify.breakpoint.smAndUp"
     :to="'/' + link "
     round
@@ -10,6 +10,7 @@
     <span class="primary--text btn-text" >
       <slot> Book now </slot> 
     </span>
+    
   </v-btn>
 </template>
 

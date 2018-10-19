@@ -25,7 +25,7 @@
         xs12 
         sm6
       >
-        <Button :link="bookingPage">Book now</Button>
+        <Button :link="'bookingPage'">Book now</Button>
       </v-flex>
     </v-layout>
   </v-img>

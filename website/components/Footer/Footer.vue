@@ -22,7 +22,22 @@
                 v-for="link in links"
                 :key="link.name"
               >
-                <span class="footer-links">
+                <div
+                  v-if="link.privacy" >
+                  <v-dialog
+                    v-model="dialog"
+                    width="500"
+                  >
+                    <span
+                      slot="activator"
+                    >
+                      {{ link.name }}
+                    </span>
+                  </v-dialog>
+                </div>
+                <span 
+                  v-else-if="!link.privacy"
+                  class="footer-links">
                   {{ link.name }}
                 </span>
               </v-flex>
@@ -38,9 +53,17 @@
                 :key="contactLink.value"
                 class="footer-links"
               >
-                <span >
-                  {{ contactLink.value }}
-                </span>
+                <v-dialog
+                  v-model="popup"
+                  width="500"
+                >
+                  <span
+                    slot="activator"
+                  >
+                    {{ contactLink.value }}
+                  </span>
+                  <ContactForm/>
+                </v-dialog>
               </v-flex>
             </v-layout>
           </v-flex>
@@ -52,7 +75,22 @@
               <v-flex 
                 mb-2
               >
-                <v-icon>home</v-icon>
+                <div 
+                  text-xs-center>
+                  <v-btn
+                    nuxt
+                    to="/"
+                    flat 
+                    icon
+                    class="logo"
+                  >
+                    <v-img
+                      src="https://i.imgur.com/72mgggY.png?1"
+                      width="66px"
+                      height="66px"
+                    />
+                  </v-btn>
+                </div>
               </v-flex>
               <v-flex>cleaner homes and pastures</v-flex>
               <v-flex mt-4>
@@ -156,6 +194,7 @@
 export default {
   data(){
     return{
+      popup: false,
       dialog: false,
       links:[
         {
@@ -165,10 +204,12 @@ export default {
           name: 'services'
         },
         {
-          name: 'privacy policy'
+          name: 'privacy policy',
+          privacy: true
         },
         {
-          name: 'terms & conditions'
+          name: 'terms & conditions',
+          privacy: true
         }
       ],
       contactLinks:[

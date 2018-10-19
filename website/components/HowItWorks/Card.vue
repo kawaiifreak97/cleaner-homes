@@ -68,7 +68,7 @@ export default {
     },
     step:{
       required: true,
-      type: String
+      type: Number
     }
   }
 

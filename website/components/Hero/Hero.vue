@@ -1,7 +1,7 @@
 <template>
   <v-layout>
     <v-img
-      src="http://www.riversongcochrane.com/assets/HeroImages/15-SRV-108-Riversong-Homepage-Hero-Banner.jpg"
+      :src="heroImg"
       style="height:90vh; position: relative; z-index: 0;"
     >
       <div
@@ -38,9 +38,8 @@
                 sm9
                 md12
               >
-                <h1 class="heroTitle text-xs-center text-sm-left">
-                  Cleaner Homes  <br>
-                  & Pastures
+                <h1 class="hero-title text-xs-center text-sm-left">
+                  {{ heroTitle }}
                 </h1>
               </v-flex>
               <v-flex 
@@ -48,8 +47,7 @@
                 hidden-sm-and-down
               >
                 <h3 class="hero-subtitle">
-                  Freeing up your time so you can focus <br>
-                  on what really matters
+                  {{ heroSubTitle }}
                 </h3>
               </v-flex>
             </v-layout>
@@ -75,7 +73,7 @@
                     <Button 
                       slot="activator"
                     >
-                      {{ test2 }}
+                      {{ heroBtnPopup }}
                     </Button>
                     <ContactForm/>
                   </v-dialog>
@@ -86,9 +84,7 @@
                 md12
               >
                 <div class="text-xs-center">
-                  <div class="text-xs-center">
-                    <Button :scrollto="test.scrollto">{{ test.name }}</Button>
-                  </div>
+                  <Button :scrollto="heroBtnScroll.scrollto">{{ heroBtnScroll.name }}</Button>
                 </div>
               </v-flex>
             </v-layout>
@@ -100,16 +96,23 @@
 </template>
 
 <script>
+import { mapState } from 'vuex'
 export default {
   data(){
     return{
-      test:{
-        name: 'Services',
-        scrollto: '#services'
+      heroBtnScroll:{
+        name: 'services',
+        scrollto: 'services'
       },
-      test2: 'Contact us'
+      heroBtnPopup: 'Contact us',
+      dialog: false
     }
-  }
+  },
+  computed: mapState({
+      heroImg: state => state.hero.heroImg,
+      heroTitle: state => state.hero.heroTitle,
+      heroSubTitle: state => state.hero.heroSubTitle
+  })
 }
 </script>
 
@@ -121,7 +124,7 @@ export default {
   height:100%;
   width: 100%;
 }
-.heroTitle{
+.hero-title{
   font-weight: bold;
   color: white;
   font-size: 1.85em;
@@ -132,7 +135,7 @@ export default {
 }
 
 @media only screen and (min-width: 600px) {
-  .heroTitle{
+  .hero-title{
     font-size: 3em;
   }
 }

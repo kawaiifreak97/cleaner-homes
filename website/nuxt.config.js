@@ -49,7 +49,7 @@ module.exports = {
   modules: [
     // Doc: https://github.com/nuxt-community/axios-module#usage
     '@nuxtjs/axios',
-    ['storyblok-nuxt', { accessToken:'EICNNjkjp1HXBf10xJ0QnQtt', cacheProvider: 'memory' }]
+    ['storyblok-nuxt', { accessToken:'A2K4fPrQrUumCYDFlLUMtAtt', cacheProvider: 'memory' }]
   ],
   /*
   ** Axios module configuration
