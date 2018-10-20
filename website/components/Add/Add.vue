@@ -17,19 +17,28 @@
         sm6
       >
         <div class="add-text">
-          What are you <br>
-          waiting for?
+          {{ text }}
         </div>
       </v-flex>
       <v-flex 
         xs12 
         sm6
       >
-        <Button :link="'bookingPage'">Book now</Button>
+        <Button :link="'bookingPage'">{{ button }}</Button>
       </v-flex>
     </v-layout>
   </v-img>
 </template>
+
+<script>
+import { mapState } from 'vuex'
+export default {
+  computed: mapState({
+    text: state =>  state.add.text,
+    button: state => state.add.button
+  })
+}
+</script>
 
 <style scoped>
   .add-text{

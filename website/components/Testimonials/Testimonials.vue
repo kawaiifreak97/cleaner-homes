@@ -5,7 +5,7 @@
     justify-center
   >
     <v-flex xs11>
-      <Title>What our clients say</Title>
+      <Title>{{ title }}</Title>
       
     </v-flex>
 
@@ -32,20 +32,13 @@
           </v-layout>
         </div>
         <div class="swiper-pagination"/>
-        <!-- <div 
-          slot="button-prev"
-          class="swiper-button-prev" 
-        />
-        <div 
-          slot="button-next"
-          class="swiper-button-next" 
-        /> -->
       </div>
     </v-flex>
   </v-layout>
 </template>
 
 <script>
+  import { mapState } from 'vuex'
   import Testimonial from '@/components/Testimonials/Testimonial.vue'
   export default {
     components:{
@@ -53,28 +46,6 @@
     },
     data () {
       return {
-        banners: [ 
-          {
-            name:"yes",
-            img:'https://butterfly-conservation.org/sites/default/files/styles/masthead/public/2018-06/17051261609_28a1fdf043_b.jpg'
-          },
-          {
-            name:"es",
-            img:'https://butterfly-conservation.org/sites/default/files/styles/masthead/public/2018-06/17051261609_28a1fdf043_b.jpg'
-          },
-          {
-            name:"ye=s",
-            img:'https://butterfly-conservation.org/sites/default/files/styles/masthead/public/2018-06/17051261609_28a1fdf043_b.jpg'
-          },
-          {
-            name:"y=s",
-            img:'https://butterfly-conservation.org/sites/default/files/styles/masthead/public/2018-06/17051261609_28a1fdf043_b.jpg'
-          },
-          {
-            name:"ys",
-            img:'https://butterfly-conservation.org/sites/default/files/styles/masthead/public/2018-06/17051261609_28a1fdf043_b.jpg'
-          }
-        ],
         swiperOption: {
           pagination: {
             el: '.swiper-pagination',
@@ -114,6 +85,10 @@
           }
         }
       }
-    }
+    },
+    computed: mapState({
+      title: state => state.testimonials.title,
+      banners: state => state.testimonials.banners
+    })
   }
 </script>

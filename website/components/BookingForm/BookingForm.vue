@@ -2,7 +2,7 @@
   <v-stepper 
     v-model="e1"
     vertical
-    class="booking-form"
+    class="booking-form rounded"
   >
     <v-stepper-step 
       :complete="e1 > 1" 

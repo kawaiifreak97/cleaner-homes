@@ -47,7 +47,7 @@
         <v-flex xs12>
           <h1>{{ title }}</h1>
         </v-flex>
-        <v-flex xs12>
+        <v-flex xs10>
           <p>{{ description }} </p>
         </v-flex>
       </v-layout>
