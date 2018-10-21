@@ -1,25 +1,50 @@
 export const state = () => ({
   title: 'What our clients say',
-  banners: [ 
+  testimonials:[
     {
-      name:"yes",
-      img:'https://butterfly-conservation.org/sites/default/files/styles/masthead/public/2018-06/17051261609_28a1fdf043_b.jpg'
+      name: 'Peter revens',
+      company: 'yosefa',
+      quote: 'Amazing service, quick and efficient'
     },
     {
-      name:"es",
-      img:'https://butterfly-conservation.org/sites/default/files/styles/masthead/public/2018-06/17051261609_28a1fdf043_b.jpg'
+      name: 'Peter reves',
+      company: 'yosea',
+      quote: 'Awesome job, woould highly recommend'
     },
     {
-      name:"ye=s",
-      img:'https://butterfly-conservation.org/sites/default/files/styles/masthead/public/2018-06/17051261609_28a1fdf043_b.jpg'
+      name: 'john doe',
+      company: 'amdnd',
+      quote: 'Very proffessional highly appreciated!'
     },
     {
-      name:"y=s",
-      img:'https://butterfly-conservation.org/sites/default/files/styles/masthead/public/2018-06/17051261609_28a1fdf043_b.jpg'
+      name: 'Pter revens',
+      company: 'yoefa',
+      quote: 'Amazin service, quick and efficient'
     },
     {
-      name:"ys",
-      img:'https://butterfly-conservation.org/sites/default/files/styles/masthead/public/2018-06/17051261609_28a1fdf043_b.jpg'
+      name: 'Peter revs',
+      company: 'yoea',
+      quote: 'Awesme job, woould highly recommend'
+    },
+    {
+      name: 'john rdoe',
+      company: 'amdend',
+      quote: 'Verqy proffessional highly appreciated!'
+    },
+    {
+      name: 'Peter revdens',
+      company: 'yofsefa',
+      quote: 'Amazing sgervice, quick and efficient'
+    },
+    {
+      name: 'Peter renves',
+      company: 'yosega',
+      quote: 'Awesome jobg, woould highly recommend'
+    },
+    {
+      name: 'john dgoe',
+      company: 'amhdnd',
+      quote: 'Very proffnessional highly appreciated!'
     }
   ]
 })

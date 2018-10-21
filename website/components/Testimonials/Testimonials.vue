@@ -15,8 +15,8 @@
       >
         <div class="swiper-wrapper">
           <v-layout
-            v-for="banner in banners"
-            :key="banner.name"
+            v-for="testimonial in testimonials"
+            :key="testimonial.name"
             class="swiper-slide"
             fill-height
             row
@@ -27,7 +27,10 @@
               xs11 
               mb-4
             >
-              <Testimonial/>
+              <Testimonial
+                :name="testimonial.name"
+                :company="testimonial.company"
+                :quote="testimonial.quote"/>
             </v-flex>
           </v-layout>
         </div>
@@ -88,7 +91,7 @@
     },
     computed: mapState({
       title: state => state.testimonials.title,
-      banners: state => state.testimonials.banners
+      testimonials: state => state.testimonials.testimonials
     })
   }
 </script>

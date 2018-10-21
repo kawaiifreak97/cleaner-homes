@@ -37,15 +37,15 @@
               column
             >
               <v-flex>
-                <h1 style="font-weight:400">clients quote</h1>
+                <h1 style="font-weight:400">{{ quote }}</h1>
               </v-flex>
               <v-flex>
                 <h4 
                   class="primary--text"
-                  style="font-weight:400">clients name</h4>
+                  style="font-weight:400">{{ name }}</h4>
               </v-flex>
               <v-flex>
-                <h4 style="font-weight:200">clients position and company  </h4>
+                <h4 style="font-weight:200">{{ company }}</h4>
               </v-flex>
             </v-layout>
           </v-flex>
@@ -53,5 +53,27 @@
       </v-card>
     </v-flex>
   </v-layout>
-  
 </template>
+
+ <script>
+ export default {
+   props:{
+     name:{
+       required: false,
+       type: String,
+       default: ''
+     },
+     company: {
+       required: false,
+       type: String,
+       default: ''
+     },
+     quote: {
+       required: true,
+       type: String,
+       default: ''
+     }
+   }
+ }
+ </script>
+ 
