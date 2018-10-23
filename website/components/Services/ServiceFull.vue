@@ -48,8 +48,8 @@
           </v-btn>
           <div> 
             <h1 class="mb-0"> {{ name }} </h1>
-            <div>Located two hours south of Sydney in the Southern Highlands of New South Wales</div>
-          </div>
+            <div>{{ description }}</div>
+          </div>  
           <v-spacer/>
           <v-btn 
             icon 
@@ -89,27 +89,40 @@
 
 <script>
 export default {
+  props:{
+    name: {
+      required: true,
+      type: String
+    },
+    description:{
+      required: true,
+      type: String
+    },
+    id:{
+      required: true,
+      type: String
+    }
+  },
   data(){
     return{
       show: false,
-      name: 'Commercial cleaning',
-      tags:[
-        {
-          name: 'window'
-        },
-        {
-          name: 'windows interior'
-        },
-        {
-          name: 'windws'
-        },
-        {
-          name: 'widows'
-        },
-        {
-          name: 'winws'
-        },
-      ]
+      // tags:[
+      //   {
+      //     name: 'window'
+      //   },
+      //   {
+      //     name: 'windows interior'
+      //   },
+      //   {
+      //     name: 'windws'
+      //   },
+      //   {
+      //     name: 'widows'
+      //   },
+      //   {
+      //     name: 'winws'
+      //   },
+      // ]
     }
   }
 }

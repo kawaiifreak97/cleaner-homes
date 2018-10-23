@@ -5,7 +5,7 @@
       :large= "$vuetify.breakpoint.smAndUp"
       round
       color="white"
-      @click="select()"
+      @click="link()"
     >
       {{ id }}
       <v-icon 
@@ -33,7 +33,7 @@ export default {
 
   methods:{
     link(id){
-      this.$router.push("/" + this.id)
+      this.$store.dispatch('select', this.id)
     },
     select(id){
       this.selectedService = !this.selectedService;

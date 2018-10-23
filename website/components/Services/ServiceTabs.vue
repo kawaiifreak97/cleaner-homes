@@ -65,69 +65,13 @@ import ServicePrevSm from '@/components/Services/ServicePrevSm'
       return {
         overlay: false,
         tabStart: 'tab-2',
-        serviceCategories:[
-          {
-            name: 'Commercial',
-            link: 'commercial',
-            services:[
-              {
-                name: 'windows',
-                link: 'windows'
-              },
-              {
-                name: 'window',
-                link: 'window'
-              },
-              {
-                name: 'windo',
-                link: 'windo'
-              }
-            ]
-
-          },
-          {
-            name: 'Domestic',
-            link: '',
-            services:[
-              {
-                name: 'wfindows',
-                link: 'windowsq'
-              },
-              {
-                name: 'wifnd',
-                link: 'wqind'
-              }
-            ]
-          },
-          {
-            name: 'Farm spraying',
-            link: 'farm-spraying',
-            services:[
-              {
-                name: 'windoqws',
-                link: 'wisndows'
-              },
-              {
-                name: 'wisndow',
-                link: 'wisdndow'
-              },
-              {
-                name: 'widndo',
-                link: 'widndo'
-              },
-              {
-                name: 'wdin',
-                link: 'wdin'
-              },
-              {
-                name: 'wdind',
-                link: 'widnd'
-              }
-            ]
-          },
-        ],
         model: 'tab-2',
         text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.'
+      }
+    },
+    computed: {
+      serviceCategories () {
+        return this.$store.state.services.serviceCategories
       }
     }
   }

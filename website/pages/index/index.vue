@@ -27,18 +27,9 @@
         tabsShow: true
       }
     },
-    // beforeRouteEnter (to, from, next) {
-    //   this.tabsShow = true;
-    // },
     beforeRouteUpdate (to, from, next) {
       console.log('router')
       this.tabsShow = false;
     }
-    // watch: {
-    //   '$route' (to,from){
-    //     console.log('change')
-    //     this.tabsShow = !this.tabsShow
-    //   }
-    // }
   }
 </script>
