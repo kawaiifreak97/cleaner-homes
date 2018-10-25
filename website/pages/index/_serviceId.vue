@@ -23,13 +23,19 @@
   import ServiceFull from '@/components/Services/ServiceFull.vue'
 
   export default{
-    
     components:{
       ServiceFull
     },
+    data(){
+      return{
+        id: 'windows'
+      }
+      
+    },
+    
     asyncData (context){
       return {
-        id: context.params.serviceId
+        // id: context.params.serviceId
       }
     },
     computed:{
