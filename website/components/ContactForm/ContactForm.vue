@@ -1,5 +1,5 @@
 <template>
-  <v-layout
+  <!-- <v-layout
     row
     justify-center
     align-center
@@ -60,6 +60,69 @@
         </v-layout>
       </v-card>
     </v-flex>
-  </v-layout>
+  </v-layout> -->
+  <v-card class="rounded elevation-20">
+    <v-layout
+      row
+      wrap
+      justify-center
+      fill-height
+      align-center
+      class="text-xs-center"
+    >
+      <v-flex 
+        xs12
+        my-2
+      >
+        <h1>
+          Call us on 
+        </h1>
+        <h3 
+          style="font-weight: 400"
+          color="primary"
+        >02246432</h3>
+      </v-flex>
+      <v-flex   
+        xs8
+      >
+        <v-layout
+          row
+          justify-center
+          fill-height
+          align-center
+        >
+          <v-flex xs3>
+            <v-divider />
+          </v-flex>
+          <v-flex 
+            xs5
+            class="text-xs-center">
+            <v-icon 
+              x-large
+              color="green">
+              home
+            </v-icon>
+          </v-flex>
+          <v-flex xs3>
+            <v-divider />
+          </v-flex>
+        </v-layout>
+      </v-flex>
+      <v-flex 
+        xs12
+        my-2
+      >
+        <h1> Email us at </h1>
+
+        <a href="/">
+          <h3 
+            style="font-weight: 400"
+          >
+            gbexta@gmail.com
+          </h3>
+        </a>
+      </v-flex>
+    </v-layout>
+  </v-card>
 
 </template>

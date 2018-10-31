@@ -136,6 +136,9 @@ export default {
         },
         {
           name: 'Bathrooms'
+        },
+        {
+          name: 'Story'
         }
       ],
       slider: 45,

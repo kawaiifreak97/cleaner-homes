@@ -13,7 +13,7 @@
       />  
       <v-card-title primary-title>
         <div>
-          <h3 class="thisTitle" >Kangaroo Valley Safari</h3>
+          <h3 class="thisTitle" >{{ category }}</h3>
         </div>
       </v-card-title>
     </v-card>
@@ -57,6 +57,11 @@ export default {
     id:{
       required: true,
       type: String
+    },
+    category: {
+      requikred: false,
+      type: String,
+      default: ''
     }
   },
   data(){
@@ -68,6 +73,7 @@ export default {
   methods:{
     link(id){
       this.$router.push("/" + this.id)
+      // this.$router.push("/" + this.category + "/" + this.id)
     }
   },
 }

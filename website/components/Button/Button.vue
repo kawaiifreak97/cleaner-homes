@@ -1,6 +1,6 @@
 <template>
   <v-btn
-    :v-scroll-to="'#' + scrollto"
+    v-scroll-to="'#' + scrollto"
     :large="$vuetify.breakpoint.smAndUp"
     :to="'/' + link "
     round

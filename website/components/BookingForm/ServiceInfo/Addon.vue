@@ -12,7 +12,7 @@
     >
       <v-flex xs12>
         <v-icon 
-          :class="[{ 'secondary--text' : selectedAddon}, 'accent--text']"
+          :class="[{ 'selected' : selectedAddon}, 'accent--text']"
           :large="$vuetify.breakpoint.smAndUp"
           style="font-size: 3em"
         >
@@ -23,7 +23,7 @@
         xs12
       >
         <h4
-          :class="[{ 'secondary--text' : selectedAddon}, 'accent--text']"
+          :class="[{ 'selected' : selectedAddon}, 'accent--text']"
           pa-1
           class="text-xs-center"
         >
@@ -58,7 +58,7 @@ export default {
 
 <style scoped>
   .selected{
-    background-color: #12EB4B !important;
+    color: #12EB4B !important;
   }
   .addon-card{
     min-width: 25vw;

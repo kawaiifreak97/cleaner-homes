@@ -1,5 +1,5 @@
 <template>
-  <div >
+  <div style="min-height:115vh">
     <v-img
       src="http://www.riversongcochrane.com/assets/HeroImages/15-SRV-108-Riversong-Homepage-Hero-Banner.jpg"
       style="min-height:80vh"
@@ -23,7 +23,7 @@
           sm11
           md10
         >
-          <BookingForm/>
+          <BookingForm />
         </v-flex>
       </v-layout>
     </div>

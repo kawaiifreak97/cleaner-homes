@@ -68,35 +68,12 @@ export const state = () => ({
 })
 
 export const getters = {
-  selectedService: (state) => (id) => {
-    //   state.serviceCategories.forEach( serviceCategory => { 
-    //   return serviceCategory.find( service => {
-    //     return service.name == 'wdind'
-    //   })
-    // })
-    //   it returns whole service category array bubt only want to return object
-      // return state.serviceCategories.find( item =>{
-      //   return item.services.find( service =>{
-      //     return service.name == id
-      //   }) 
-      // })
-
-      const category = state.serviceCategories.find( category =>{ return category.name == 'Commercial' });
-      const service = category.services.find(service => { return service.name == id})
-      return service
-    // state.serviceCategories.find( serviceCategory => {
-    //     return serviceCategory.name === id
-    //   } 
-      // serviceCategory.services.find(service => {
-      //   return service.link === id
-      // })
-    // );
-    // return state.serviceCategories.find( item => {
-    //   return item.name === id
-      // return item.services.find( service => {
-      //   return service.name == 'wdind'
-      // })
-    // })
+  selectedService (state) {
+    return (serviceId, categoryId) => {
+      const category = state.serviceCategories.find( category =>{ return category.name == categoryId });
+      const service = category.services.find(service => { return service.name == serviceId});
+      return service;
+    }
   }
 }
 
@@ -106,18 +83,18 @@ export const getters = {
 //   }
 // }
 
-export const actions = {
-  select ({commit, getters}, id){
-    // const selected = getters.selectedService; 
-    this.$router.push("/" + id);
-    // console.log($nuxt.$route.path)
-  }
-}
+// export const actions = {
+//   select ({commit, getters}, id){
+//     // const selected = getters.selectedService; 
+//     this.$router.push("/" + id);
+//     // console.log($nuxt.$route.path)
+//   }
+// }
 
 
 export default {
   state,
   getters,
   // mutations,
-  actions
+  // actions
 };

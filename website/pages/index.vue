@@ -6,6 +6,11 @@
     <v-flex xs12>
       <Hero />
     </v-flex>
+    <v-flex xs12>
+      <fa
+        icon="dollar-sign" 
+        style="font-size: 30opx"/>
+    </v-flex>
     <v-flex 
       xs12
     >

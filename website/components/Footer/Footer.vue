@@ -28,18 +28,19 @@
                     v-model="dialog"
                     width="500"
                   >
-                    <span
+                    <a
                       slot="activator"
+                      class="black--text"
                     >
                       {{ link.name }}
-                    </span>
+                    </a>
                   </v-dialog>
                 </div>
-                <span 
+                <a
                   v-else-if="!link.privacy"
-                  class="footer-links">
+                  class="footer-links black--text">
                   {{ link.name }}
-                </span>
+                </a>
               </v-flex>
             </v-layout>
           </v-flex>
@@ -57,11 +58,12 @@
                   v-model="popup"
                   width="500"
                 >
-                  <span
+                  <a
                     slot="activator"
+                    class="black--text"
                   >
                     {{ contactLink.value }}
-                  </span>
+                  </a>
                   <ContactForm/>
                 </v-dialog>
               </v-flex>
@@ -93,7 +95,7 @@
                 </div>
               </v-flex>
               <v-flex>cleaner homes and pastures</v-flex>
-              <v-flex mt-4>
+              <!-- <v-flex mt-4>
                 <v-layout 
                   row
                   justify-center
@@ -103,11 +105,10 @@
                     v-for="socialLink in socialLinks"
                     :key="socialLink.name"
                   >
-                    <!-- <v-icon>{{ socialLink.name }}</v-icon> -->
-                    <v-icon>home</v-icon>
+                    <v-icon color="black">fa-facebook-f</v-icon>
                   </v-flex>
                 </v-layout>
-              </v-flex>
+              </v-flex> -->
             </v-layout>
           </v-flex>
         </v-layout>
@@ -131,11 +132,12 @@
             xs4
           >
             <div class="text-xs-left">
-              <v-btn
+              <a
                 flat
+                class="accent--text"
               >
                 Admin
-              </v-btn>
+              </a>
             </div>
           </v-flex>
           <v-spacer/>
@@ -149,12 +151,13 @@
                 v-model="dialog"
                 width="500"
               >
-                <v-btn
+                <a
                   slot="activator"
                   flat
+                  class="accent--text"
                 >
                   trademark
-                </v-btn>
+                </a>
 
                 <v-card>
                   <v-card-title

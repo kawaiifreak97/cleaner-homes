@@ -9,6 +9,8 @@ import about from "./modules/about"
 import add from "./modules/add"
 import testimonials from "./modules/testimonials"
 import services from "./modules/services"
+import bookingForm from "./modules/bookingForm"
+import header from "./modules/header"
 
 Vue.use(Vuex);
 Vue.use(VueRouter);
@@ -16,7 +18,6 @@ Vue.use(VueRouter);
 export const store = () => {
     return new Vuex.Store({
         state: {
-
         },
         modules: {
             hero,
@@ -24,7 +25,9 @@ export const store = () => {
             about,
             add,
             testimonials,
-            services
+            services,
+            bookingForm,
+            header  
         }
     })
 }

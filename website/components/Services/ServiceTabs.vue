@@ -44,7 +44,9 @@
             md3
             my-2
           >
-            <ServicePrev :id="service.link"/>
+            <ServicePrev 
+              :category="serviceCategory.name"
+              :id="service.link"/>
           </v-flex>
         </v-layout>
       </v-tab-item>

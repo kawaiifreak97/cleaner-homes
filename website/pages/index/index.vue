@@ -1,12 +1,12 @@
 <template>
   <v-layout
     v-show="tabsShow"
-    id="services"
     row
     wrap
     justify-center
   >
     <v-flex
+      id="services"
       pb-4
       xs12
     >

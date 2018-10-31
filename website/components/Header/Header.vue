@@ -1,5 +1,6 @@
 <template>
   <div >
+  
     <v-toolbar
       :color="HeaderColor"
       scroll-off-screen
@@ -20,6 +21,7 @@
           flat 
           icon
           class="logo"
+          
         >
           <v-img
             src="https://i.imgur.com/72mgggY.png?1"
@@ -31,7 +33,7 @@
 
       <v-spacer />
 
-      <v-toolbar-items class="hidden-sm-and-down">
+      <v-toolbar-items class="hidden-xs-only">
         <v-btn
           v-scroll-to="'#' + link.scrollto"
           v-for="link in links"
@@ -103,20 +105,16 @@
         items: [
           { title: 'Home', icon: 'dashboard' },
           { title: 'About', icon: 'question_answer' }
-        ],
-        links:[
-          {
-            name: 'How it works',
-            path:'',
-            scrollto: 'how-it-works'
-          },
-          {
-            name: 'Book now',
-            path:'bookingPage',
-            scrollto: ''
-            
-          }
         ]
+      }
+    },
+    computed:{
+      links(){
+        if (this.$route.path == '/bookingPage') {
+          return []
+        } else{
+          return this.$store.state.header.homeLinks
+        }
       }
     }
   }

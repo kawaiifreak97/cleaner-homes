@@ -32,12 +32,12 @@
               
             </v-layout>
           </v-flex>
-          <v-flex xs8>
+          <v-flex xs9>
             <v-layout
               column
             >
               <v-flex>
-                <h1 style="font-weight:400">{{ quote }}</h1>
+                <h3 style="font-weight:400">{{ quote }}</h3>
               </v-flex>
               <v-flex>
                 <h4 

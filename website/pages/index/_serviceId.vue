@@ -6,16 +6,14 @@
   >
     <v-flex xs12>
       <h1 :v-text="service"/>
-      <h2>hi {{ service }}</h2>
     </v-flex>
     <v-flex xs10>
       <ServiceFull
-        :name="id" 
-        :description="id"
-        :id="id"
+        :name="service.name" 
+        :description="service.description"
+        :id="service.id"
       />
     </v-flex>
-
   </v-layout>
 </template>
 
@@ -30,21 +28,14 @@
       return{
         id: 'windows'
       }
-      
-    },
-    
-    asyncData (context){
-      return {
-        // id: context.params.serviceId
-      }
     },
     computed:{
       service(){
-        return this.$store.getters['selectedService'](this.id)
+        return this.$store.getters['selectedService'](this.$route.params.serviceId, 'Commercial')
       }
     },
     mounted() {
-      console.log("testing " + this.id);
+      console.log("testing " + this.$route.params);
       console.log(this.service)
     },
   }

@@ -9,7 +9,7 @@
     >
       <nuxt/>
     </v-content>
-    
+    <Footer app/>
   </v-app>
 </template>
 

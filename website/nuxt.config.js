@@ -16,7 +16,8 @@ module.exports = {
     link: [
       { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
       { rel: 'stylesheet', href: 'https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Material+Icons' },
-      { rel:'stylesheet', href:"https://fonts.googleapis.com/css?family=Muli:200,400" }
+      { rel:'stylesheet', href:"https://fonts.googleapis.com/css?family=Muli:200,400" },
+      { rel: 'stylesheet', href:'https://use.fontawesome.com/releases/v5.0.6/css/all.css'}
     ]
   },
 
@@ -32,7 +33,9 @@ module.exports = {
     '@/plugins/vuetify.js',
     '@/plugins/globalComponents.js',
     '@/plugins/scrollto.js',
+    { src: '~/plugins/nuxt-vuex-router-sync.js', ssr: false },
     { src: '~/plugins/swiper.js', ssr: false },
+    { src: '~/plugins/icons.js', ssr:false }
   ],
 
   /*
@@ -49,6 +52,16 @@ module.exports = {
   modules: [
     // Doc: https://github.com/nuxt-community/axios-module#usage
     '@nuxtjs/axios',
+    ['nuxt-fontawesome', {
+      component: 'fa', 
+      imports: [
+        //import whole set
+        {
+          set: '@fortawesome/free-solid-svg-icons',
+          icons: ['fas']
+        }
+      ]
+    }],
     ['storyblok-nuxt', { accessToken:'A2K4fPrQrUumCYDFlLUMtAtt', cacheProvider: 'memory' }]
   ],
   /*
