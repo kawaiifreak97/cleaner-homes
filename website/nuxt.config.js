@@ -35,7 +35,7 @@ module.exports = {
     '@/plugins/scrollto.js',
     { src: '~/plugins/nuxt-vuex-router-sync.js', ssr: false },
     { src: '~/plugins/swiper.js', ssr: false },
-    { src: '~/plugins/icons.js', ssr:false }
+    // { src: '~/plugins/icons.js', ssr:false }
   ],
 
   /*
