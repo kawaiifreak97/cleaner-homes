@@ -101,28 +101,15 @@ export default {
     id:{
       required: true,
       type: String
-    }
+    },
+    tags:{
+      required: true,
+      type: Array
+    },
   },
   data(){
     return{
       show: false,
-      // tags:[
-      //   {
-      //     name: 'window'
-      //   },
-      //   {
-      //     name: 'windows interior'
-      //   },
-      //   {
-      //     name: 'windws'
-      //   },
-      //   {
-      //     name: 'widows'
-      //   },
-      //   {
-      //     name: 'winws'
-      //   },
-      // ]
     }
   }
 }

@@ -28,9 +28,9 @@
             md6
           >
             <v-layout 
+              :justify-center="$vuetify.breakpoint.smAndDown"
               row   
               wrap 
-              justify-center
               class="white--text"
             >
               <v-flex 
@@ -43,10 +43,10 @@
                 </h1>
               </v-flex>
               <v-flex 
-                xs12 
+                xs9 
                 hidden-sm-and-down
               >
-                <h3 class="hero-subtitle">
+                <h3 class="hero-subtitle text-xs-left">
                   {{ heroSubTitle }}
                 </h3>
               </v-flex>
@@ -108,6 +108,18 @@ export default {
       dialog: false
     }
   },
+  // asyncData(context){
+  //   console.log('hi')
+  //   return context.app.$storyapi
+  //   .get('cdn/stories',{
+  //     version: 'draft',
+  //     starts_with: 'hero/'
+  //   }).then((res) => {
+  //     console.log('index ' + res.data.stories)  
+  //     // context.store.dispatch('storyblok', res.data.stories)
+  //     return res.data.stories
+  //   })
+  // },
   computed: mapState({
       heroImg: state => state.hero.heroImg,
       heroTitle: state => state.hero.heroTitle,

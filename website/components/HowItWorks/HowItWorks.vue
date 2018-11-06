@@ -18,9 +18,9 @@
       sm3
     >
       <Card
-        :title="step.title"
-        :description="step.description"
-        :step="3"
+        :title="step.content.step_title"
+        :description="step.content.step_description"
+        :step="step.content.step_number"
       />
     </v-flex>
   </v-layout>

@@ -28,9 +28,9 @@
               mb-4
             >
               <Testimonial
-                :name="testimonial.name"
-                :company="testimonial.company"
-                :quote="testimonial.quote"/>
+                :name="testimonial.content.name"
+                :company="testimonial.content.company"
+                :quote="testimonial.content.quote"/>
             </v-flex>
           </v-layout>
         </div>

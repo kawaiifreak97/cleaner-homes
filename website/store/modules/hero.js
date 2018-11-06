@@ -5,23 +5,16 @@ export const state = () => ({
 })
 
 export const mutations = {
-  // add (state, text) {
-  //   state.list.push({
-  //     text: text,
-  //     done: false
-  //   })
-  // },
-  // remove (state, { todo }) {
-  //   state.list.splice(state.list.indexOf(todo), 1)
-  // },
-  // toggle (state, todo) {
-  //   todo.done = !todo.done
-  // }
+  heroData(state, data){
+    const heroData = data.find( content =>{ return content.name == 'hero' })
+    state.heroImg = heroData.content.image;
+    state.heroTitle = heroData.content.title;
+    state.heroSubTitle = heroData.content.subtitle
+  }
 }
+
 
 export default {
   state,
-  // getters,
-  // mutations,
-  // actions,
+  mutations
 };

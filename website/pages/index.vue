@@ -6,11 +6,6 @@
     <v-flex xs12>
       <Hero />
     </v-flex>
-    <v-flex xs12>
-      <fa
-        icon="dollar-sign" 
-        style="font-size: 30opx"/>
-    </v-flex>
     <v-flex 
       xs12
     >
@@ -55,9 +50,16 @@
 
 <script>
   export default{
-    async fetch ({ store, params }) {
-      await store.dispatch('GET_STARS');
+    fetch (context) {
+      return context.app.$storyapi.get('cdn/stories',{
+        version: 'draft'
+      }).then((res) => {
+        context.store.dispatch('storyblok', res.data.stories)
+      })
     },
+    // async fetch ({ store, params }) {
+    //   await store.dispatch('storyblok');
+    // },
     data(){
       return{
         title: 'Services'

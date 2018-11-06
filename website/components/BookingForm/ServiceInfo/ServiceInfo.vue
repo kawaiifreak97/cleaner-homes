@@ -89,9 +89,7 @@
               mx-1
               my-1
             > 
-              <Addon
-                :name="Addon.name"
-              />
+              <Addon :name="Addon.name"/>
             </v-flex>
           </v-layout>
         </v-flex>

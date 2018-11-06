@@ -1,6 +1,5 @@
 <template>
   <v-layout
-    v-show="tabsShow"
     row
     wrap
     justify-center
@@ -29,7 +28,8 @@
     },
     beforeRouteUpdate (to, from, next) {
       console.log('router')
-      this.tabsShow = false;
+      // this.tabsShow = false;
     }
   }
 </script>
+

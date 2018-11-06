@@ -53,17 +53,33 @@ module.exports = {
     // Doc: https://github.com/nuxt-community/axios-module#usage
     '@nuxtjs/axios',
     ['nuxt-fontawesome', {
-      component: 'fa', 
+      // component: 'fa', 
       imports: [
         //import whole set
         {
           set: '@fortawesome/free-solid-svg-icons',
           icons: ['fas']
-        }
+        },
+        // {
+        //   set:'@fortawesome/fontawesome-free-brands',
+        //   icons: ['fab']
+        // }
       ]
     }],
     ['storyblok-nuxt', { accessToken:'A2K4fPrQrUumCYDFlLUMtAtt', cacheProvider: 'memory' }]
   ],
+  fontawesome: {
+    imports: [
+      {
+        set: '@fortawesome/free-solid-svg-icons',
+        icons: ['fas']
+      },
+      // {
+      //   set:'@fortawesome/fontawesome-free-brands',
+      //   icons: ['fab']
+      // }
+    ]
+  },
   /*
   ** Axios module configuration
   */

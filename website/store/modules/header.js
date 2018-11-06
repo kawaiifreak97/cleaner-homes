@@ -11,6 +11,13 @@ export const state = () => ({
       scrollto: ''
     }
   ],
+  boookingPageLinks:[
+    {
+      name: 'Home',
+      path:'',
+      scrollto: ''
+    }
+  ]
 })
 
 export default {

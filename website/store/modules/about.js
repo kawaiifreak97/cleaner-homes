@@ -4,9 +4,15 @@ export const state = () => ({
 
 })
 
+export const mutations = {
+  aboutData(state, data){
+    const aboutData = data.find( content =>{ return content.name == 'about' })
+    state.title = aboutData.content.title;
+    state.description = aboutData.content.description;
+  }
+}
+
 export default {
   state,
-  // getters,
-  // mutations,
-  // actions,
+  mutations
 };

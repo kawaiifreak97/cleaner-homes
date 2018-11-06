@@ -14,8 +14,9 @@
       >
         <span class="tab-text">
           {{ serviceCategory.name }}
-        </span>
+        </span> 
       </v-tab>
+
       <v-tab-item
         v-for="serviceCategory in serviceCategories"
         :key="serviceCategory.name"
@@ -32,11 +33,11 @@
             hidden-sm-and-up
             xs8
           >
-            <ServicePrevSm :id="service.link"/>
+            <ServicePrevSm :id="service.name"/>
           </v-flex>
           <v-flex 
             v-for="service in serviceCategory.services"
-            :key="service.name"
+            :key="service.link"
             :mx-4="$vuetify.breakpoint.mdAndUp"
             hidden-xs-only
             xs12
@@ -46,12 +47,11 @@
           >
             <ServicePrev 
               :category="serviceCategory.name"
-              :id="service.link"/>
+              :id="service.name"/>
           </v-flex>
         </v-layout>
-      </v-tab-item>
+      </v-tab-item> 
     </v-tabs>
-    <nuxt-child/>
   </div>
 </template>
 
@@ -66,15 +66,16 @@ import ServicePrevSm from '@/components/Services/ServicePrevSm'
     data () {
       return {
         overlay: false,
-        tabStart: 'tab-2',
-        model: 'tab-2',
+        tabStart: '',
+        model: '',
         text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.'
       }
     },
     computed: {
       serviceCategories () {
         return this.$store.state.services.serviceCategories
-      }
+      },
+      
     }
   }
 </script>

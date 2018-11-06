@@ -37,7 +37,7 @@
           <v-btn 
             flat 
             color="primary" 
-            @click="$refs.dialog.save(date)"
+            @click="$refs.dialog.save(date); modal = false"
           >
             OK
           </v-btn>

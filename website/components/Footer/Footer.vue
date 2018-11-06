@@ -194,6 +194,7 @@
 </template>
 
 <script>
+import { mapState } from 'vuex'
 export default {
   data(){
     return{
@@ -215,16 +216,6 @@ export default {
           privacy: true
         }
       ],
-      contactLinks:[
-        {
-          name: 'email',
-          value: 'cleanerhomes@gmail.com'
-        },
-        {
-          name: 'phone-number',
-          value: '+64 030 4729'
-        }
-      ],
       socialLinks:[
         {
           name: 'Fb'
@@ -237,7 +228,10 @@ export default {
         }
       ]
     }
-  }
+  },
+  computed: mapState({
+    contactLinks: state => state.contact.contactLinks
+  })
 }
 </script>
 

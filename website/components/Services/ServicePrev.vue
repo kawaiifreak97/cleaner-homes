@@ -2,7 +2,7 @@
   <div 
     style="position: relative;"
     class="thisCard"
-    @click="link(id)"
+    @click="selectService(id, category)"
   > 
     <v-card
       class="rounded prev-card"
@@ -71,11 +71,14 @@ export default {
     }
   },
   methods:{
-    link(id){
-      this.$router.push("/" + this.id)
-      // this.$router.push("/" + this.category + "/" + this.id)
+    selectService(id, category){
+      console.log('selectFromPrev ' + id + category)
+      this.$store.dispatch('selectService', {
+        service: id,
+        category: category
+      })
     }
-  },
+  }
 }
 </script>
 

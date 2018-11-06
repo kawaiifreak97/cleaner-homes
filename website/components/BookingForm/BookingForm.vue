@@ -11,26 +11,10 @@
     >Service</v-stepper-step>
 
     <v-stepper-content step="1">
-      <v-layout 
-        justify-start
-        row 
-        wrap
-        my-2 
-        fill-height
-      >
-        <v-flex
-          v-for="serviceCategory in serviceCategories"
-          :key="serviceCategory.name"
-          xs12
-          sm7 
-        >
-          <ServiceCategory :id="serviceCategory.name"/>
-        </v-flex>
-      </v-layout>
-
+      <StepOne/>
       <v-btn
         color="primary"
-        @click="e1 = 2"
+        @click="++e1"
       >
         Continue
       </v-btn>
@@ -38,9 +22,26 @@
       <v-btn flat>Cancel</v-btn>
     </v-stepper-content>
 
-
-
     <v-stepper-step 
+      :complete = "e6 > 2"
+      editable
+      step="2"
+    >options</v-stepper-step>
+
+    <v-stepper-content step="2">
+      <ServiceInfo/>
+      <v-btn
+        color="primary"
+        @click="++e1"
+      >
+        Continue
+      </v-btn>
+      <v-btn flat>Cancel</v-btn>
+    </v-stepper-content>
+
+
+
+    <!-- <v-stepper-step 
       :complete = "e6 > 2"
       editable
       step="2"
@@ -55,7 +56,7 @@
         Continue
       </v-btn>
       <v-btn flat>Cancel</v-btn>
-    </v-stepper-content>
+    </v-stepper-content> -->
 
 
     <v-stepper-step
@@ -65,7 +66,8 @@
     >Your details</v-stepper-step>
 
     <v-stepper-content step="3">
-      <StepThree/>
+      <FarmSprayingInfo/>
+      <!-- <StepThree/>  -->
       
       <v-btn
         color="primary"
@@ -85,8 +87,7 @@
     >date and time</v-stepper-step> 
 
     <v-stepper-content step="4">
-      <!-- <StepFour/> -->
-      <FarmSprayingInfo/>
+      <StepFour/>
     </v-stepper-content>
   </v-stepper>
 </template>
@@ -96,6 +97,8 @@ import ServiceCategory from '@/components/BookingForm/ServiceCategory'
 import ServicePrev from '@/components/Services/ServicePrev'
 
 import ServiceInfo from '@/components/BookingForm/ServiceInfo/ServiceInfo'
+
+import StepOne from '@/components/BookingForm/StepOne'
 import StepThree from '@/components/BookingForm/StepThree'
 import StepFour from '@/components/BookingForm/StepFour'
 
@@ -105,6 +108,7 @@ import FarmSprayingInfo from '@/components/BookingForm/FarmSprayingInfo'
       ServiceCategory,  
       ServicePrev,
       ServiceInfo,
+      StepOne,
       StepThree,
       StepFour,
       FarmSprayingInfo  
@@ -113,17 +117,7 @@ import FarmSprayingInfo from '@/components/BookingForm/FarmSprayingInfo'
       return {
         e6: 1,
         e1: 1,
-        serviceCategories:[
-          {
-            name: 'Farm spraying'
-          },
-          {
-            name: 'Commercial cleaning'
-          },
-          {
-            name: 'Domestic cleaning'
-          }
-        ]
+        toggle_none: null
       }
     }
   }

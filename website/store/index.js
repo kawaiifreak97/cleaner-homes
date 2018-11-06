@@ -11,14 +11,15 @@ import testimonials from "./modules/testimonials"
 import services from "./modules/services"
 import bookingForm from "./modules/bookingForm"
 import header from "./modules/header"
+import contact from "./modules/contact"
+
+import storyblok from "./modules/storyblok"
 
 Vue.use(Vuex);
 Vue.use(VueRouter);
 
 export const store = () => {
     return new Vuex.Store({
-        state: {
-        },
         modules: {
             hero,
             howItWorks,
@@ -27,7 +28,9 @@ export const store = () => {
             testimonials,
             services,
             bookingForm,
-            header  
+            header,
+            contact,
+            storyblok
         }
     })
 }
