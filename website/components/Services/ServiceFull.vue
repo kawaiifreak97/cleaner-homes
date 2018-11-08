@@ -13,7 +13,7 @@
         class="rounded serviceFull"
       >
         <v-img
-          src="https://cdn.vuetifyjs.com/images/cards/desert.jpg"
+          :src="image"
           height="200px"
           style="position:relative"
         >
@@ -69,7 +69,7 @@
           >
             <v-flex
               v-for="tag in tags"  
-              :key="tag.name"
+              :key="tag.tag_name"
               xs6
               sm4
             >
@@ -77,7 +77,7 @@
                 color="primary"
                 class="white--text"
               > 
-                <span style="font-size: 1em;">{{ tag.name }}</span>
+                <span style="font-size: 1em;">{{ tag.tag_name }}</span>
               </v-chip>
             </v-flex>
           </v-layout>
@@ -98,14 +98,14 @@ export default {
       required: true,
       type: String
     },
-    id:{
-      required: true,
-      type: String
-    },
     tags:{
       required: true,
       type: Array
     },
+    image:{
+      required: true,
+      type: String
+    }
   },
   data(){
     return{

@@ -4,17 +4,12 @@
     wrap
     justify-center
   >
-    <v-flex xs12>
-      <h1 :v-text="service"/>
-      <h1>{{ service }}</h1>
-      <!-- <h1>serviceFull</h1> -->
-    </v-flex>
     <v-flex xs10>
       <ServiceFull
         :name="service.name" 
         :description="service.description"
-        :id="service.id"
         :tags="service.tags"
+        :image="service.image"
       />
     </v-flex>
   </v-layout>
@@ -27,15 +22,9 @@
     components:{
       ServiceFull
     },
-    data(){
-      return{
-        id: 'windows'
-      }
-    },
     computed:{
       service(){
         return this.$store.getters['selectedService'](this.$route.params.serviceId)
-        // return this.$store.getters['selectedService'] 
       }
     }
   }

@@ -29,15 +29,15 @@
         >
           <v-flex
             v-for="service in serviceCategory.services"
-            :key="service.name"
+            :key="service.content.name"
             hidden-sm-and-up
             xs8
           >
-            <ServicePrevSm :id="service.name"/>
+            <ServicePrevSm :id="service.content.name"/>
           </v-flex>
           <v-flex 
             v-for="service in serviceCategory.services"
-            :key="service.link"
+            :key="service.content.link"
             :mx-4="$vuetify.breakpoint.mdAndUp"
             hidden-xs-only
             xs12
@@ -47,7 +47,7 @@
           >
             <ServicePrev 
               :category="serviceCategory.name"
-              :id="service.name"/>
+              :id="service.content.name"/>
           </v-flex>
         </v-layout>
       </v-tab-item> 

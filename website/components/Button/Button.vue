@@ -1,6 +1,6 @@
 <template>
   <v-btn
-    v-scroll-to="'#' + scrollto"
+    :v-scroll-to="`#${scrollto}`"
     :large="$vuetify.breakpoint.smAndUp"
     :to="'/' + link "
     round
@@ -26,6 +26,17 @@
         required: false,
         type: String,
         default: ''
+      }
+    },
+    computed:{
+      scroll(){
+        if (this.scrollto) {
+          const id =`#${this.scrollto}`;
+          console.log(id)
+          return id
+        } else {
+          return false
+        }
       }
     }
   }

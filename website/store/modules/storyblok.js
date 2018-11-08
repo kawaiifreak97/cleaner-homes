@@ -21,7 +21,7 @@ export const actions = {
     // commit('Footer', data)
     commit('testimonialsData', data)
     commit('contactData', data)
-    // commit('services', data)
+    commit('servicesData', data)
     // commit('bookingForm', data)
     
   },
