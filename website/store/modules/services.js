@@ -47,9 +47,8 @@ export const getters = {
 
         for (let i = 0; i < category.services.length; i++) {
           const element = category.services[i];
-          if (element.content.name == serviceId) {
+          if (element.name == serviceId) {
             selected = element.content
-            console.log(element.content.name, serviceId)
           }
         }
       }
@@ -69,17 +68,12 @@ export const mutations = {
     state.serviceCategories[1].services = domestic;
     state.serviceCategories[2].services = farmspraying;
 
-
-    console.log('servicesData: ')
-    console.log(commercial)
-    console.log(serviceCategories)
-    console.log(state.serviceCategories )
-
   }
 }
 
 export const actions = {
-  selectService({getters}, payload){
+  //payload has to be 2nd argument?
+  selectService({getters},payload){
     this.$router.push("/" + payload.service);
   }
 }

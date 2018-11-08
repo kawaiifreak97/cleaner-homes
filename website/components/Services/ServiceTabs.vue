@@ -47,7 +47,9 @@
           >
             <ServicePrev 
               :category="serviceCategory.name"
-              :id="service.content.name"/>
+              :name="service.content.name"
+              :id="service.name"
+              :image="service.content.image"/>
           </v-flex>
         </v-layout>
       </v-tab-item> 

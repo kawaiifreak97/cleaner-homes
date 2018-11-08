@@ -8,12 +8,12 @@
       class="rounded prev-card"
     >
       <v-img
-        src="http://jennian.co.nz/wp-content/uploads/2016/07/Queenstown-Showhome-Interior.jpg"
+        :src="image"
         height="150px"
       />  
       <v-card-title primary-title>
         <div>
-          <h3 class="thisTitle" >{{ category }}</h3>
+          <h3 class="thisTitle" >{{ name }}</h3>
         </div>
       </v-card-title>
     </v-card>
@@ -21,7 +21,7 @@
       class="overlay prev-card"
     >
       <v-img 
-        src="http://jennian.co.nz/wp-content/uploads/2016/07/Queenstown-Showhome-Interior.jpg"
+        :src="image"
         gradient="to top right, rgba(48, 211, 197, 1), rgba(18, 235, 75, 0.7)"
         height="150px"
       >
@@ -58,21 +58,27 @@ export default {
       required: true,
       type: String
     },
+    name:{
+      required: true,
+      type: String
+    },
     category: {
-      requikred: false,
+      required: false,
       type: String,
       default: ''
+    },
+    image:{
+      required: true,
+      type: String
     }
   },
   data(){
     return{
       overlay: false,  
-      text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.'
-    }
+      }
   },
   methods:{
     selectService(id, category){
-      console.log('selectFromPrev ' + id + category)
       this.$store.dispatch('selectService', {
         service: id,
         category: category
