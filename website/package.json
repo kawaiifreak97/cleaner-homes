@@ -20,6 +20,7 @@
     "cross-env": "^5.2.0",
     "nuxt": "^2.2.0",
     "nuxt-fontawesome": "^0.3.0",
+    "nuxt-svg-loader": "^0.1.0",
     "nuxt-vuex-router-sync": "0.0.2",
     "storyblok-nuxt": "0.0.9",
     "vee-validate": "^2.1.0-beta.11",
@@ -35,6 +36,7 @@
     "eslint-plugin-vue": "^4.0.0",
     "nodemon": "^1.11.0",
     "stylus": "^0.54.5",
-    "stylus-loader": "^3.0.2"
+    "stylus-loader": "^3.0.2",
+    "vue-svg-loader": "^0.11.0"
   }
 }

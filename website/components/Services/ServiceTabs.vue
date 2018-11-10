@@ -33,7 +33,9 @@
             hidden-sm-and-up
             xs8
           >
-            <ServicePrevSm :id="service.content.name"/>
+            <ServicePrevSm 
+              :id="service.name"
+              :name="service.content.name"/>
           </v-flex>
           <v-flex 
             v-for="service in serviceCategory.services"

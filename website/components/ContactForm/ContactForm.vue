@@ -34,12 +34,10 @@
           </v-flex>
           <v-flex 
             xs5
-            class="text-xs-center">
-            <v-icon 
-              x-large
-              color="green">
-              contacts    
-            </v-icon>
+          >
+            <div class="text-xs-center">
+              <logo/>
+            </div>
           </v-flex>
           <v-flex xs3>
             <v-divider />
@@ -67,7 +65,11 @@
 
 <script>
 import { mapState } from 'vuex'
+import logo from '@/assets/svg/logo-primary.svg'
 export default {
+  components:{
+    logo
+  },
   computed: mapState({
     phone: state => state.contact.contactLinks[0].value,
     email: state => state.contact.contactLinks[1].value

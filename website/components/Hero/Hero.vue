@@ -108,18 +108,6 @@ export default {
       dialog: false
     }
   },
-  // asyncData(context){
-  //   console.log('hi')
-  //   return context.app.$storyapi
-  //   .get('cdn/stories',{
-  //     version: 'draft',
-  //     starts_with: 'hero/'
-  //   }).then((res) => {
-  //     console.log('index ' + res.data.stories)  
-  //     // context.store.dispatch('storyblok', res.data.stories)
-  //     return res.data.stories
-  //   })
-  // },
   computed: mapState({
       heroImg: state => state.hero.heroImg,
       heroTitle: state => state.hero.heroTitle,

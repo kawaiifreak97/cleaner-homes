@@ -13,7 +13,9 @@
           row
           justify-center
         >
-          <v-flex xs3>
+          <v-flex 
+            xs4
+            sm3>
             <v-layout column>
               <v-flex mb-2>
                 <h4>About</h4>
@@ -44,7 +46,9 @@
               </v-flex>
             </v-layout>
           </v-flex>
-          <v-flex xs3 >
+          <v-flex 
+            xs4
+            sm3 >
             <v-layout column>
               <v-flex mb-2>
                 <h4>Contact us</h4>
@@ -69,46 +73,26 @@
               </v-flex>
             </v-layout>
           </v-flex>
-          <v-flex xs3>
+          <v-flex 
+            xs1
+            sm3>
             <v-layout 
-              column
               class="text-xs-center"
             >
               <v-flex 
-                mb-2
               >
                 <div 
-                  text-xs-center>
-                  <v-btn
+                  class="hidden-xs-only text-xs-center"
+                >
+                  <a
                     nuxt
-                    to="/"
-                    flat 
-                    icon
+                    href="/"
                     class="logo"
                   >
-                    <v-img
-                      src="https://i.imgur.com/72mgggY.png?1"
-                      width="66px"
-                      height="66px"
-                    />
-                  </v-btn>
+                    <work/>
+                  </a>
                 </div>
               </v-flex>
-              <v-flex>cleaner homes and pastures</v-flex>
-              <!-- <v-flex mt-4>
-                <v-layout 
-                  row
-                  justify-center
-                  text-xs-center
-                >
-                  <v-flex
-                    v-for="socialLink in socialLinks"
-                    :key="socialLink.name"
-                  >
-                    <v-icon color="black">fa-facebook-f</v-icon>
-                  </v-flex>
-                </v-layout>
-              </v-flex> -->
             </v-layout>
           </v-flex>
         </v-layout>
@@ -195,7 +179,11 @@
 
 <script>
 import { mapState } from 'vuex'
+import work from '@/assets/svg/gradient-logo.svg'
 export default {
+  components:{
+    work
+  },
   data(){
     return{
       popup: false,

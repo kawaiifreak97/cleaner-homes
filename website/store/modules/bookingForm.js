@@ -3,36 +3,61 @@ export const state = () => ({
   serviceCategories:[
     {
       name: 'Farm spraying',
-      selected: false
+      selected: false,
+      subCategories:[
+        {
+          name: 'spraying'
+        }
+      ]
     },
     {
       name: 'Commercial',
-      selected: false
+      selected: false,
+      subCategories:[
+        {
+          name: 'Builders'
+        },
+        {
+          name: 'Office'
+        }
+      ]
     },
     {
       name: 'Domestic',
-      selected: false
+      selected: false,
+      subCategories:[
+        {
+          name: 'One off'
+        },
+        {
+          name: 'Regular'
+        },
+        {
+          name: 'Deep clean'
+        }
+      ]
     }
   ]
 })
 
 export const getters = {
-  selectedCategory: (state) => (thisCategory) => {
-    return state.serviceCategories.find( serviceCategory => { return serviceCategory.name == thisCategory.name})
+  selectedCategory: (state) => {
+    return state.serviceCategories.find( serviceCategory => { return serviceCategory.selected})
   }
 }
 
 export const mutations = {
   selectCategory(state,thisCategory){
-    state.selectedCategories.forEach(category => {
-      if (category.selected) {
-        category.selected = false;
-      }
-    });
-    thisCategory.selected = !thisCategory.selected
-  },
-  deSelectCategory(state, id){
 
+    const prevSelectedCategory = state.serviceCategories.find( element => { return element.selected })
+
+    if (prevSelectedCategory) {
+      prevSelectedCategory.selected = false;
+    } else {
+    }
+
+    const justSelected = state.serviceCategories.find( element => { return element.name == thisCategory })
+    justSelected.selected = true
   }
 }
 

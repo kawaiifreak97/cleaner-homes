@@ -18,9 +18,10 @@
             slot-scope="{ active, toggle }"
             :color="active ? 'secondary' : 'white'"
             :class="{'white--text': active}"
+            :value="active"
             class="accent--text"
             round
-            @click.native="toggle"
+            @click.native="select(toggle, serviceCategory.name)"
           >
             {{ serviceCategory.name }}
           </v-btn>
@@ -34,19 +35,30 @@
 export default {
   data(){
     return{
-      serviceCategories:[
-        {
-          name: 'Farm spraying'
-        },
-        {
-          name: 'Commercial cleaning'
-        },
-        {
-          name: 'Domestic cleaning'
-        }
-      ]
+      yes:'',
+    }
+  },
+  computed:{
+    serviceCategories(){
+      return this.$store.state.bookingForm.serviceCategories
+    }
+  },
+  watch: {
+    serviceCategory: function(){
+      console.log(' sdk')
+    }
+  },
+  methods:{
+    select(toggle, name){
+      
+      //toggles class
+      toggle(); 
+
+      this.$store.commit('selectCategory', name)
+
     }
   }
+  
 }
 </script>
 

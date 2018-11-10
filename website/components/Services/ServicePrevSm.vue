@@ -5,9 +5,9 @@
       :large= "$vuetify.breakpoint.smAndUp"
       round
       color="white"
-      @click="link()"
+      @click="selectService(id, category)"
     >
-      {{ id }}
+      {{ name }}
       <v-icon 
         :class="{selected : selectedService}" 
         right
@@ -23,22 +23,26 @@ export default {
     id:{
       required: true,
       type: String
+    },
+    name:{
+      required: true,
+      type: String
     }
   },  
   data(){
     return{
-      selectedService: false
+      selectedService: false,
+      category: 'hi'
     }
   },
-
   methods:{
-    link(id){
-      this.$store.dispatch('select', this.id)
-    },
-    select(id){
-      this.selectedService = !this.selectedService;
+    selectService(id, category){
+      this.$store.dispatch('selectService', {
+        service: id,
+        category: category
+      })
     }
-  },
+  }
 }
 </script>
 <style scoped>

@@ -12,23 +12,15 @@
         class="burger"
         @click.stop="drawer = !drawer"
       />
-
       <div 
         text-xs-center>
-        <v-btn
+        <a
           nuxt
-          to="/"
-          flat 
-          icon
-          class="logo"
-          
+          href="/"
+          class="logo"     
         >
-          <v-img
-            src="https://i.imgur.com/72mgggY.png?1"
-            width="66px"
-            height="66px"
-          />
-        </v-btn>
+          <logoWhite/>
+        </a>
       </div>
 
       <v-spacer />
@@ -38,7 +30,7 @@
           v-scroll-to="'#' + link.scrollto"
           v-for="link in links"
           :key="link.name"
-          :to="'/' + link.path"
+          :to="link.path"
           flat
           nuxt
         >
@@ -57,23 +49,24 @@
       >
         <v-list-tile>
           <v-list-tile-action>
-            <v-btn
-              :v-scroll-to="scrollto"
-              icon
-              fab
+            <a
               nuxt
               to="/"
               @click.stop="drawer = !drawer"
             >
-              <v-icon>home</v-icon>
-            </v-btn>          
+              <logo/>
+            </a>          
           </v-list-tile-action>
           <v-list-tile-content>
-            <v-list-tile-title>LOGO</v-list-tile-title>
+            <v-list-tile-title>
+              <span style="font-weight: 600">
+                Cleaner Homes and Pastures
+              </span>
+            </v-list-tile-title>
           </v-list-tile-content>
         </v-list-tile>
         <v-list-tile
-          v-for="link in links"
+          v-for="link in navLinks"
           :key="link.name"
           class="v-list-link"
         >
@@ -82,7 +75,10 @@
           </v-list-tile-action>
 
           <v-list-tile-content>
-            <v-list-tile-title>{{ link.name }}</v-list-tile-title>
+            <v-list-tile-title
+              v-scroll-to="'#' + link.scrollto"
+              @click.stop="push(link.path)"
+            >{{ link.name }}</v-list-tile-title>
           </v-list-tile-content>
         </v-list-tile>
       </v-list>
@@ -91,7 +87,13 @@
 </template>
 
 <script>
+import logo from '@/assets/svg/logo-primary.svg'
+import logoWhite from '@/assets/svg/logo-white.svg'
   export default {
+    components:{
+      logo,
+      logoWhite
+    },
     props:{
       HeaderColor:{
         required: true,
@@ -111,10 +113,24 @@
     computed:{
       links(){
         if (this.$route.path == '/bookingPage') {
-          return []
+          return [{ name: 'home', path: '/', scrollto: ''}]
         } else{
           return this.$store.state.header.homeLinks
         }
+      },
+      navLinks(){
+        if (this.$route.path == '/bookingPage') {
+          return [{ name: 'home', path: '/', scrollto: ''}]
+        } else{
+          return this.$store.state.header.navLinks
+        }
+      }
+    },
+    methods:{
+      push(path){
+        console.log('hi')
+        this.drawer = !this.drawer;
+        $nuxt.$router.push(path)
       }
     }
   }

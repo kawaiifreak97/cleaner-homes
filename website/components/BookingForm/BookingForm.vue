@@ -4,97 +4,48 @@
     vertical
     class="booking-form rounded elevation-9"
   >
-    <v-stepper-step 
-      :complete="e1 > 1" 
-      step="1"
-      editable
-    >Service</v-stepper-step>
-
-    <v-stepper-content step="1">
-      <StepOne/>
-      <v-btn
-        color="primary"
-        @click="++e1"
+    <template 
+      v-for="step in steps"
+    >
+      <v-stepper-step 
+        :key="step.name"
+        :complete="e1 > step.step" 
+        :step="step.step"
+        :editable="step.editable"
       >
-        Continue
-      </v-btn>
-
-      <v-btn flat>Cancel</v-btn>
-    </v-stepper-content>
-
-    <v-stepper-step 
-      :complete = "e6 > 2"
-      editable
-      step="2"
-    >options</v-stepper-step>
-
-    <v-stepper-content step="2">
-      <ServiceInfo/>
-      <v-btn
-        color="primary"
-        @click="++e1"
+        {{ step.name }}
+      </v-stepper-step>
+      <v-stepper-content 
+        :key="step.step"
+        :step="step.step"
       >
-        Continue
-      </v-btn>
-      <v-btn flat>Cancel</v-btn>
-    </v-stepper-content>
+        <StepOne v-if="step.step == 1"/>
 
+        <ServiceType v-if="step.step == 2"/>
 
+        //upto here
+        <ServiceInfo v-if="step.step == 3 && serviceType != 'spraying'"/>
+        <FarmSprayingInfo v-if="step.step == 3 && serviceType == 'spraying'"/>
 
-    <!-- <v-stepper-step 
-      :complete = "e6 > 2"
-      editable
-      step="2"
-    >options</v-stepper-step>
+        <StepThree v-if="step.step == 4" />
 
-    <v-stepper-content step="2">
-      <ServiceInfo/>
-      <v-btn
-        color="primary"
-        @click="e1 = 3"
-      >
-        Continue
-      </v-btn>
-      <v-btn flat>Cancel</v-btn>
-    </v-stepper-content> -->
+        <StepFour v-if="step.step == 5"/>
+        <v-btn
+          color="primary"
+          @click="++e1"
+        >
+          Continue
+        </v-btn>
 
-
-    <v-stepper-step
-      :complete = "e6 > 3" 
-      editable
-      step="3"
-    >Your details</v-stepper-step>
-
-    <v-stepper-content step="3">
-      <FarmSprayingInfo/>
-      <!-- <StepThree/>  -->
-      
-      <v-btn
-        color="primary"
-        @click="e1 = 4"
-      >
-        Continue
-      </v-btn>
-
-      <v-btn flat>Cancel</v-btn>
-    </v-stepper-content>
-
-
-    <v-stepper-step 
-      :complete = "e6 > 4"
-      editable
-      step="4"
-    >date and time</v-stepper-step> 
-
-    <v-stepper-content step="4">
-      <StepFour/>
-    </v-stepper-content>
+        <v-btn flat>Cancel</v-btn>
+      </v-stepper-content>
+    </template>
   </v-stepper>
 </template>
 
 <script>
-import ServiceCategory from '@/components/BookingForm/ServiceCategory'
 import ServicePrev from '@/components/Services/ServicePrev'
+import ServiceType from '@/components/BookingForm/ServiceType'
 
 import ServiceInfo from '@/components/BookingForm/ServiceInfo/ServiceInfo'
 
@@ -104,9 +55,9 @@ import StepFour from '@/components/BookingForm/StepFour'
 
 import FarmSprayingInfo from '@/components/BookingForm/FarmSprayingInfo'
   export default {
-    components:{
-      ServiceCategory,  
-      ServicePrev,
+    components:{ 
+      ServicePrev,  
+      ServiceType,
       ServiceInfo,
       StepOne,
       StepThree,
@@ -117,7 +68,34 @@ import FarmSprayingInfo from '@/components/BookingForm/FarmSprayingInfo'
       return {
         e6: 1,
         e1: 1,
-        toggle_none: null
+        toggle_none: null,
+        steps:[
+          {
+            name: 'one',
+            step: 1,
+            editable: true
+          },
+          {
+            name: 'two',
+            step: 2,
+            editable: true
+          },
+          {
+            name: 'three',
+            step: 3,
+            editable: true
+          },
+          {
+            name: 'four',
+            step: 4,
+            editable: true
+          },
+          {
+            name: 'five',
+            step: 5,
+            editable: true
+          },
+        ]
       }
     }
   }

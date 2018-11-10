@@ -3,7 +3,8 @@
     row
     wrap
   >
-    <v-flex xs12>
+    <v-flex 
+      xs12>
       <v-layout
         row
         wrap
@@ -11,12 +12,12 @@
         <v-flex 
           xs12
         >
-          <h3>Sq metres</h3>
+          <h3>Size</h3>
         </v-flex>
         <v-flex xs12>
-          <v-slider
-            v-model="slider"
-            thumb-label="always"
+          <v-text-field
+            v-model="sqm"
+            label="enter square meters of property"
           />
         </v-flex>
       </v-layout>
@@ -108,6 +109,7 @@ export default {
   },
   data(){
     return{
+      sqm:'',
       Addons:[
         {
           name: 'windows interior'
