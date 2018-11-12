@@ -22,11 +22,9 @@
 
         <ServiceType v-if="step.step == 2"/>
 
-        <!--upto here-->
         <template v-if="step.step == 3 ">
-          <ServiceInfo />
-          <!-- <FarmSprayingInfo/> -->
-          <!-- <FarmSprayingInfo v-if="serviceType == 'spraying'"/> -->
+          <FarmSprayingInfo v-if="selectedCategory.name == 'Farm spraying'"/>
+          <ServiceInfo v-else />
         </template>
 
         
@@ -53,6 +51,8 @@
 </template>
 
 <script>
+import { mapGetters } from 'vuex'
+
 import ServicePrev from '@/components/Services/ServicePrev'
 import ServiceType from '@/components/BookingForm/ServiceType'
 
@@ -107,6 +107,13 @@ import FarmSprayingInfo from '@/components/BookingForm/FarmSprayingInfo'
         ]
       }
     },
+    computed:{
+      ...mapGetters([
+        'selectedCategory',
+        'selectedSubCategory'
+        
+      ])
+    },
     methods:{
       resetStep(step){
         --this.e1;
@@ -115,8 +122,8 @@ import FarmSprayingInfo from '@/components/BookingForm/FarmSprayingInfo'
           console.log('step')
         }
         if (step == 2) {
-          console.log('step')
-          this.$store.dispatch('resetSub')
+          console.log('step 2')
+          this.$store.dispatch('resetCategory')
         }
         if (step == 3) {
           

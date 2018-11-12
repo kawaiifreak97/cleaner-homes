@@ -1,5 +1,4 @@
 export const state = () => ({
-  hi: 'hello',
   serviceCategories:[
     {
       name: 'Farm spraying',
@@ -80,7 +79,6 @@ export const getters = {
     }
     return selected
   }
-
 }
 
 export const mutations = {
@@ -111,22 +109,23 @@ export const mutations = {
     const justSelected = payload.thisCategory.subCategories.find( element => { return element.name == payload.thisSubCategory}) 
     justSelected.selected = true
   },
-  resetSub(payload){
-    payload.selected = false
-  }
+  resetCategory(state, payload){
+    payload.subCategory.selected = false;
+  },
 }
 
 export const actions = {
   async selectCategory(context,payload){
-    console.log(context.getters)
+    // console.log(context.getters)
     const thisCategory = context.getters.selectedCategory(payload);
     context.commit('selectCategory', thisCategory)
   },
-  async resetSub(context){
-    console.log(context.getters)
+  async resetCategory(context){
     const sub = context.getters.selectedSubCategory;
-    context.commit('resetSub', sub)
-    console.log(sub)
+
+    context.commit('resetCategory', {
+      subCategory: sub
+    })
   },
 }
 

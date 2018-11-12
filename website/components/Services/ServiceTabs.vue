@@ -1,6 +1,5 @@
 <template>
   <div>
-    <h1>hi</h1>
     <v-tabs
       slot="extension"
       v-model="model"
@@ -20,7 +19,9 @@
           </span> 
         </v-tab>
 
-        <!-- <v-tab-item
+        <!-- bug is here -->
+
+        <v-tab-item
           :key="serviceCategory.name"
         >
           <v-layout 
@@ -40,8 +41,8 @@
                 :name="service.content.name"/>
             </v-flex>
             <v-flex 
-              v-for="servicePrev in serviceCategory.services"
-              :key="servicePrev.name"
+              v-for="service in serviceCategory.services"
+              :key="service.name"
               :mx-4="$vuetify.breakpoint.mdAndUp"
               hidden-xs-only
               xs12
@@ -49,15 +50,14 @@
               md3
               my-2
             >
-            <ServicePrev 
-              :category="serviceCategory.name"
-              :name="service.content.name"
-              :id="service.name"
-              :image="service.content.image"/>
+              <ServicePrev 
+                :category="serviceCategory.name"
+                :name="service.content.name"
+                :id="service.name"
+                :image="service.content.image"/>
             </v-flex>
-            {{ serviceCategory }}
           </v-layout>
-        </v-tab-item>   -->
+        </v-tab-item>  
       </template>
     </v-tabs>
   </div>
