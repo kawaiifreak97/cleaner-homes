@@ -1,5 +1,6 @@
 <template>
   <div>
+    <h1>hi</h1>
     <v-tabs
       slot="extension"
       v-model="model"
@@ -19,7 +20,7 @@
           </span> 
         </v-tab>
 
-        <v-tab-item
+        <!-- <v-tab-item
           :key="serviceCategory.name"
         >
           <v-layout 
@@ -39,8 +40,8 @@
                 :name="service.content.name"/>
             </v-flex>
             <v-flex 
-              v-for="service in serviceCategory.services"
-              :key="service.content.link"
+              v-for="servicePrev in serviceCategory.services"
+              :key="servicePrev.name"
               :mx-4="$vuetify.breakpoint.mdAndUp"
               hidden-xs-only
               xs12
@@ -48,14 +49,15 @@
               md3
               my-2
             >
-              <ServicePrev 
-                :category="serviceCategory.name"
-                :name="service.content.name"
-                :id="service.name"
-                :image="service.content.image"/>
+            <ServicePrev 
+              :category="serviceCategory.name"
+              :name="service.content.name"
+              :id="service.name"
+              :image="service.content.image"/>
             </v-flex>
+            {{ serviceCategory }}
           </v-layout>
-        </v-tab-item> 
+        </v-tab-item>   -->
       </template>
     </v-tabs>
   </div>
@@ -69,7 +71,7 @@ import ServicePrevSm from '@/components/Services/ServicePrevSm'
       ServicePrev,
       ServicePrevSm
     },
-    data () {
+    data() {
       return {
         overlay: false,
         tabStart: '',
@@ -78,10 +80,9 @@ import ServicePrevSm from '@/components/Services/ServicePrevSm'
       }
     },
     computed: {
-      serviceCategories () {
+      serviceCategories() {
         return this.$store.state.services.serviceCategories
       },
-      
     }
   }
 </script>

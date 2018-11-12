@@ -9,7 +9,7 @@
       pb-4
       xs12
     >
-      <!-- <ServiceTabs/> -->
+      <ServiceTabs/>
     </v-flex>
   </v-layout>
 </template>
@@ -22,7 +22,6 @@
     },
     data(){
       return {
-        title: 'Services',
         tabsShow: true
       }
     }
