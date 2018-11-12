@@ -12,7 +12,6 @@
         <v-flex 
           xs12
         >
-          <h1>{{ selectedSubCategory }}</h1>
           <h3>Size</h3>
         </v-flex>
         <v-flex xs12>
