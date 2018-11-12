@@ -12,6 +12,7 @@
         <v-flex 
           xs12
         >
+          <h1>{{ selectedSubCategory }}</h1>
           <h3>Size</h3>
         </v-flex>
         <v-flex xs12>
@@ -143,6 +144,11 @@ export default {
       ],
       slider: 45,
       number: 4,
+    }
+  },
+  computed:{
+    selectedSubCategory(){
+      return this.$store.getters['selectedSubCategory']
     }
   }
 }

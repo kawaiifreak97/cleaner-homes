@@ -6,7 +6,8 @@ export const state = () => ({
       selected: false,
       subCategories:[
         {
-          name: 'spraying'
+          name: 'spraying',
+          selected: false
         }
       ]
     },
@@ -15,10 +16,12 @@ export const state = () => ({
       selected: false,
       subCategories:[
         {
-          name: 'Builders'
+          name: 'Builders',
+          selected: false
         },
         {
-          name: 'Office'
+          name: 'Office',
+          selected: false
         }
       ]
     },
@@ -27,13 +30,16 @@ export const state = () => ({
       selected: false,
       subCategories:[
         {
-          name: 'One off'
+          name: 'One off',
+          selected: false
         },
         {
-          name: 'Regular'
+          name: 'Regular',
+          selected: false
         },
         {
-          name: 'Deep clean'
+          name: 'Deep clean',
+          selected: false
         }
       ]
     }
@@ -42,8 +48,39 @@ export const state = () => ({
 
 export const getters = {
   selectedCategory: (state) => {
-    return state.serviceCategories.find( serviceCategory => { return serviceCategory.selected})
+
+    let defaultCategory = {
+      subCategories:[
+        {name: ''}
+      ]
+    }
+
+    const selected = state.serviceCategories.find( serviceCategory => { return serviceCategory.selected})
+
+    if (selected) {
+      defaultCategory = selected
+    } else {
+      defaultCategory.subCategories[0].name = 'please select category'
+    }
+    return defaultCategory
+  },
+  selectedSubCategory: (state) => {
+
+    let selected = {}
+
+    for (let index = 0; index < state.serviceCategories.length; index++) {
+      const category = state.serviceCategories[index];
+
+      for (let i = 0; i < category.subCategories.length; i++) {
+        const element = category.subCategories[i];
+        if (element.selected) {
+          selected = element
+        }
+      }
+    }
+    return selected
   }
+
 }
 
 export const mutations = {
@@ -58,6 +95,24 @@ export const mutations = {
 
     const justSelected = state.serviceCategories.find( element => { return element.name == thisCategory })
     justSelected.selected = true
+  },
+  selectSubCategory(state, payload){
+
+    const prevSelectedCategory = state.serviceCategories.find( element => { return element.name == payload.thisCategory.name })
+    let prevSelectedSub = {}
+
+      if (prevSelectedCategory) {
+        prevSelectedSub = prevSelectedCategory.subCategories.find( element => { return element.selected })
+        if (prevSelectedSub) {
+          prevSelectedSub.selected = false;
+        }
+      } 
+
+    const justSelected = payload.thisCategory.subCategories.find( element => { return element.name == payload.thisSubCategory}) 
+    justSelected.selected = true
+  },
+  resetSub(payload){
+    payload.selected = false
   }
 }
 
@@ -67,13 +122,12 @@ export const actions = {
     const thisCategory = context.getters.selectedCategory(payload);
     context.commit('selectCategory', thisCategory)
   },
-  // select({commit}, id){
-  //   const prevSelectedService = context.getters.selectedService(id);
-  //   commit('deselect', prevSelectedService).then(() => {
-  //     commit(this.select)
-  //   })
-
-  // }
+  async resetSub(context){
+    console.log(context.getters)
+    const sub = context.getters.selectedSubCategory;
+    context.commit('resetSub', sub)
+    console.log(sub)
+  },
 }
 
 export default {

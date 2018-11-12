@@ -36,6 +36,7 @@
         <v-card-title style="position:relative">
           <v-btn
             :large="$vuetify.breakpoint.smAndUp"
+            nuxt
             absolute
             right
             top

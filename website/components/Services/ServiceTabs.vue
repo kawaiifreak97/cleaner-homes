@@ -7,54 +7,56 @@
       color="#fafafa"
       slider-color="primary"
     >
-      <v-tab
+      <template
         v-for="serviceCategory in serviceCategories"
-        :key="serviceCategory.name"
-        ripple
       >
-        <span class="tab-text">
-          {{ serviceCategory.name }}
-        </span> 
-      </v-tab>
-
-      <v-tab-item
-        v-for="serviceCategory in serviceCategories"
-        :key="serviceCategory.name"
-      >
-        <v-layout 
-          row 
-          wrap
-          justify-center
-          my-2 
+        <v-tab
+          :key="serviceCategory.name"
+          ripple
         >
-          <v-flex
-            v-for="service in serviceCategory.services"
-            :key="service.content.name"
-            hidden-sm-and-up
-            xs8
+          <span class="tab-text">
+            {{ serviceCategory.name }}
+          </span> 
+        </v-tab>
+
+        <v-tab-item
+          :key="serviceCategory.name"
+        >
+          <v-layout 
+            row 
+            wrap
+            justify-center
+            my-2 
           >
-            <ServicePrevSm 
-              :id="service.name"
-              :name="service.content.name"/>
-          </v-flex>
-          <v-flex 
-            v-for="service in serviceCategory.services"
-            :key="service.content.link"
-            :mx-4="$vuetify.breakpoint.mdAndUp"
-            hidden-xs-only
-            xs12
-            sm5
-            md3
-            my-2
-          >
-            <ServicePrev 
-              :category="serviceCategory.name"
-              :name="service.content.name"
-              :id="service.name"
-              :image="service.content.image"/>
-          </v-flex>
-        </v-layout>
-      </v-tab-item> 
+            <v-flex
+              v-for="service in serviceCategory.services"
+              :key="service.content.name"
+              hidden-sm-and-up
+              xs8
+            >
+              <ServicePrevSm 
+                :id="service.name"
+                :name="service.content.name"/>
+            </v-flex>
+            <v-flex 
+              v-for="service in serviceCategory.services"
+              :key="service.content.link"
+              :mx-4="$vuetify.breakpoint.mdAndUp"
+              hidden-xs-only
+              xs12
+              sm5
+              md3
+              my-2
+            >
+              <ServicePrev 
+                :category="serviceCategory.name"
+                :name="service.content.name"
+                :id="service.name"
+                :image="service.content.image"/>
+            </v-flex>
+          </v-layout>
+        </v-tab-item> 
+      </template>
     </v-tabs>
   </div>
 </template>

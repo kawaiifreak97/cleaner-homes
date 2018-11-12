@@ -33,19 +33,9 @@
 
 <script>
 export default {
-  data(){
-    return{
-      yes:'',
-    }
-  },
   computed:{
     serviceCategories(){
       return this.$store.state.bookingForm.serviceCategories
-    }
-  },
-  watch: {
-    serviceCategory: function(){
-      console.log(' sdk')
     }
   },
   methods:{
@@ -53,7 +43,7 @@ export default {
       
       //toggles class
       toggle(); 
-
+  console.log(name)
       this.$store.commit('selectCategory', name)
 
     }

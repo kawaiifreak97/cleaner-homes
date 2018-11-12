@@ -5,12 +5,12 @@
     justify-center
   >
     <v-flex xs10>
-      <ServiceFull
+      <!-- <ServiceFull
         :name="service.name" 
         :description="service.description"
         :tags="service.tags"
         :image="service.image"
-      />
+      /> -->
     </v-flex>
   </v-layout>
 </template>

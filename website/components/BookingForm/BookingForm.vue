@@ -11,7 +11,6 @@
         :key="step.name"
         :complete="e1 > step.step" 
         :step="step.step"
-        :editable="step.editable"
       >
         {{ step.name }}
       </v-stepper-step>
@@ -23,10 +22,14 @@
 
         <ServiceType v-if="step.step == 2"/>
 
-        //upto here
-        <ServiceInfo v-if="step.step == 3 && serviceType != 'spraying'"/>
-        <FarmSprayingInfo v-if="step.step == 3 && serviceType == 'spraying'"/>
+        <!--upto here-->
+        <template v-if="step.step == 3 ">
+          <ServiceInfo />
+          <!-- <FarmSprayingInfo/> -->
+          <!-- <FarmSprayingInfo v-if="serviceType == 'spraying'"/> -->
+        </template>
 
+        
         <StepThree v-if="step.step == 4" />
 
         <StepFour v-if="step.step == 5"/>
@@ -37,7 +40,13 @@
           Continue
         </v-btn>
 
-        <v-btn flat>Cancel</v-btn>
+        <v-btn 
+          v-if="step.step > 1"
+          flat
+          @click="resetStep(step.step)"
+        >
+          Back
+        </v-btn>
       </v-stepper-content>
     </template>
   </v-stepper>
@@ -96,6 +105,26 @@ import FarmSprayingInfo from '@/components/BookingForm/FarmSprayingInfo'
             editable: true
           },
         ]
+      }
+    },
+    methods:{
+      resetStep(step){
+        --this.e1;
+
+        if (step == 1) {
+          console.log('step')
+        }
+        if (step == 2) {
+          console.log('step')
+          this.$store.dispatch('resetSub')
+        }
+        if (step == 3) {
+          
+        }
+        if (step == 3) {
+          console.log('step')
+        }
+
       }
     }
   }

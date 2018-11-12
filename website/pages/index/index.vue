@@ -9,7 +9,7 @@
       pb-4
       xs12
     >
-      <ServiceTabs/>
+      <!-- <ServiceTabs/> -->
     </v-flex>
   </v-layout>
 </template>
@@ -25,10 +25,6 @@
         title: 'Services',
         tabsShow: true
       }
-    },
-    beforeRouteUpdate (to, from, next) {
-      console.log('router')
-      // this.tabsShow = false;
     }
   }
 </script>

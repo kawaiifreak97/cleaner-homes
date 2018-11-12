@@ -57,9 +57,6 @@
         context.store.dispatch('storyblok', res.data.stories)
       })
     },
-    // async fetch ({ store, params }) {
-    //   await store.dispatch('storyblok');
-    // },
     data(){
       return{
         title: 'Services'
