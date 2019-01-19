@@ -14,7 +14,7 @@
         >
           <h3>Size</h3>
         </v-flex>
-        <v-flex xs12>
+        <v-flex xs11>
           <v-text-field
             v-model="sqm"
             label="enter square meters of property"
@@ -100,6 +100,7 @@
 </template>
 
 <script>
+import { mapGetters } from 'vuex'
 import Room from '@/components/BookingForm/ServiceInfo/Room'
 import Addon from '@/components/BookingForm/ServiceInfo/Addon'
 export default {
@@ -109,46 +110,17 @@ export default {
   },
   data(){
     return{
-      sqm:'',
-      Addons:[
-        {
-          name: 'windows interior'
-        },
-        {
-          name: 'oven'
-        },
-        {
-          name: 'windows'
-        },
-        {
-          name: 'ho'
-        },
-        {
-          name: 'hso'
-        }
-      ],
-      roomTypes:[
-        {
-          name: 'Bedrooms'
-        },
-        {
-          name: 'Kitchens'
-        },
-        {
-          name: 'Bathrooms'
-        },
-        {
-          name: 'Story'
-        }
-      ],
+      sqm:'', 
       slider: 45,
       number: 4,
     }
   },
   computed:{
-    selectedSubCategory(){
-      return this.$store.getters['selectedSubCategory']
-    }
+    ...mapGetters([
+        'selectedSubCategory',
+        'roomTypes',
+        'addons'
+      ]),
   }
 }
 </script>

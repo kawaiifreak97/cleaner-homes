@@ -28,6 +28,11 @@
 <script>
 import { mapGetters } from 'vuex'
 export default {
+  data(){
+    return{
+      active: true
+    }
+  },
   computed:{
     ...mapGetters([
       'selectedCategory',
@@ -37,9 +42,12 @@ export default {
   methods:{
     selectSubCategory( Category, subCategory){
 
+      this.active = !this.active;
+
       this.$store.commit('selectSubCategory',  {
         thisSubCategory: subCategory,
-        thisCategory: Category
+        thisCategory: Category,
+        active: this.active
       })
 
     }

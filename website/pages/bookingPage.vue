@@ -20,8 +20,6 @@
         </v-flex>
         <v-flex 
           xs12
-          sm11
-          md10
         >
           <BookingForm />
         </v-flex>

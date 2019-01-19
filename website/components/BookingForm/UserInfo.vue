@@ -9,7 +9,7 @@
       <h3>Job location</h3>
     </v-flex>
 
-    <v-flex xs12>
+    <v-flex xs11>
       <form>
         <v-text-field
           v-validate="'required|max:15'"
@@ -40,7 +40,6 @@
         <v-text-field
           v-validate="'required|number'"
           v-model="number"
-          :error-messages="errors.collect('number')"
           label="Phone number"
           data-vv-name="number"
           required
@@ -53,25 +52,6 @@
           data-vv-name="location"
           required
         />
-        <!-- <v-select
-          v-validate="'required'"
-          :items="items"
-          v-model="select"
-          :error-messages="errors.collect('select')"
-          label="Select"
-          data-vv-name="select"
-          required
-        />
-        <v-checkbox
-          v-validate="'required'"
-          v-model="checkbox"
-          :error-messages="errors.collect('checkbox')"
-          value="1"
-          label="Option"
-          data-vv-name="checkbox"
-          type="checkbox"
-          required
-        /> -->
         <v-btn 
           color="primary"
           @click="submit"

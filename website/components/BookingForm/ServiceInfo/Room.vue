@@ -83,6 +83,9 @@ export default{
   methods:{
     add(){
       this.number++
+      if (this.number > 0) {
+        this.$store.commit('selectCategory', name);
+      }
     },
     subtract(){
       this.number--

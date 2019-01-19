@@ -1,4 +1,42 @@
 export const state = () => ({
+  activeSubCategory: false,
+  activeCategory: false,
+  continueBtnDisabled: true,
+  selectedSubCategory: '',
+  date: '',
+  time: '',
+  steps:[
+    {
+      name: 'Select Service',
+      step: 1,
+      editable: true
+    },
+    {
+      name: 'Select Service type',
+      step: 2,
+      editable: true
+    },
+    {
+      name: 'Enter service details',
+      step: 3,
+      editable: true
+    },
+    {
+      name: 'Time & Date',
+      step: 4,
+      editable: true
+    },
+    {
+      name: 'Your information',
+      step: 5,
+      editable: true
+    },
+    {
+      name: 'Your ormation',
+      step: 6,
+      editable: true
+    },
+  ],
   serviceCategories:[
     {
       name: 'Farm spraying',
@@ -42,7 +80,41 @@ export const state = () => ({
         }
       ]
     }
-  ]
+  ],
+  roomTypes:[
+    {
+      name: 'Offices'
+    },
+    {
+      name: 'Bedrooms'
+    },
+    {
+      name: 'Kitchens'
+    },
+    {
+      name: 'Bathrooms'
+    },
+    {
+      name: 'Story'
+    }
+  ],
+  Addons:[
+    {
+      name: 'windows interior'
+    },
+    {
+      name: 'oven'
+    },
+    {
+      name: 'windows'
+    },
+    {
+      name: 'ho'
+    },
+    {
+      name: 'hso'
+    }
+  ],
 })
 
 export const getters = {
@@ -77,22 +149,43 @@ export const getters = {
         }
       }
     }
+    state.selectSubCategory = selected;
     return selected
+  },
+  commercial: (state) => {
+    let comRoomTypes;
+    let comAddons;
+
+    if (state.selectSubCategory.name) {
+      
+    }
+
+    
   }
 }
 
 export const mutations = {
-  selectCategory(state,thisCategory){
+  selectCategory(state,payload){
 
     const prevSelectedCategory = state.serviceCategories.find( element => { return element.selected })
 
     if (prevSelectedCategory) {
       prevSelectedCategory.selected = false;
-    } else {
     }
 
-    const justSelected = state.serviceCategories.find( element => { return element.name == thisCategory })
-    justSelected.selected = true
+    const justSelected = state.serviceCategories.find( element => { return element.name == payload.name })
+
+    if (justSelected) {
+      if (payload.active) {
+        justSelected.selected = false;
+        state.activeCategory = false;
+      }else{
+        justSelected.selected = true;
+        state.activeCategory = true;
+      }
+    }
+
+    state.continueBtnDisabled = false;
   },
   selectSubCategory(state, payload){
 
@@ -107,11 +200,41 @@ export const mutations = {
       } 
 
     const justSelected = payload.thisCategory.subCategories.find( element => { return element.name == payload.thisSubCategory}) 
-    justSelected.selected = true
+
+    if (justSelected) {
+      if (payload.active) {
+        justSelected.selected = false;
+        state.activeSubCategory = false;
+      }else{
+        justSelected.selected = true;
+        state.activeSubCategory = true;
+      }
+    }
+
+    state.continueBtnDisabled = false;
   },
   resetCategory(state, payload){
     payload.subCategory.selected = false;
   },
+  disableContinueBtn(state){
+    if (!state.continueBtnDisabled) {
+      state.continueBtnDisabled = true;
+    }
+  },
+  enableContinueBtn(state){
+    if (state.continueBtnDisabled ) {
+      state.continueBtnDisabled = false;
+    }
+  },
+  setDate(state, payload){
+    state.date = payload;
+    console.log(state.date)
+    console.log('disabled')
+    state.continueBtnDisabled = false;
+  },
+  setTime(state, payload){
+    state.time = payload;
+  }
 }
 
 export const actions = {

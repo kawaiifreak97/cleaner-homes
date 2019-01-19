@@ -20,11 +20,9 @@
           required
         />
         <v-text-field
-          v-validate="'required'"
           v-model="conditons"
           :error-messages="errors.collect('conditions')"
           label="Describe ground conditions"
-          data-vv-name="conditions"
           required
         />
         <span>
@@ -34,88 +32,39 @@
           row 
           wrap>
           <v-flex 
+            v-for="waterType in waterTypes"
+            :key="waterType"
             xs12
             sm4 >
             <v-checkbox
-              v-model="water"
+              v-model="selectedWaterTypes"
               :error-messages="errors.collect('water')"
-              value="1"
-              label="water + pump + hose"
-              data-vv-name="water"
-              type="water"
-            />
-          </v-flex>
-          <v-flex 
-            xs12
-            sm4>
-            <v-checkbox
-              v-model="water"
-              :error-messages="errors.collect('water')"
-              value="1"
-              label="water tank"
-              data-vv-name="water"
-              type="water"
-            />
-          </v-flex>
-          <v-flex 
-            xs12
-            sm4>
-            <v-checkbox
-              v-model="water"
-              :error-messages="errors.collect('water')"
-              value="1"
-              label="creek/river"
-              data-vv-name="water"
-              type="water"
+              :value="waterType"
+              :label="waterType"
             />
           </v-flex>
         </v-layout>
         <span>
-          Type of plant(s)
+          Target plant(s)
         </span>
         <v-layout 
           row 
           wrap>
           <v-flex 
+            v-for="plant in plants"
+            :key="plant"
             xs12
             sm4 >
             <v-checkbox
-              v-model="water"
+              v-model="selectedPlants"
               :error-messages="errors.collect('water')"
-              value="1"
-              label="Ragwort"
-              data-vv-name="water"
-              type="water"
-            />
-          </v-flex>
-          <v-flex 
-            xs6
-            sm4>
-            <v-checkbox
-              v-model="water"
-              :error-messages="errors.collect('water')"
-              value="1"
-              label="Gorse"
-              data-vv-name="water"
-              type="water"
-            />
-          </v-flex>
-          <v-flex 
-            xs6
-            sm4>
-            <v-checkbox
-              v-model="water"
-              :error-messages="errors.collect('water')"
-              value="1"
-              label="Broom"
-              data-vv-name="water"
-              type="water"
+              :value="plant"
+              :label="plant"
             />
           </v-flex>
         </v-layout>
       </form>
     </v-flex>
-
   </v-layout>
 </template>
 
@@ -131,9 +80,27 @@
     },
 
     data: () => ({
+
+      waterTypes:[
+       'water tank + pump',
+       'water tank',
+       'creek/river',
+       'none'
+      ],
+      plants:[
+        'Ragwort',
+        'Gorse',
+        'Broom',
+        'pine'
+      ],
+      selectedPlants:[
+
+      ],
+      selectedWaterTypes:[
+
+      ],
       days: '',
       conditions: '',
-      water: null,
       dictionary: {
         attributes: {
           email: 'E-mail Address'

@@ -1,0 +1,159 @@
+<template>
+  <v-stepper 
+    v-model="e1"
+    vertical
+    class="booking-form rounded elevation-9"
+  >
+    <template 
+      v-for="step in steps"
+    >
+      <v-stepper-step 
+        :key="step.name"
+        :complete="e1 > step.step" 
+        :step="step.step"
+      >
+        {{ step.name }}
+      </v-stepper-step>
+      <v-stepper-content 
+        :key="step.step"
+        :step="step.step"
+      >
+        <StepOne v-if="step.step == 1"/>
+
+        <ServiceType v-if="step.step == 2"/>
+
+        <template v-if="step.step == 3 ">
+          <FarmSprayingInfo v-if="selectedCategory.name == 'Farm spraying'"/>
+          <ServiceInfo v-else />
+        </template>
+
+        
+        <StepThree v-if="step.step == 4" />
+
+        <StepFour v-if="step.step == 5"/>
+        
+        <v-btn
+          :disabled="continueDisabled"
+          color="primary"
+          @click="next()"
+        >
+          Continue
+        </v-btn>
+
+        <v-btn 
+          v-if="step.step > 1"
+          flat
+          @click="resetStep(step.step)"
+        >
+          Back
+        </v-btn>
+      </v-stepper-content>
+    </template>
+  </v-stepper>
+</template>
+
+<script>
+import { mapGetters } from 'vuex'
+
+import ServicePrev from '@/components/Services/ServicePrev'
+import ServiceType from '@/components/BookingForm/ServiceType'
+
+import ServiceInfo from '@/components/BookingForm/ServiceInfo/ServiceInfo'
+
+import StepOne from '@/components/BookingForm/StepOne'
+import StepThree from '@/components/BookingForm/StepThree'
+import StepFour from '@/components/BookingForm/StepFour'
+
+import FarmSprayingInfo from '@/components/BookingForm/FarmSprayingInfo'
+  export default {
+    components:{ 
+      ServicePrev,  
+      ServiceType,
+      ServiceInfo,
+      StepOne,
+      StepThree,
+      StepFour,
+      FarmSprayingInfo  
+    },
+    data () {
+      return {
+        e6: 1,
+        e1: 1,
+        toggle_none: null,
+        steps:[
+          {
+            name: 'Select Service',
+            step: 1,
+            editable: true
+          },
+          {
+            name: 'Select Service type',
+            step: 2,
+            editable: true
+          },
+          {
+            name: 'Enter service details',
+            step: 3,
+            editable: true
+          },
+          {
+            name: 'Time & Date',
+            step: 4,
+            editable: true
+          },
+          {
+            name: 'Your information',
+            step: 5,
+            editable: true
+          },
+        ]
+      }
+    },
+    computed:{
+      ...mapGetters([
+        'selectedCategory',
+        'selectedSubCategory'
+      ]),
+      continueDisabled () {
+        return this.$store.state.bookingForm.continueBtnDisabled
+      }
+
+    },
+    methods:{
+      resetStep(step){
+        --this.e1;
+        
+        this.$store.commit('enableContinueBtn')
+
+        if (step == 1) {
+        }
+        if (step == 2) {
+          this.$store.dispatch('resetCategory')
+        }
+        if (step == 3) {
+          
+        }
+        if (step == 3) {
+        }
+
+      },
+     next(){
+       ++this.e1;
+       if (this.e1 == 4) {
+         
+       }
+       this.$store.commit('disableContinueBtn')
+      },
+    }
+  }
+</script>
+
+<style scoped>
+  .booking-form{
+    max-width: 90vw;
+  }
+</style>
+
+
+
+

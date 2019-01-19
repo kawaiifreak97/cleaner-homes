@@ -9,6 +9,7 @@ export const mutations = {
 
 export const actions = {
   async storyblok ({commit}, data) {
+    console.log('pls')
     // commit('headerData', data )
     
     commit('heroData', data)

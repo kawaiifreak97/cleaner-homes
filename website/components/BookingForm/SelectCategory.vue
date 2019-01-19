@@ -21,7 +21,7 @@
             :value="active"
             class="accent--text"
             round
-            @click.native="select(toggle, serviceCategory.name)"
+            @click.native="select(toggle, active, serviceCategory.name)"
           >
             {{ serviceCategory.name }}
           </v-btn>
@@ -39,13 +39,11 @@ export default {
     }
   },
   methods:{
-    select(toggle, name){
-      
+    select(toggle, active, name){
       //toggles class
       toggle(); 
-  console.log(name)
-      this.$store.commit('selectCategory', name)
-
+      this.$store.commit('selectCategory', {name: name, active: active});
+      
     }
   }
   

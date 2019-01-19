@@ -7,11 +7,12 @@
       color="#fafafa"
       slider-color="primary"
     >
-      <template
+      <!-- <template
         v-for="serviceCategory in serviceCategories"
       >
         <v-tab
           :key="serviceCategory.name"
+          :href="`#${serviceCategory.name}`"
           ripple
         >
           <span class="tab-text">
@@ -19,46 +20,67 @@
           </span> 
         </v-tab>
 
-        <!-- bug is here -->
-
-        <v-tab-item
+        <v-tabs-items 
           :key="serviceCategory.name"
+          v-model="tabs" 
+          class="white elevation-1"
         >
-          <v-layout 
-            row 
-            wrap
-            justify-center
-            my-2 
+          <v-tab-item
+            v-for="i in 3"
+            :value="'hello-' + i"
+            :key="i"
           >
-            <v-flex
-              v-for="service in serviceCategory.services"
-              :key="service.content.name"
-              hidden-sm-and-up
-              xs8
+            <v-card>
+              <v-card-text>{{ text }}</v-card-text>
+            </v-card>
+          </v-tab-item>
+        </v-tabs-items>
+
+        <v-tabs-items 
+          :key="serviceCategory.name"
+          v-model="model"
+        >
+          <v-tab-item
+            :key="serviceCategory.name"
+            :id="`#${serviceCategory.name}`"
+          >
+            <h1>hi</h1>
+            <v-layout 
+              row 
+              wrap
+              justify-center
+              my-2 
             >
-              <ServicePrevSm 
-                :id="service.name"
-                :name="service.content.name"/>
-            </v-flex>
-            <v-flex 
-              v-for="service in serviceCategory.services"
-              :key="service.name"
-              :mx-4="$vuetify.breakpoint.mdAndUp"
-              hidden-xs-only
-              xs12
-              sm5
-              md3
-              my-2
-            >
-              <ServicePrev 
-                :category="serviceCategory.name"
-                :name="service.content.name"
-                :id="service.name"
-                :image="service.content.image"/>
-            </v-flex>
-          </v-layout>
-        </v-tab-item>  
-      </template>
+              <v-flex
+                v-for="service in serviceCategory.services"
+                :key="service.content.name"
+                hidden-sm-and-up
+                xs8
+              >
+                <ServicePrevSm 
+                  :id="service.name"
+                  :name="service.content.name"/>
+              </v-flex>
+              <v-flex 
+                v-for="service in serviceCategory.services"
+                :key="service.name"
+                :mx-4="$vuetify.breakpoint.mdAndUp"
+                hidden-xs-only
+                xs12
+                sm5
+                md3
+                my-2
+              >
+                <ServicePrev 
+                  :category="serviceCategory.name"
+                  :name="service.content.name"
+                  :id="service.name"
+                  :image="service.content.image"/>
+              </v-flex>
+            </v-layout>
+          </v-tab-item>
+        </v-tabs-items> 
+      </template> -->
     </v-tabs>
   </div>
 </template>
@@ -73,9 +95,10 @@ import ServicePrevSm from '@/components/Services/ServicePrevSm'
     },
     data() {
       return {
+        tabs: null,
         overlay: false,
         tabStart: '',
-        model: '',
+        model: '#Domestic',
         text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.'
       }
     },
