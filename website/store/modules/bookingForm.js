@@ -1,10 +1,10 @@
 export const state = () => ({
+  step: 1 ,
   activeSubCategory: false,
   activeCategory: false,
   continueBtnDisabled: true,
   selectedSubCategory: '',
   date: '',
-  time: '',
   steps:[
     {
       name: 'Select Service',
@@ -81,40 +81,7 @@ export const state = () => ({
       ]
     }
   ],
-  roomTypes:[
-    {
-      name: 'Offices'
-    },
-    {
-      name: 'Bedrooms'
-    },
-    {
-      name: 'Kitchens'
-    },
-    {
-      name: 'Bathrooms'
-    },
-    {
-      name: 'Story'
-    }
-  ],
-  Addons:[
-    {
-      name: 'windows interior'
-    },
-    {
-      name: 'oven'
-    },
-    {
-      name: 'windows'
-    },
-    {
-      name: 'ho'
-    },
-    {
-      name: 'hso'
-    }
-  ],
+
 })
 
 export const getters = {
@@ -151,16 +118,6 @@ export const getters = {
     }
     state.selectSubCategory = selected;
     return selected
-  },
-  commercial: (state) => {
-    let comRoomTypes;
-    let comAddons;
-
-    if (state.selectSubCategory.name) {
-      
-    }
-
-    
   }
 }
 
@@ -216,16 +173,6 @@ export const mutations = {
   resetCategory(state, payload){
     payload.subCategory.selected = false;
   },
-  disableContinueBtn(state){
-    if (!state.continueBtnDisabled) {
-      state.continueBtnDisabled = true;
-    }
-  },
-  enableContinueBtn(state){
-    if (state.continueBtnDisabled ) {
-      state.continueBtnDisabled = false;
-    }
-  },
   setDate(state, payload){
     state.date = payload;
     console.log(state.date)
@@ -234,6 +181,12 @@ export const mutations = {
   },
   setTime(state, payload){
     state.time = payload;
+  },
+  stepIncrement(state){
+    ++state.step
+  },
+  stepDecrement(state){
+    --state.step
   }
 }
 

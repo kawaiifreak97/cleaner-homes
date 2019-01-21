@@ -32,7 +32,6 @@
       scroll(){
         if (this.scrollto) {
           const id =`#${this.scrollto}`;
-          console.log(id)
           return id
         } else {
           return false

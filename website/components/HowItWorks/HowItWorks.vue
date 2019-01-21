@@ -28,15 +28,18 @@
 
 <script>
 import Card from '@/components/HowItWorks/card'
-import {mapState} from 'vuex'
 export default {
   components:{
     Card
   },
-  computed: mapState({
-    title: state => state.howItWorks.title,
-    steps: state => state.howItWorks.steps
-  })
+  computed: {
+    title(){
+      return this.$store.state.howItWorks.title
+    },
+    steps(){
+      return this.$store.state.howItWorks.steps
+    }
+  },
 }
 </script>
 

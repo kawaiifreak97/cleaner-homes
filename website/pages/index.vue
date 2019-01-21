@@ -51,17 +51,27 @@
 <script>
   export default{
     fetch (context) {
-      return context.app.$storyapi.get('cdn/stories',{
-        version: 'draft'
-      }).then((res) => {
-        context.store.dispatch('storyblok', res.data.stories)
-      })
+      if (this.hasFetched) {
+        console.log('hasFetched index')
+        return 'has fetched'
+      }else{
+        return context.app.$storyapi.get('cdn/stories',{
+          version: 'draft'
+        }).then((res) => {
+          context.store.dispatch('storyblok', res.data.stories)
+        })
+      }
     },
     data(){
       return{
         title: 'Services'
       }
-    }
+    },
+    computed: {
+      hasFetched(){
+        return this.$store.state.storyblok.hasFetched
+      }
+    },
   }
 </script>
 

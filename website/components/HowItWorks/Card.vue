@@ -17,7 +17,7 @@
         bottom
         style="left: 50%;transform: translateX(-50%)"
       >
-        <span class="primary--text">{{ step }}</span>
+        <span class="primary--text btn-text">{{ step }}</span>
       </v-btn>
       <v-layout
         pb-4
@@ -34,8 +34,9 @@
             <v-icon 
               color="primary"
               class="icon-responsive"
-            > home </v-icon>
+            > {{ stepIcon }} </v-icon>
           </div>
+
           
         </v-flex>
         <v-flex 
@@ -69,8 +70,27 @@ export default {
     step:{
       required: true,
       type: String
+    },
+  },
+  computed: {
+    stepIcon(){
+      switch (this.step) {
+        case '1':
+          return 'ring_volume';
+          break;
+        case '2': 
+          return 'attachment'
+        break;
+        case '3': 
+          return 'sentiment_very_satisfied'
+        break;
+      
+        default: 
+          return 'home'
+        break;
+      }
     }
-  }
+  },
 
 }
 </script>
@@ -87,12 +107,17 @@ export default {
     font-size: 4em;
   }
 
+  .btn-text{
+    font-size: 16px;
+    font-weight: 600;
+  }
+
   @media only screen and (min-width: 600px) {
     .stepCard{
       width: 20vw;
     }
     .icon-responsive{
-      font-size: 5em;
+      font-size: 4.5em;
     }
   }
 </style>

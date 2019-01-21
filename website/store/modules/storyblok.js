@@ -1,21 +1,21 @@
 export const state = () => ({
-
+  hasFetched: false,
 })
 
 
 export const mutations = {
-  
+  fetchComplete( state){
+    state.hasFetched = true;
+  }
 }
 
 export const actions = {
   async storyblok ({commit}, data) {
-    console.log('pls')
     // commit('headerData', data )
     
     commit('heroData', data)
 
     commit('howItWorksData', data)
-    console.log(data)
 
     commit('aboutData', data)
     commit('addData', data)
@@ -23,7 +23,8 @@ export const actions = {
     commit('testimonialsData', data)
     commit('contactData', data)
     commit('servicesData', data)
-    // commit('bookingForm', data)
+
+    commit('fetchComplete')
     
   },
   
