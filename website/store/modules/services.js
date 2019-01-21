@@ -1,9 +1,7 @@
 export const state = () => ({
   title: 'Services',
   select: false,
-  selectedService:{
-    name: 'yes'
-  },
+  selectedService:{},
   serviceCategories:[
     {
       name: 'Commercial',
@@ -54,7 +52,7 @@ export const getters = {
       }
       return selected
     }
-  }
+  },
 }
 
 export const mutations = {
@@ -68,12 +66,15 @@ export const mutations = {
     state.serviceCategories[1].services = domestic;
     state.serviceCategories[2].services = farmspraying;
 
+  },
+  selectServiceCategory(state, payload){
+    state.selectedService = payload.service;
   }
 }
 
 export const actions = {
   //payload has to be 2nd argument?
-  selectService({getters},payload){
+  selectService({commit},payload){
     this.$router.push("/" + payload.service);
   }
 }

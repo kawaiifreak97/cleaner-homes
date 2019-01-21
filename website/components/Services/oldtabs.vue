@@ -36,7 +36,7 @@
           </v-tab-item>
         </v-tabs-items>
 
-        <!-- <v-tabs-items 
+        <v-tabs-items 
           :key="serviceCategory.name"
           v-model="model"
         >
@@ -79,7 +79,7 @@
               </v-flex>
             </v-layout>
           </v-tab-item>
-        </v-tabs-items> -->
+        </v-tabs-items>
       </template> 
     </v-tabs>
   </div>

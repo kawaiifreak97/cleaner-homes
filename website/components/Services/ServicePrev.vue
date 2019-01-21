@@ -1,5 +1,6 @@
 <template>
   <div 
+    v-scroll-to="'#services'"
     style="position: relative;"
     class="thisCard"
     @click="selectService(id, category)"
@@ -79,6 +80,7 @@ export default {
   },
   methods:{
     selectService(id, category){
+      
       this.$store.dispatch('selectService', {
         service: id,
         category: category

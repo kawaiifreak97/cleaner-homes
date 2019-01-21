@@ -1,6 +1,64 @@
 <template>
   <div>
-    
+    <v-tabs
+      slot="extension"
+      v-model="tab"
+      centered
+    >
+      <v-tabs-slider color="secondary"/>
+
+      <v-tab
+        v-for="serviceCategory in serviceCategories"
+        :key="serviceCategory.name"
+        :href="`#tab-${serviceCategory.name}`"
+        @click="selectTab(serviceCategory)"
+      >
+        {{ serviceCategory.name }}
+      </v-tab>
+    </v-tabs>
+
+    //bug is here//
+    <v-tabs-items v-model="tab">
+      <v-tab-item
+        v-for="serviceCategory in serviceCategories"
+        :value="`tab-${serviceCategory.name}`"
+        :key="serviceCategory.name"
+      >
+        <v-layout 
+          row 
+          wrap
+          justify-center
+          my-2 
+        >
+          <v-flex
+            v-for="service in services"
+            :key="service.name"
+            hidden-sm-and-up
+            xs8
+          >
+            <ServicePrevSm 
+              :id="service.name"
+              :name="service.content.name"/>
+          </v-flex>
+          <v-flex 
+            v-for="service in services"
+            :key="service.name"
+            :mx-4="$vuetify.breakpoint.mdAndUp"
+            hidden-xs-only
+            xs12
+            sm5
+            md3
+            my-2
+          >
+            <ServicePrev 
+              :name="service.content.name"
+              :id="service.name"
+              :image="service.content.image"
+              category="serviceCategory"/>
+          </v-flex>
+        </v-layout>
+      </v-tab-item>
+    </v-tabs-items>
   </div>
 </template>
 
@@ -14,7 +72,7 @@ import ServicePrevSm from '@/components/Services/ServicePrevSm'
     },
     data() {
       return {
-        tabs: null,
+        tab: null,
         overlay: false,
         tabStart: '',
         model: '#Domestic',
@@ -25,6 +83,16 @@ import ServicePrevSm from '@/components/Services/ServicePrevSm'
       serviceCategories() {
         return this.$store.state.services.serviceCategories
       },
+      services(){
+        return this.$store.state.services.selectedService.services
+      }
+    },
+    methods:{
+      selectTab(serviceCat){
+        this.$store.commit('selectServiceCategory', {
+          service: serviceCat
+        })
+      }
     }
   }
 </script>
