@@ -44,6 +44,7 @@
             round
             class="primary--text"
             to="/bookingPage"
+            scroll-to="#booking"
           >
             book now
           </v-btn>

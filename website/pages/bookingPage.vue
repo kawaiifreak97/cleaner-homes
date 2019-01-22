@@ -1,5 +1,7 @@
 <template>
-  <div style="min-height:115vh">
+  <div 
+    id="booking"
+    style="min-height:115vh">
     <v-img
       src="http://www.riversongcochrane.com/assets/HeroImages/15-SRV-108-Riversong-Homepage-Hero-Banner.jpg"
       style="min-height:80vh"
@@ -16,7 +18,7 @@
         justify-center
       >
         <v-flex xs10>
-          <Title ><span style="color:white"> Booking request</span></Title>
+          <Title><span style="color:white"> Booking request</span></Title>
         </v-flex>
         <v-flex 
           xs12

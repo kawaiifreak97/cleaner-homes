@@ -1,7 +1,9 @@
 export const state = () => ({
   title: 'Services',
   select: false,
-  selectedService:{},
+  selectedService:{
+    
+  },
   serviceCategories:[
     {
       name: 'Commercial',

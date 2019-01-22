@@ -1,5 +1,5 @@
 export const state = () => ({
-  step: 1 ,
+  step: 3 ,
   activeSubCategory: false,
   activeCategory: false,
   continueBtnDisabled: true,

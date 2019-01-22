@@ -5,7 +5,7 @@
       v-model="tab"
       centered
     >
-      <v-tabs-slider color="secondary"/>
+      <v-tabs-slider color="primary"/>
 
       <v-tab
         v-for="serviceCategory in serviceCategories"
@@ -16,8 +16,8 @@
         {{ serviceCategory.name }}
       </v-tab>
     </v-tabs>
+    
 
-    //bug is here//
     <v-tabs-items v-model="tab">
       <v-tab-item
         v-for="serviceCategory in serviceCategories"
