@@ -83,10 +83,10 @@
         'selectedSubCategory',
       ]),
       activeCategory(){
-        return this.$store.state.bookingForm.activeCategory
+        return this.$store.state.services.activeCategory
       },
       activeSubCategory(){
-        return this.$store.state.bookingForm.activeSubCategory
+        return this.$store.state.services.activeSubCategory
       },
       step(){
         return this.$store.state.bookingForm.step
@@ -95,7 +95,7 @@
         switch (this.step) {
           case 1:
             let validated = true;
-            if (this.activeCategory) {
+            if (!this.activeCategory) {
               validated = false;
             }else{
               validated = true
@@ -103,11 +103,9 @@
             return validated
           break;
           case 2: 
-            console.log('validating sub')
             let subValidated = true;
-            if (this.activeSubCategory) {
+            if (!this.activeSubCategory) {
               subValidated = false;
-              console.log('validated sub')
             }else{
               subValidated = true
             }
@@ -168,10 +166,3 @@
   }
 </script>
 
-<style scoped>
-/* @media only screen and (min-width: 600px) {
-  .form{
-    width: 
-  } */
-/* } */
-</style>

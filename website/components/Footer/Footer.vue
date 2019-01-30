@@ -18,7 +18,7 @@
             sm3>
             <v-layout column>
               <v-flex mb-2>
-                <h4>About</h4>
+                <h4>Company</h4>
               </v-flex>
               <v-flex
                 v-for="link in links"
@@ -190,7 +190,7 @@ export default {
       dialog: false,
       links:[
         {
-          name: 'company'
+          name: 'about us'
         },
         {
           name: 'services'

@@ -35,8 +35,11 @@
 export default {
   computed:{
     serviceCategories(){
-      return this.$store.state.bookingForm.serviceCategories
+      return this.$store.state.services.serviceCategories
     }
+  },
+  mounted() {
+    this.$store.commit('selectCategory', {name: 'Domestic', active: true});
   },
   methods:{
     select(toggle, active, name){
@@ -45,8 +48,7 @@ export default {
       this.$store.commit('selectCategory', {name: name, active: active});
       
     }
-  }
-  
+  },
 }
 </script>
 

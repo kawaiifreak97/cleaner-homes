@@ -6,8 +6,12 @@
     my-2 
     fill-height
   >
+    hi
+    
+    bye
+    {{ selectedCategory.services }}
     <v-flex
-      v-for="subCategory in selectedCategory.subCategories"
+      v-for="subCategory in selectedCategory.services"
       :key="subCategory.name"
       xs12
       sm7 
@@ -17,7 +21,7 @@
         :class="{'white--text': selectedSubCategory.name == subCategory.name }"
         class="accent--text"
         round
-        @click.native="selectSubCategory(selectedCategory, subCategory.name)"
+        @click.native="selectSubCategory(selectedCategory.name, subCategory.name)"
       >
         {{ subCategory.name }}
       </v-btn>
@@ -26,7 +30,6 @@
 </template>
 
 <script>
-import { mapGetters } from 'vuex'
 export default {
   data(){
     return{
@@ -34,20 +37,25 @@ export default {
     }
   },
   computed:{
-    ...mapGetters([
-      'selectedCategory',
-      'selectedSubCategory'
-    ])
+    selectedCategory(){
+      return this.$store.getters['selectedCategory']
+    },
+    selectedSubCategory(){
+     return this.$store.getters['selectedService']
+    }
+    // selectedSubCategory(name){
+    //   return this.$store.getters['selectedService'](name)
+    // }
   },
   methods:{
     selectSubCategory( Category, subCategory){
-
       this.active = !this.active;
 
       this.$store.commit('selectSubCategory',  {
-        thisSubCategory: subCategory,
-        thisCategory: Category,
-        active: this.active
+        category: Category,
+        subCategory: subCategory,
+        active: this.active,
+        pushRoute: false
       })
 
     }

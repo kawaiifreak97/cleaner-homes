@@ -24,38 +24,42 @@
         :value="`tab-${serviceCategory.name}`"
         :key="serviceCategory.name"
       >
+
         <v-layout 
           row 
           wrap
           justify-center
           my-2 
         >
-          <v-flex
-            v-for="service in services"
-            :key="service.name"
-            hidden-sm-and-up
-            xs8
-          >
-            <ServicePrevSm 
-              :id="service.name"
-              :name="service.content.name"/>
-          </v-flex>
-          <v-flex 
-            v-for="service in services"
-            :key="service.name"
-            :mx-4="$vuetify.breakpoint.mdAndUp"
-            hidden-xs-only
-            xs12
-            sm5
-            md3
-            my-2
-          >
-            <ServicePrev 
-              :name="service.content.name"
-              :id="service.name"
-              :image="service.content.image"
-              category="serviceCategory"/>
-          </v-flex>
+          <template v-for="service in services">
+            <v-flex
+              :key="service.name"
+              hidden-sm-and-up
+              xs8
+            >
+              <ServicePrevSm 
+                :id="service.name"
+                :name="service.content.name"
+                :category="serviceCategory.name"/>
+            </v-flex>
+            <v-flex 
+              :key="service.name"
+              :mx-4="$vuetify.breakpoint.mdAndUp"
+              hidden-xs-only
+              xs12
+              sm5
+              md3
+              my-2
+            >
+              <ServicePrev 
+                :name="service.content.name"
+                :id="service.name"
+                :image="service.content.image"
+                :category="serviceCategory.name"
+              />
+            </v-flex>
+          </template>
+          
         </v-layout>
       </v-tab-item>
     </v-tabs-items>
@@ -63,6 +67,7 @@
 </template>
 
 <script>
+import { mapGetters } from 'vuex'
 import ServicePrev from '@/components/Services/ServicePrev'
 import ServicePrevSm from '@/components/Services/ServicePrevSm'
   export default {
@@ -72,28 +77,32 @@ import ServicePrevSm from '@/components/Services/ServicePrevSm'
     },
     data() {
       return {
-        tab: null,
+        tab: 'tab-Domestic',
         overlay: false,
         tabStart: '',
-        model: '#Domestic',
-        text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.'
+        activeServiceCat: {}
       }
     },
     computed: {
-      serviceCategories() {
+      serviceCategories(){
         return this.$store.state.services.serviceCategories
       },
       services(){
         return this.$store.state.services.selectedService.services
-      }
+      },
+      ...mapGetters([
+        'selectedCategory',
+        'selectedSubCategory'
+      ])
     },
     methods:{
       selectTab(serviceCat){
-        this.$store.commit('selectServiceCategory', {
-          service: serviceCat
-        })
-      }
-    }
+        this.activeServiceCat = serviceCat;
+
+        this.$store.commit('selectCategory', {name: serviceCat.name, active: true});
+      },
+    },
+    
   }
 </script>
 <style scoped>

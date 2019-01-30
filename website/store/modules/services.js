@@ -1,18 +1,25 @@
 export const state = () => ({
   title: 'Services',
   select: false,
+  activeSubCategory: false,
+  activeCategory: false,
   selectedService:{
-    
+    name: 'pls',
+    services:{
+      name: 'working'
+    }
   },
   serviceCategories:[
     {
       name: 'Commercial',
       link: 'commercial',
+      selected: false,
       services:[]
     },
     {
       name: 'Domestic',
       link: '',
+      selected: false,
       services:[
         {
           name: 'wfindows',
@@ -27,6 +34,7 @@ export const state = () => ({
     {
       name: 'Farm spraying',
       link: 'farm-spraying',
+      selected: false,
       services:[
         {
           name: 'gorse',
@@ -38,8 +46,25 @@ export const state = () => ({
 })
 
 export const getters = {
-  selectedService (state) {
+  selectedCategory: (state) => {
+    let defaultCategory = {
+      services:[
+        {name: ''}
+      ]
+    }
+
+    let selected = state.serviceCategories.find( serviceCategory => { return serviceCategory.selected})
+
+    if (selected) {
+      defaultCategory = selected
+    } else {
+      defaultCategory.services[0].name = 'please select category'
+    }
+    return defaultCategory
+  },
+  selectedSubCategory (state) {
     return (serviceId) => {
+      console.log('sub ' + serviceId)
       let selected = {}
 
       for (let index = 0; index < state.serviceCategories.length; index++) {
@@ -47,14 +72,28 @@ export const getters = {
 
         for (let i = 0; i < category.services.length; i++) {
           const element = category.services[i];
-          if (element.name == serviceId) {
+          if (element.name == serviceId) {  
             selected = element.content
           }
         }
       }
+      console.log('selectedSub ' + selected)
       return selected
     }
   },
+  selectedService: (state) => {
+    // return (cat) => {
+    //   console.log('cat ' + cat)
+    //   let selected = state.selectedService.services.find( serviceCategory => { return serviceCategory.name == cat})
+    //   console.log('selected ' + selected.name)
+    //   return selected
+    // }
+    let selectedService = state.selectedService.services.find( service => { return service.selected})
+    console.log('selectedService ' + selectedService)
+ 
+    return selectedService
+  }
+
 }
 
 export const mutations = {
@@ -68,17 +107,74 @@ export const mutations = {
     state.serviceCategories[1].services = domestic;
     state.serviceCategories[2].services = farmspraying;
 
+    state.selectedService.services = domestic;
+
   },
-  selectServiceCategory(state, payload){
-    state.selectedService = payload.service;
-  }
+  selectCategory(state,payload){
+    const prevSelectedCategory = state.serviceCategories.find( element => { return element.selected })
+
+    if (prevSelectedCategory) {
+      prevSelectedCategory.selected = false;
+    }
+    console.log('payload '+ payload.name)
+    const justSelected = state.serviceCategories.find( element => { return element.name == payload.name })  
+    state.selectedService = justSelected;
+
+    if (justSelected) {
+      if (payload.active) {
+        justSelected.selected = true;
+        state.activeCategory = true;
+        state.selectedService= justSelected;
+        console.log('just selected ' + state.selectedService )
+
+      }else{
+        justSelected.selected = false;
+        state.activeCategory = false;
+      }
+    }
+    console.log('just selected ' + state.selectedService  )
+
+  },
+  selectSubCategory(state, payload){
+
+    const prevSelectedCategory = state.serviceCategories.find( element => { return element.name == payload.category})
+    let prevSelectedSub = {}
+
+      if (prevSelectedCategory) {
+        prevSelectedSub = prevSelectedCategory.services.find( element => { return element.selected })
+        if (prevSelectedSub) {
+          prevSelectedSub.selected = false;
+        }
+      } 
+
+    const justSelected = prevSelectedCategory.services.find( element => { return element.name == payload.subCategory}) 
+
+    if (justSelected) {
+      if (payload.active) {
+        justSelected.selected = false;
+        state.activeSubCategory = false;
+      }else{
+        justSelected.selected = true;
+        state.activeSubCategory = true;
+      }
+    }
+
+    if (payload.pushRoute) {
+      this.$router.push("/" + payload.subCategory);
+    }
+
+  },
+  
 }
 
 export const actions = {
   //payload has to be 2nd argument?
-  selectService({commit},payload){
-    this.$router.push("/" + payload.service);
-  }
+  selectCategory({commit},payload){
+    commit('selectCategory', {
+      name: payload.name,
+      active: payload.active
+    })
+  },
 }
 
 

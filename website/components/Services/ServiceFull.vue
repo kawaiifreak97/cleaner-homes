@@ -72,12 +72,14 @@
             <v-flex
               v-for="tag in tags"  
               :key="tag.tag_name"
+              class="text-xs-center"
+              shrink
               xs6
-              sm4
+              sm3
             >
               <v-chip 
                 color="primary"
-                class="white--text"
+                outline
               > 
                 <span style="font-size: 1em;">{{ tag.tag_name }}</span>
               </v-chip>
@@ -113,7 +115,7 @@ export default {
     return{
       show: false,
     }
-  }
+  },
 }
 </script>
 

@@ -5,7 +5,7 @@
       :large= "$vuetify.breakpoint.smAndUp"
       round
       color="white"
-      @click="selectService(id, category)"
+      @click="selectSubCategory(id, category)"
     >
       {{ name }}
       <v-icon 
@@ -27,19 +27,24 @@ export default {
     name:{
       required: true,
       type: String
+    },
+    category:{
+      required: true,
+      type: String
     }
   },  
   data(){
     return{
       selectedService: false,
-      category: 'hi'
+      active: false,
     }
   },
   methods:{
     selectService(id, category){
-      this.$store.dispatch('selectService', {
-        service: id,
-        category: category
+      this.$store.commit('selectSubCategory', {
+        subCategory: id,
+        category: category,
+        pushRoute: true
       })
     }
   }

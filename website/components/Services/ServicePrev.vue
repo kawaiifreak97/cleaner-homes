@@ -80,10 +80,10 @@ export default {
   },
   methods:{
     selectService(id, category){
-      
-      this.$store.dispatch('selectService', {
-        service: id,
-        category: category
+      this.$store.commit('selectSubCategory', {
+        subCategory: id,
+        category: category,
+        pushRoute: true
       })
     }
   }
