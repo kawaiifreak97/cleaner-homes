@@ -27,7 +27,7 @@
 </template>
 
 <script>
-import Card from '@/components/HowItWorks/card'
+import Card from '@/components/HowItWorks/Card'
 export default {
   components:{
     Card
