@@ -58,18 +58,21 @@
                 :key="contactLink.value"
                 class="footer-links"
               >
-                <v-dialog
-                  v-model="popup"
-                  width="500"
-                >
-                  <a
-                    slot="activator"
-                    class="black--text"
+                <div>
+                  <v-dialog
+                    v-model="popup"
+                    width="500"
                   >
-                    {{ contactLink.value }}
-                  </a>
-                  <ContactForm/>
-                </v-dialog>
+                    <a
+                      slot="activator"
+                      class="black--text"
+                    >
+                      {{ contactLink.value }}
+                    </a>
+                    <ContactForm/>
+                  </v-dialog>
+                </div>
+                
               </v-flex>
             </v-layout>
           </v-flex>
