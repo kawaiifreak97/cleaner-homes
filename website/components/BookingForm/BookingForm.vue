@@ -94,22 +94,22 @@
       isValid () {
         switch (this.step) {
           case 1:
-            let validated = true;
-            if (!this.activeCategory) {
-              validated = false;
+            let enabled = true;
+            if (this.activeCategory) {
+              enabled = false;
             }else{
-              validated = true
+              enabled = true
             }
-            return validated
+            return enabled
           break;
           case 2: 
-            let subValidated = true;
-            if (!this.activeSubCategory) {
-              subValidated = false;
+            let subEnabled = true;
+            if (this.activeSubCategory) {
+              subEnabled = false;
             }else{
-              subValidated = true
+              subEnabled = true
             }
-            return subValidated
+            return subEnabled
           break;
           case 3: 
             return 'pls'
@@ -154,7 +154,6 @@
         }
       }
     },
-    
     methods: {
       validate(){
         this.$store.commit('stepIncrement')

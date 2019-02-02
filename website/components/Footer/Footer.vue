@@ -26,17 +26,20 @@
               >
                 <div
                   v-if="link.privacy" >
-                  <v-dialog
-                    v-model="dialog"
-                    width="500"
-                  >
-                    <a
-                      slot="activator"
-                      class="black--text"
+                  <div>
+                    <v-dialog
+                      v-model="dialog"
+                      width="500"
                     >
-                      {{ link.name }}
-                    </a>
-                  </v-dialog>
+                      <a
+                        slot="activator"
+                        class="black--text"
+                      >
+                        {{ link.name }}
+                      </a>
+                    </v-dialog>
+                  </div>
+                  
                 </div>
                 <a
                   v-else-if="!link.privacy"
@@ -72,7 +75,6 @@
                     <ContactForm/>
                   </v-dialog>
                 </div>
-                
               </v-flex>
             </v-layout>
           </v-flex>
@@ -133,7 +135,7 @@
             sm4
             md3
           >
-            <div class="text-xs-left  ">
+            <div class="text-xs-left ">
               <v-dialog
                 v-model="dialog"
                 width="500"

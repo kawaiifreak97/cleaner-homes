@@ -31,6 +31,9 @@ export const store = () => {
             header,
             contact,
             storyblok
+        },
+        state: {
+            hasFetched: false,
         }
     })
 }

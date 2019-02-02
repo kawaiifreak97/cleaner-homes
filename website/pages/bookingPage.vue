@@ -34,6 +34,19 @@
 import BookingForm from '@/components/BookingForm/BookingForm.vue'
 export default {
   layout: 'bookingPage',
+  fetch (context) {
+    if (context.store.state.storyblok.hasFetched) {
+      console.log('hasFetched data')
+      return 'has fetched'
+    }else{
+      return context.app.$storyapi.get('cdn/stories',{
+        version: 'draft'
+      }).then((res) => {
+        console.log('fetching...')
+        context.store.dispatch('storyblok', res.data.stories)
+      })
+    }
+  },
   components:{
     BookingForm 
   }

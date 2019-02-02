@@ -36,16 +36,14 @@ export default {
   computed:{
     serviceCategories(){
       return this.$store.state.services.serviceCategories
-    }
-  },
-  mounted() {
-    this.$store.commit('selectCategory', {name: 'Domestic', active: true});
+    } 
   },
   methods:{
     select(toggle, active, name){
       //toggles class
       toggle(); 
-      this.$store.commit('selectCategory', {name: name, active: active});
+      let changeActive = !active
+      this.$store.commit('selectCategory', {name: name, active: changeActive});
       
     }
   },

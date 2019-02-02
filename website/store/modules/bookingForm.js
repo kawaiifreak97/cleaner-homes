@@ -42,19 +42,10 @@ export const getters = {
 }
 
 export const mutations = {
-  
-  
-  resetCategory(state, payload){
-    payload.subCategory.selected = false;
-  },
-  setDate(state, payload){
-    state.date = payload;
-    console.log(state.date)
-    console.log('disabled')
-    state.continueBtnDisabled = false;
-  },
-  setTime(state, payload){
-    state.time = payload;
+
+  stepIsThree(state){
+    state.step = 3;
+    this.$router.push("/bookingPage");
   },
   stepIncrement(state){
     ++state.step

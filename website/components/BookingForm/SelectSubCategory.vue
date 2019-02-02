@@ -1,61 +1,54 @@
 <template>
-  <v-layout 
-    justify-start
-    row 
-    wrap
-    my-2 
-    fill-height
-  >
-    hi
-    
-    bye
-    {{ selectedCategory.services }}
-    <v-flex
-      v-for="subCategory in selectedCategory.services"
-      :key="subCategory.name"
-      xs12
-      sm7 
+  <v-item-group>
+    <v-layout 
+      justify-start
+      row 
+      wrap
+      my-2 
+      fill-height
     >
-      <v-btn
-        :color="selectedSubCategory.name == subCategory.name ? 'secondary' : 'white'"
-        :class="{'white--text': selectedSubCategory.name == subCategory.name }"
-        class="accent--text"
-        round
-        @click.native="selectSubCategory(selectedCategory.name, subCategory.name)"
+      <v-flex
+        v-for="subCategory in selectedCategory.services"
+        :key="subCategory.name"
+        xs12
+        sm7 
       >
-        {{ subCategory.name }}
-      </v-btn>
-    </v-flex>
-  </v-layout>
+        <v-item>
+          <v-btn
+            slot-scope="{ active, toggle }"
+            :color="active ? 'secondary' : 'white'"
+            :class="{'white--text': active}"
+            :value="active"
+            class="accent--text"
+            round
+            @click="select(toggle, active, selectedCategory.name, subCategory.name)"
+          >
+            {{ subCategory.name }}
+          </v-btn>
+        </v-item>
+      </v-flex>
+    </v-layout>
+  </v-item-group>
 </template>
 
 <script>
 export default {
-  data(){
-    return{
-      active: true
-    }
-  },
   computed:{
     selectedCategory(){
       return this.$store.getters['selectedCategory']
     },
-    selectedSubCategory(){
-     return this.$store.getters['selectedService']
-    }
-    // selectedSubCategory(name){
-    //   return this.$store.getters['selectedService'](name)
-    // }
   },
   methods:{
-    selectSubCategory( Category, subCategory){
-      this.active = !this.active;
+    select(toggle, active, Category, subCategory){
+
+      toggle();
+
+      let changeActive = !active
 
       this.$store.commit('selectSubCategory',  {
         category: Category,
         subCategory: subCategory,
-        active: this.active,
-        pushRoute: false
+        active: changeActive,
       })
 
     }

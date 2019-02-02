@@ -31,7 +31,7 @@
           justify-center
           my-2 
         >
-          <template v-for="service in services">
+          <template v-for="service in serviceCategory.services">
             <v-flex
               :key="service.name"
               hidden-sm-and-up
@@ -59,7 +59,6 @@
               />
             </v-flex>
           </template>
-          
         </v-layout>
       </v-tab-item>
     </v-tabs-items>
@@ -94,6 +93,9 @@ import ServicePrevSm from '@/components/Services/ServicePrevSm'
         'selectedCategory',
         'selectedSubCategory'
       ])
+    },
+    mounted() {
+      this.$store.commit('selectCategory', {name: 'Domestic', active: false});
     },
     methods:{
       selectTab(serviceCat){

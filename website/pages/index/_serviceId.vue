@@ -24,7 +24,7 @@
     },
     computed:{
       service(){
-        return this.$store.getters['selectedSubCategory'](this.$route.params.serviceId)
+        return this.$store.getters['selectedSubCategory']
       }
     }
   }

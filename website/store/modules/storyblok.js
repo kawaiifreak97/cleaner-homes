@@ -1,10 +1,11 @@
 export const state = () => ({
   hasFetched: false,
+  bookingPage: false,
 })
 
 
 export const mutations = {
-  fetchComplete( state){
+  fetched(state){
     state.hasFetched = true;
   }
 }
@@ -24,7 +25,7 @@ export const actions = {
     commit('contactData', data)
     commit('servicesData', data)
 
-    commit('fetchComplete')
+    commit('fetched')
     
   },
   

@@ -83,6 +83,7 @@ export default {
       this.$store.commit('selectSubCategory', {
         subCategory: id,
         category: category,
+        active: true,
         pushRoute: true
       })
     }

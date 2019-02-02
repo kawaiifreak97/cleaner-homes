@@ -43,8 +43,7 @@
             color="white"
             round
             class="primary--text"
-            to="/bookingPage"
-            scroll-to="#booking"
+            @click="selectSub()"
           >
             book now
           </v-btn>
@@ -114,6 +113,13 @@ export default {
   data(){
     return{
       show: false,
+    }
+  },
+  methods: {
+    selectSub(){
+      //makes booking form
+      console.log('fosd')
+      this.$store.commit('stepIsThree')
     }
   },
 }

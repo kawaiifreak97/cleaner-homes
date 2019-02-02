@@ -51,13 +51,14 @@
 <script>
   export default{
     fetch (context) {
-      if (this.hasFetched) {
-        console.log('hasFetched index')
+      if (context.store.state.storyblok.hasFetched) {
+        console.log('hasFetched data')
         return 'has fetched'
       }else{
         return context.app.$storyapi.get('cdn/stories',{
           version: 'draft'
         }).then((res) => {
+          console.log('fetching...')
           context.store.dispatch('storyblok', res.data.stories)
         })
       }
