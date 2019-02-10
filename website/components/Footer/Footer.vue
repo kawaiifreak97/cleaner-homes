@@ -62,7 +62,14 @@
                 class="footer-links"
               >
                 <a
+                  v-if="contactLink.name == 'email'"
                   href="mailto:gbexta1@gmail.com?subject=service inquiry"
+                  class="black--text"
+                >
+                  {{ contactLink.value }}
+                </a>
+                <a
+                  v-else
                   class="black--text"
                 >
                   {{ contactLink.value }}
