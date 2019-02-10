@@ -45,8 +45,7 @@ export default {
 
       let changeActive = !active
 
-      this.$store.commit('selectSubCategory',  {
-        category: Category,
+      this.$store.dispatch('selectSubCategory',  {
         subCategory: subCategory,
         active: changeActive,
       })

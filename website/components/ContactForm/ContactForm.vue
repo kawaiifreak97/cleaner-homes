@@ -50,7 +50,7 @@
       >
         <h1> Email us at </h1>
 
-        <a href="/">
+        <a href="mailto:gbexta1@gmail.com?subject=service inquiry">
           <h3 
             style="font-weight: 400"
           >

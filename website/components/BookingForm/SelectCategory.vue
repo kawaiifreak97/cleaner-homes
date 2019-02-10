@@ -43,7 +43,7 @@ export default {
       //toggles class
       toggle(); 
       let changeActive = !active
-      this.$store.commit('selectCategory', {name: name, active: changeActive});
+      this.$store.dispatch('selectCategory', {name: name, active: changeActive});
       
     }
   },

@@ -61,20 +61,12 @@
                 :key="contactLink.value"
                 class="footer-links"
               >
-                <div>
-                  <v-dialog
-                    v-model="popup"
-                    width="500"
-                  >
-                    <a
-                      slot="activator"
-                      class="black--text"
-                    >
-                      {{ contactLink.value }}
-                    </a>
-                    <ContactForm/>
-                  </v-dialog>
-                </div>
+                <a
+                  href="mailto:gbexta1@gmail.com?subject=service inquiry"
+                  class="black--text"
+                >
+                  {{ contactLink.value }}
+                </a>
               </v-flex>
             </v-layout>
           </v-flex>

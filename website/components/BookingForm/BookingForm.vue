@@ -1,8 +1,7 @@
 <template>
   <v-card
-    class="mx-auto rounded"
+    class="mx-auto rounded booking"
     max-width="90vw"
-    width="50vw"
   >
     <v-card-title 
       v-show="step <= 3"
@@ -164,4 +163,18 @@
     }
   }
 </script>
+
+<style scoped>
+
+.booking{
+  width: 90vw;
+}
+
+@media only screen and (min-width: 600px) {
+  .booking{
+    width: 50vw
+  }
+} 
+</style>
+
 

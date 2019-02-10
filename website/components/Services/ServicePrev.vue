@@ -3,7 +3,7 @@
     v-scroll-to="'#services'"
     style="position: relative;"
     class="thisCard"
-    @click="selectService(id, category)"
+    @click="selectService(name)"
   > 
     <v-card
       class="rounded prev-card"
@@ -63,11 +63,6 @@ export default {
       required: true,
       type: String
     },
-    category: {
-      required: false,
-      type: String,
-      default: ''
-    },
     image:{
       required: true,
       type: String
@@ -79,10 +74,9 @@ export default {
       }
   },
   methods:{
-    selectService(id, category){
-      this.$store.commit('selectSubCategory', {
-        subCategory: id,
-        category: category,
+    selectService(sub){
+      this.$store.dispatch('selectSubCategory', {
+        subCategory: sub,
         active: true,
         pushRoute: true
       })

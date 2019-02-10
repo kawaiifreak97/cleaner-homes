@@ -20,7 +20,11 @@
       return {
         transparentHeader: 'transparent',  
       }
-    }
+    },
+    mounted() {
+      this.$store.commit('selectCategory', {name: 'Domestic', active: true});
+      console.log('selected domestic')
+    },
   }
 </script>
 

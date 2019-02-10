@@ -39,8 +39,7 @@
             >
               <ServicePrevSm 
                 :id="service.name"
-                :name="service.content.name"
-                :category="serviceCategory.name"/>
+                :name="service.name"/>
             </v-flex>
             <v-flex 
               :key="service.name"
@@ -52,10 +51,9 @@
               my-2
             >
               <ServicePrev 
-                :name="service.content.name"
+                :name="service.name"
                 :id="service.name"
                 :image="service.content.image"
-                :category="serviceCategory.name"
               />
             </v-flex>
           </template>
@@ -86,22 +84,17 @@ import ServicePrevSm from '@/components/Services/ServicePrevSm'
       serviceCategories(){
         return this.$store.state.services.serviceCategories
       },
-      services(){
-        return this.$store.state.services.selectedService.services
-      },
       ...mapGetters([
         'selectedCategory',
         'selectedSubCategory'
       ])
     },
-    mounted() {
-      this.$store.commit('selectCategory', {name: 'Domestic', active: false});
-    },
+    
     methods:{
       selectTab(serviceCat){
         this.activeServiceCat = serviceCat;
 
-        this.$store.commit('selectCategory', {name: serviceCat.name, active: true});
+        this.$store.dispatch('selectCategory', {name: serviceCat.name, active: true});
       },
     },
     

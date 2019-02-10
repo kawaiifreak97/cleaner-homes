@@ -4,6 +4,8 @@ export const state = () => ({
   select: false,
   activeSubCategory: false,
   activeCategory: false,
+  selectedCat: {},
+  selectedSubCat: {},
   selectedService:{
     name: 'pls',
     services:{
@@ -50,7 +52,14 @@ export const getters = {
   selectedCategory: (state) => {
     let defaultCategory = {
       services:[
-        {name: ''}
+        {
+          name: '',
+          content: {
+            image: 'null',
+            name: 'null'
+          }
+
+        }
       ]
     }
 
@@ -64,13 +73,17 @@ export const getters = {
     return defaultCategory
   },
   selectedSubCategory: (state) => {
-      let selected = {}
+      let selected = {
+        name: 'hi'
+      }
+      console.log('hello???')
 
       for (let index = 0; index < state.serviceCategories.length; index++) {
-        const category = state.serviceCategories[index];
+        let category = state.serviceCategories[index];
+        console.log('hi')
 
         for (let i = 0; i < category.services.length; i++) {
-          const element = category.services[i];
+          let element = category.services[i];
           console.log('element ' + element.name + element.selected)
           if (element.selected) {  
             selected = element.content
@@ -80,7 +93,13 @@ export const getters = {
       }
       return selected
   },
-
+  selectedService (state) {
+      return (service) => {
+        let cat = state.serviceCategories.find( serviceCategory => { return serviceCategory.selected})
+        let selected = cat.services.find( selservice => { return selservice.name = service})
+        return selected
+      }
+  }
 }
 
 export const mutations = {
@@ -100,9 +119,14 @@ export const mutations = {
 
   },
   selectCategory(state,payload){
-    const justSelected = state.serviceCategories.find( element => { return element.name == payload.name })  
+
+    if (payload.prev) {
+      payload.prev.selected = false; 
+    }
+
+    let justSelected = state.serviceCategories.find( element => { return element.name == payload.name })  
     console.log('payload ' + payload.active + payload.name)
-    console.log('justSelec ' + justSelected.name )
+    console.log('justSelect cat ' + justSelected.name )
 
     if (payload.active) {
       justSelected.selected = true;
@@ -115,31 +139,30 @@ export const mutations = {
   },
   selectSubCategory(state, payload){
 
-    console.log('selected sub')
-    const prevSelectedCategory = state.serviceCategories.find( element => { return element.name == payload.category})
-    let prevSelectedSub = {}
+    if (payload.prev) {
+      payload.prev.selected = false
+    }
 
-      if (prevSelectedCategory) {
-        prevSelectedSub = prevSelectedCategory.services.find( element => { return element.selected })
-        if (prevSelectedSub) {
-          prevSelectedSub.selected = false;
-        }
-      } else{
-        console.log('not found')
-      }
+    console.log('payload cat ' + payload.category.name)
 
-    const justSelected = prevSelectedCategory.services.find( element => { return element.name == payload.subCategory}) 
+    let justSelected = payload.category.services.find( element => { 
+        console.log('subcat ' + element.name)
+        console.log('the subcat = ' + payload.subCategory)
+        return element.name == payload.subCategory}) 
+    
 
     if (justSelected) {
+      console.log('hi cat')
       if (payload.active) {
         justSelected.selected = true;
         state.activeSubCategory = true;
+        console.log('hi cat active')
       }else{
         justSelected.selected = false;
         state.activeSubCategory = false;
       }
     }
-    console.log(justSelected.name + justSelected.active)
+    console.log('working? ' + justSelected.name + payload.active)
 
     if (payload.pushRoute) {
       this.$router.push("/" + payload.subCategory);
@@ -150,11 +173,24 @@ export const mutations = {
 }
 
 export const actions = {
-  //payload has to be 2nd argument?
-  selectCategory({commit},payload){
+  selectCategory({getters, commit},payload){
+    const cat = getters.selectedCategory
     commit('selectCategory', {
       name: payload.name,
-      active: payload.active
+      active: payload.active,
+      prev: cat
+    })
+  },
+  selectSubCategory({getters, commit}, payload){
+    const subCat = getters.selectedSubCategory
+    const cat = getters.selectedCategory;
+    console.log('this sel subcat payload action ' + payload.subCategory + payload.active)
+    commit('selectSubCategory', {
+      subCategory: payload.subCategory,
+      category: cat,
+      active: payload.active,
+      pushRoute: payload.pushRoute,
+      prev: subCat
     })
   },
 }
