@@ -84,17 +84,11 @@ import ServicePrevSm from '@/components/Services/ServicePrevSm'
       serviceCategories(){
         return this.$store.state.services.serviceCategories
       },
-      ...mapGetters([
-        'selectedCategory',
-        'selectedSubCategory'
-      ])
     },
     
     methods:{
       selectTab(serviceCat){
         this.activeServiceCat = serviceCat;
-
-        this.$store.dispatch('selectCategory', {name: serviceCat.name, active: true});
       },
     },
     

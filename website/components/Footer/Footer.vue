@@ -2,6 +2,7 @@
   <v-footer
     height="auto"
     color="#fafafa"
+    class="mb-4"
   >
     <v-layout
       row
@@ -101,82 +102,6 @@
           </v-flex>
         </v-layout>
       </v-flex>
-
-      <v-flex 
-        xs9
-        my-3
-      > 
-        <div>
-          <v-divider />
-        </div>
-      </v-flex>
-
-      <v-flex xs9>
-        <v-layout
-          row
-          justify-space-between  
-        >
-          <v-flex 
-            xs4
-          >
-            <div class="text-xs-left">
-              <a
-                flat
-                class="accent--text"
-              >
-                Admin
-              </a>
-            </div>
-          </v-flex>
-          <v-spacer/>
-          <v-flex 
-            xs6
-            sm4
-            md3
-          >
-            <div class="text-xs-left ">
-              <v-dialog
-                v-model="dialog"
-                width="500"
-              >
-                <a
-                  slot="activator"
-                  flat
-                  class="accent--text"
-                >
-                  trademark
-                </a>
-
-                <v-card>
-                  <v-card-title
-                    class="headline grey lighten-2"
-                    primary-title
-                  >
-                    Privacy Policy
-                  </v-card-title>
-
-                  <v-card-text>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-                  </v-card-text>
-
-                  <v-divider/>
-
-                  <v-card-actions>
-                    <v-spacer/>
-                    <v-btn
-                      color="primary"
-                      flat
-                      @click="dialog = false"
-                    >
-                      I accept
-                    </v-btn>
-                  </v-card-actions>
-                </v-card>
-              </v-dialog>
-            </div>
-          </v-flex>
-        </v-layout>
-      </v-flex>     
     </v-layout>
   </v-footer>
 </template>

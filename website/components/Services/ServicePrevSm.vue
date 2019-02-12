@@ -8,11 +8,6 @@
       @click="selectService(id)"
     >
       {{ name }}
-      <v-icon 
-        :class="{selected : selectedService}" 
-        right
-        color="primary"
-      >cloud_upload</v-icon>
     </v-btn>
   </div>
 </template>
@@ -34,13 +29,12 @@ export default {
       selectedService: false,
       active: false,
     }
-  },
+  },  
   methods:{
     selectService(id){
-      this.$store.dispatch('selectSubCategory', {
-        subCategory: id,
-        active: true,
-        pushRoute: true
+      this.$store.commit('selectService', {
+        pushRoute: true,
+        service: id
       })
     }
   }

@@ -81,20 +81,20 @@
         'selectedCategory',
         'selectedSubCategory',
       ]),
-      activeCategory(){
-        return this.$store.state.services.activeCategory
-      },
-      activeSubCategory(){
-        return this.$store.state.services.activeSubCategory
+      selectedService(){
+        return this.$store.state.services.selectedService.name
       },
       step(){
         return this.$store.state.bookingForm.step
+      },
+      steps(){
+        return this.$store.state.bookingForm.steps
       },
       isValid () {
         switch (this.step) {
           case 1:
             let enabled = true;
-            if (this.activeCategory) {
+            if (this.selectedCategory) {
               enabled = false;
             }else{
               enabled = true
@@ -103,7 +103,7 @@
           break;
           case 2: 
             let subEnabled = true;
-            if (this.activeSubCategory) {
+            if (this.selectedSubCategory) {
               subEnabled = false;
             }else{
               subEnabled = true
@@ -117,9 +117,6 @@
             break;
         }
         return 'hi'
-      },
-      steps(){
-        return this.$store.state.bookingForm.steps
       },
       currentStep () {
         switch (this.step) {
@@ -138,7 +135,7 @@
           case 3: 
             return {
               component: 'UserInfo',
-              title: this.selectedSubCategory.name
+              title: this.selectedService
             }; 
           break;
           case 4: 
