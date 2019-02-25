@@ -1,9 +1,10 @@
 <template>
   <form 
+    name="booking form"
     method="post"
     data-netlify="true"
     data-netlify-honeypot="bot"
-    @submit.prevent="submit"
+    @submit.prevent="submit()"
   >
     <v-text-field
       v-model="name"
