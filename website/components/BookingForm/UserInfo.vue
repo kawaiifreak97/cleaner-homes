@@ -1,6 +1,7 @@
 <template>
   <form 
     netlify
+    netlify-honeypot="bot"
     @submit.prevent="submit"
   >
     <v-text-field
@@ -10,6 +11,16 @@
       label="Name"
       prepend-icon="face"
       required
+      @input="$v.name.$touch()"
+      @blur="$v.name.$touch()"
+    />
+    <v-text-field
+      v-model="otherName"
+      :error-messages="otherNameErrors"
+      class="hide"
+      label="Last name bot"
+      name="bot"
+      prepend-icon="face"
       @input="$v.name.$touch()"
       @blur="$v.name.$touch()"
     />
@@ -77,7 +88,7 @@
         @input="setDate()"/>
     </v-menu>
 
-    <v-btn type="submit">submit</v-btn>
+    <v-btn @click="submit">submit</v-btn>
   </form>
 </template>
 
@@ -99,6 +110,7 @@
 
     validations: {
       name: { required, alphaSpace,  maxLength: maxLength(15) },
+      otherName: { alphaSpace, maxLength: maxLength(10)  },
       company: { alphaSpace, maxLength: maxLength(15) },
       email: { required, email },
       number: { required, numeric},
@@ -107,6 +119,7 @@
     },
     data: () => ({
       name: '',
+      otherName:'',
       email: '',
       date:'',
       menu2:'',
@@ -124,6 +137,13 @@
     }),
 
     computed: {
+      otherNameErrors(){
+        const errors = []
+        if (!this.$v.otherName.$dirty) return errors
+        !this.$v.otherName.alphaNumSpace && errors.push('Feild can only contain numbers and letters')
+        !this.$v.otherName.maxLength && errors.push('Name must be at most 10 characters long')
+        return errors
+      },
       locationErrors () {
         const errors = []
         if (!this.$v.location.$dirty) return errors
@@ -181,3 +201,8 @@
     }
   }
 </script>
+<style scoped>
+.hide{
+  display: none;
+}
+</style>
