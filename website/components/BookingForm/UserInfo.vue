@@ -1,7 +1,8 @@
 <template>
   <form 
-    netlify
-    netlify-honeypot="bot"
+    method="post"
+    data-netlify="true"
+    data-netlify-honeypot="bot"
     @submit.prevent="submit"
   >
     <v-text-field
@@ -88,7 +89,9 @@
         @input="setDate()"/>
     </v-menu>
 
-    <v-btn @click="submit">submit</v-btn>
+    <v-btn 
+      type="submit"
+    >submit</v-btn>
   </form>
 </template>
 
