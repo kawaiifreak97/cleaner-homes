@@ -14,7 +14,6 @@
         v-text="step"
       />
     </v-card-title>
-
     <v-container>
       <v-window 
         v-model="step"
@@ -30,19 +29,16 @@
         </v-window-item>
       </v-window>
     </v-container>
-
     <v-divider/>
-
     <v-card-actions v-show="step <= 3">
       <v-btn
-        :disabled="step === 1 "
+        :disabled="backBtn"
         flat
         @click="decrement()"
       >
         Back
       </v-btn>
-      <v-spacer/>
-
+      <v-spacer/> 
       <v-btn
         v-if="step <= 2"
         :disabled="isValid"
@@ -148,6 +144,30 @@
             return 'sorry something went wrong'
           break;
         }
+      },
+      backBtn(){
+        switch (this.step) {
+          case 1:
+            return true
+            break;
+          case 2: 
+            return false
+            break;
+          case 3: 
+            let disabled = false;
+            if (this.$store.state.services.fromServicesSection) {
+              disabled = true;
+            }else{
+              disabled = false
+            }
+            return disabled
+            break;
+
+          default:
+            return 'sorry something went wrong'
+            break;
+        }
+        
       }
     },
     methods: {

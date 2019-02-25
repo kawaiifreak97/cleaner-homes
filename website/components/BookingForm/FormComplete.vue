@@ -27,7 +27,7 @@
       <v-btn
         nuxt
         to="/"
-        color="primary"
+        color="success"
       >
         Home
       </v-btn>
@@ -35,7 +35,7 @@
   </v-layout>
 </template>
 <script>
-import logo from '@/assets/svg/Asset.svg'
+import logo from '@/assets/svg/test.svg'
 export default {
   components:{
       logo

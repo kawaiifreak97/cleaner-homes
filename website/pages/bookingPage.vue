@@ -34,7 +34,11 @@
 import BookingForm from '@/components/BookingForm/BookingForm.vue'
 export default {
   layout: 'bookingPage',
+  scrollToTop: true,
   fetch (context) {
+
+    context.store.dispatch('resetForm')
+
     if (context.store.state.storyblok.hasFetched) {
       console.log('hasFetched data')
       return 'has fetched'

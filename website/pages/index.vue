@@ -51,6 +51,8 @@
 <script>
   export default{
     fetch (context) {
+      context.store.dispatch('resetForm');
+
       if (context.store.state.storyblok.hasFetched) {
         console.log('hasFetched data')
         return 'has fetched'

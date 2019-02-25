@@ -124,26 +124,7 @@ export default {
         {
           name: 'services'
         },
-        {
-          name: 'privacy policy',
-          privacy: true
-        },
-        {
-          name: 'terms & conditions',
-          privacy: true
-        }
       ],
-      socialLinks:[
-        {
-          name: 'Fb'
-        },
-        {
-          name: 'email'
-        },
-        {
-          name: 'twitter'
-        }
-      ]
     }
   },
   computed: mapState({

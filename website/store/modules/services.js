@@ -1,8 +1,9 @@
 export const state = () => ({
   title: 'Services',
-  step: 3,
+  step: 4,
   select: false,
   selectedService:{},
+  fromServicesSection: false,
   serviceCategories:[
     {
       name: 'Commercial',
@@ -47,28 +48,26 @@ export const getters = {
 
     if (selected) {
       defaultCategory = selected
-    } else {
-    }
+    } 
     return defaultCategory
   },
   selectedSubCategory: (state) => {
 
-      let selected = null;
+    let selected = null;
 
-      for (let index = 0; index < state.serviceCategories.length; index++) {
-        const category = state.serviceCategories[index];
+    for (let index = 0; index < state.serviceCategories.length; index++) {
+      const category = state.serviceCategories[index];
 
-        for (let i = 0; i < category.services.length; i++) {
-          const element = category.services[i];
-          console.log(element.name)
-          console.log(element)
-          if (element.content.selected) {  
-            selected = element.content
-            console.log('selectedSub ' + element.name + element.selected)
-          }
+      for (let i = 0; i < category.services.length; i++) {
+        const element = category.services[i];
+
+        if (element.content.selected) {  
+          selected = element.content
+          console.log('selectedSub ' + element.name + element.selected)
         }
       }
-      return selected
+    }
+    return selected
   },
   selectedService (state) {
       return (service) => {
@@ -130,22 +129,6 @@ export const mutations = {
       payload.prev.selected = false
     }
 
-    // let selected = null;
-
-    //   for (let index = 0; index < state.serviceCategories.length; index++) {
-    //     const category = state.serviceCategories[index];
-
-    //     for (let i = 0; i < category.services.length; i++) {
-    //       const element = category.services[i];
-    //       console.log(element.name)
-    //       console.log(element)
-    //       if (element.content.selected) {  
-    //         selected = element.content
-    //         console.log('selectedSub ' + element.name + element.selected)
-    //       }
-    //     }
-    //   }
-
     let justSelected = payload.category.services.find( element => { return element.name == payload.subCategory}) 
 
     if (justSelected) {
@@ -157,15 +140,36 @@ export const mutations = {
       }
     }
 
-    if (payload.pushRoute) {
-      this.$router.push("/" + payload.subCategory);
-    }
+    state.fromServicesSection = false;
 
+  },
+  resetCat(state){
+    state.serviceCategories.forEach(cat => {
+      cat.selected = false
+    });
+  },
+  resetSubCat(state){
+    for (let index = 0; index < state.serviceCategories.length; index++) {
+      const category = state.serviceCategories[index];
+
+      for (let i = 0; i < category.services.length; i++) {
+        const element = category.services[i];
+
+        element.selected = false
+
+      }
+    }
   },
   selectService(state,payload){
     if (payload.pushRoute) {
       this.$router.push("/" + payload.service);
     } 
+  },
+  fromServicesSection(state){
+    state.fromServicesSection = true;
+  },
+  resetStep(state){
+    state.step = 1;
   }
   
 }
@@ -190,6 +194,27 @@ export const actions = {
       prev: subCat
     })
   },
+  resetCat({commit}){
+
+    commit('resetCat')
+
+    
+  },
+  resetSubCat({commit}){
+
+    commit('resetSubCat')
+
+  },
+  setForm({dispatch}){
+    if (state.fromServicesSection) {
+      dispatch('resetForm')
+    }
+  },
+  resetForm({dispatch, commit}){
+    dispatch('resetCat');
+    dispatch('resetSubCat');
+    commit('resetStep');
+  }
 }
 
 

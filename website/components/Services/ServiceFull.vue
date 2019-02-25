@@ -117,9 +117,8 @@ export default {
   },
   methods: {
     selectSub(){
-      //makes booking form
-      console.log('fosd')
       this.$store.commit('stepIsThree')
+      this.$store.commit('fromServicesSection')
     }
   },
 }

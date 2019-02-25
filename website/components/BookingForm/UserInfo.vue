@@ -1,9 +1,12 @@
 <template>
-  <form>
+  <form 
+    netlify
+    @submit.prevent="submit"
+  >
     <v-text-field
       v-model="name"
       :error-messages="nameErrors"
-      :counter="10"
+      :counter="15"
       label="Name"
       prepend-icon="face"
       required
@@ -13,6 +16,7 @@
     <v-text-field
       v-model="company"
       :error-messages="companyErrors"
+      :counter="15"
       prepend-icon="business_center"
       label="Company name"
       @input="$v.company.$touch()"
@@ -39,6 +43,7 @@
     <v-text-field
       v-model="location"
       :error-messages="locationErrors"
+      :counter="25"
       prepend-icon="add_location"
       label="Job location"
       required
@@ -72,26 +77,34 @@
         @input="setDate()"/>
     </v-menu>
 
-    <v-btn @click="submit">submit</v-btn>
+    <v-btn type="submit">submit</v-btn>
   </form>
 </template>
 
 <script>
   import { validationMixin } from 'vuelidate'
-  import { required, maxLength, email, alpha, numeric, alphaNum } from 'vuelidate/lib/validators'
+  import { required, maxLength, email, numeric,} from 'vuelidate/lib/validators'
+
+  function alphaSpace (value) {
+    let reg = /^[a-zA-Z ]*$/;
+    return reg.test(value)
+  }
+  function alphaNumSpace (value) {
+    let reg = /^[a-zA-Z0-9 ]*$/;
+    return reg.test(value)
+  }
 
   export default {
     mixins: [validationMixin],
 
     validations: {
-      name: { required, alpha, maxLength: maxLength(15) },
-      company: { alpha, maxLength: maxLength(10) },
+      name: { required, alphaSpace,  maxLength: maxLength(15) },
+      company: { alphaSpace, maxLength: maxLength(15) },
       email: { required, email },
       number: { required, numeric},
       date: { required },
-      location:{ required, alphaNum, maxLength: maxLength(20) },
+      location:{ required, alphaNumSpace, maxLength: maxLength(25) },
     },
-
     data: () => ({
       name: '',
       email: '',
@@ -115,7 +128,8 @@
         const errors = []
         if (!this.$v.location.$dirty) return errors
         !this.$v.location.required && errors.push('Job location is required')
-        !this.$v.location.alphaNum && errors.push('Feild can only contain numbers and letters')
+        !this.$v.location.alphaNumSpace && errors.push('Feild can only contain numbers and letters')
+        !this.$v.name.maxLength && errors.push('Name must be at most 25 characters long')
         return errors
       },
       dateErrors () {
@@ -129,15 +143,14 @@
         if (!this.$v.name.$dirty) return errors
         !this.$v.name.maxLength && errors.push('Name must be at most 15 characters long')
         !this.$v.name.required && errors.push('Name is required.')
-        !this.$v.name.alpha && errors.push('Name can only contain letters')
+        !this.$v.name.alphaSpace && errors.push('Name can only contain letters.')
         return errors
       },
       companyErrors () {
         const errors = []
         if (!this.$v.company.$dirty) return errors
-        !this.$v.company.maxLength && errors.push('Company name must be at most 10 characters long')
-        !this.$v.company.required && errors.push('Name is required.')
-        !this.$v.company.alpha && errors.push('Name can only contain letters')
+        !this.$v.company.maxLength && errors.push('Company name must be at most 15 characters long')
+        !this.$v.company.alphaSpace && errors.push('Company name can only contain letters')
         return errors
       },
       emailErrors () {
@@ -158,11 +171,12 @@
 
     methods: {
       submit () {
-        this.$v.$touch()
+        this.$v.$touch();
+        this.$store.commit('stepIncrement')
       },
       setDate(){
         this.menu2 = false;
-        this.$store.commit('setDate', this.date)
+        // this.$store.commit('setDate', this.date)
       }
     }
   }

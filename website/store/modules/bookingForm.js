@@ -51,18 +51,16 @@ export const mutations = {
     ++state.step
   },
   stepDecrement(state){
-    --state.step
+    --state.step;
   }
 }
 
 export const actions = {
-  
-  async resetCategory(context){
-    const sub = context.getters.selectedSubCategory;
-
-    context.commit('resetCategory', {
-      subCategory: sub
-    })
+  stepDecrement(context, state){
+    if (state.step == 2) {
+      context.dispatch('resetSubCat')
+    }
+    context.commit('stepDecrement')
   },
 }
 
