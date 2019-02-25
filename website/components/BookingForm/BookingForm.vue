@@ -99,6 +99,8 @@
           break;
           case 2: 
             let subEnabled = true;
+            console.log('case 2:')
+            console.log(this.selectedSubCategory)
             if (this.selectedSubCategory) {
               subEnabled = false;
             }else{

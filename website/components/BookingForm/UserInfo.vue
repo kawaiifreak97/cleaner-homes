@@ -2,7 +2,7 @@
   <form 
     name="booking-form"
     method="post"
-    data-netlify="true"
+    netlify
     data-netlify-honeypot="bot"
     @submit.prevent="submit()"
   >
