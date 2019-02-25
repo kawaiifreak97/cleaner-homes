@@ -1,6 +1,6 @@
 <template>
   <form 
-    name="booking form"
+    name="booking-form"
     method="post"
     data-netlify="true"
     data-netlify-honeypot="bot"
