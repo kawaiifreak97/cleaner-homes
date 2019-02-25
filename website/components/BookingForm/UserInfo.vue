@@ -20,7 +20,7 @@
       v-model="otherName"
       :error-messages="otherNameErrors"
       class="hide"
-      label="Last name bot"
+      label="bot"
       name="bot"
       prepend-icon="face"
       @input="$v.name.$touch()"
