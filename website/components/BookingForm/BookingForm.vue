@@ -90,7 +90,7 @@
         switch (this.step) {
           case 1:
             let enabled = true;
-            if (this.selectedCategory) {
+            if (this.selectedCategory.selected) {
               enabled = false;
             }else{
               enabled = true
@@ -99,8 +99,8 @@
           break;
           case 2: 
             let subEnabled = true;
-            console.log('case 2:')
-            console.log(this.selectedSubCategory)
+            // console.log('case 2:')
+            // console.log(this.selectedSubCategory)
             if (this.selectedSubCategory) {
               subEnabled = false;
             }else{
@@ -177,7 +177,7 @@
         this.$store.commit('stepIncrement')
       },
       decrement(){
-        this.$store.commit('stepDecrement')
+        this.$store.dispatch('stepDecrement')
       }
     }
   }

@@ -4,17 +4,21 @@ export const state = () => ({
   select: false,
   selectedService:{},
   fromServicesSection: false,
+  activeCat: false,
+  activeSubCat: false,
   serviceCategories:[
     {
       name: 'Commercial',
       link: 'commercial',
       selected: false,
+      active: false,
       services:[]
     },
     {
       name: 'Domestic',
       link: '',
       selected: false,
+      active: false,
       services:[
         {
           name: 'wfindows',
@@ -30,6 +34,7 @@ export const state = () => ({
       name: 'Farm spraying',
       link: 'farm-spraying',
       selected: false,
+      active: false,
       services:[
         {
           name: 'gorse',
@@ -48,7 +53,18 @@ export const getters = {
 
     if (selected) {
       defaultCategory = selected
-    } 
+    } else{
+      defaultCategory = 
+        { 
+          name: 'no category selected',
+          services:[
+            {
+              name: 'please select category',
+              selected: false,
+            }
+          ] 
+        }
+    }
     return defaultCategory
   },
   selectedSubCategory: (state) => {
@@ -63,7 +79,7 @@ export const getters = {
 
         if (element.content.selected) {  
           selected = element.content
-          console.log('selectedSub ' + element.name + element.selected)
+          // console.log('selectedSub ' + element.name + element.selected)
         }
       }
     }
@@ -103,60 +119,73 @@ export const mutations = {
     state.serviceCategories[1].services = domestic;
     state.serviceCategories[2].services = farmspraying;
 
-    console.log('services data set' + state.serviceCategories[0].name + state.serviceCategories[0].services[0].name )
-
   },
   selectCategory(state,payload){
 
+    let cat = state.serviceCategories.find( element => { return element.name == payload.name })  
+
     if (payload.prev) {
-      payload.prev.selected = false; 
+      if(payload.prev.name == cat.name){
+      }else{
+        payload.prev.selected = false; 
+        payload.prev.active = false;
+      }
     }
 
-    let justSelected = state.serviceCategories.find( element => { return element.name == payload.name })  
+    cat.selected = !cat.selected;
 
-    if (payload.active) {
-      justSelected.selected = true;
-      state.activeCategory = true;
-    } else {
-      justSelected.selected = false;
-      state.activeCategory = false;
+    if (cat.selected) {
+      cat.active = true;
+      state.activeCat = true;
+    }else{
+      cat.active = false;
+      state.activeCat = false;
     }
 
   },
   selectSubCategory(state, payload){
 
+    let sub = payload.category.services.find( element => { return element.name == payload.subCategory}) 
+
     if (payload.prev) {
-      payload.prev.selected = false
+      if(payload.prev.name == sub.content.name){
+        console.log('already selected')
+      }else{
+        payload.prev.selected = false; 
+        payload.prev.active = false;
+      }
     }
 
-    let justSelected = payload.category.services.find( element => { return element.name == payload.subCategory}) 
+    sub.content.selected = !sub.content.selected;
 
-    if (justSelected) {
-      if (payload.active) {
-        justSelected.content.selected = true;
-        state.selectedService = justSelected
-      }else{
-        justSelected.content.selected = false;
-      }
+    if (sub.content.selected) {
+      sub.content.active = true;
+      state.activeSubCat = true;
+      state.selectedService = sub.content;
+    }else{
+      sub.content.active = false;
+      state.activeSubCat = false;
     }
 
     state.fromServicesSection = false;
 
   },
   resetCat(state){
+    state.activeCat = false;
     state.serviceCategories.forEach(cat => {
-      cat.selected = false
+      cat.selected = false;
+      cat.active = false;
     });
   },
   resetSubCat(state){
+    state.activeSubCat = false;
     for (let index = 0; index < state.serviceCategories.length; index++) {
-      const category = state.serviceCategories[index];
+      let category = state.serviceCategories[index];
 
       for (let i = 0; i < category.services.length; i++) {
-        const element = category.services[i];
-
-        element.selected = false
-
+        let element = category.services[i].content;
+        element.selected = false;
+        element.active = false;
       }
     }
   },
@@ -177,27 +206,26 @@ export const mutations = {
 export const actions = {
   selectCategory({getters, commit},payload){
     const cat = getters.selectedCategory
-    commit('selectCategory', {
-      name: payload.name,
-      active: payload.active,
-      prev: cat
-    })
+      commit('selectCategory', {
+        name: payload.name,
+        prev: cat
+      })
   },
   selectSubCategory({getters, commit}, payload){
     const subCat = getters.selectedSubCategory
     const cat = getters.selectedCategory;
+
     commit('selectSubCategory', {
       subCategory: payload.subCategory,
       category: cat,
-      active: payload.active,
       pushRoute: payload.pushRoute,
       prev: subCat
     })
+
   },
   resetCat({commit}){
 
     commit('resetCat')
-
     
   },
   resetSubCat({commit}){
@@ -210,10 +238,11 @@ export const actions = {
       dispatch('resetForm')
     }
   },
-  resetForm({dispatch, commit}){
-    dispatch('resetCat');
-    dispatch('resetSubCat');
-    commit('resetStep');
+  async resetForm({dispatch, commit}){
+    
+    await dispatch('resetSubCat');
+    await dispatch('resetCat');
+    await commit('resetStep');
   }
 }
 

@@ -2,15 +2,16 @@
   <form 
     name="booking-form"
     method="post"
-    netlify
+    data-netlify="true"
     data-netlify-honeypot="bot"
-    @submit.prevent="submit()"
+    @submit.prevent="submit"
   >
     <v-text-field
       v-model="name"
       :error-messages="nameErrors"
       :counter="15"
       label="Name"
+      name="Name"
       prepend-icon="face"
       required
       @input="$v.name.$touch()"
@@ -32,13 +33,15 @@
       :counter="15"
       prepend-icon="business_center"
       label="Company name"
+      name="company"
       @input="$v.company.$touch()"
       @blur="$v.company.$touch()"
     />
     <v-text-field
       v-model="email"
       :error-messages="emailErrors"
-      label="E-mail"
+      label="Email"
+      name="email"
       prepend-icon="email"
       required
       @input="$v.email.$touch()"
@@ -49,6 +52,7 @@
       :error-messages="numberErrors"
       prepend-icon="call"
       label="Phone number"
+      name="number"
       required
       @input="$v.number.$touch()"
       @blur="$v.number.$touch()"
@@ -59,6 +63,7 @@
       :counter="25"
       prepend-icon="add_location"
       label="Job location"
+      name="location"
       required
       @input="$v.location.$touch()"
       @blur="$v.location.$touch()"
@@ -79,6 +84,7 @@
         v-model="date"
         :error-messages="dateErrors"
         label="Date of job commence"
+        name="date"
         prepend-icon="event"
         readonly
         required
@@ -97,6 +103,7 @@
 </template>
 
 <script>
+  import axios from "axios";
   import { validationMixin } from 'vuelidate'
   import { required, maxLength, email, numeric,} from 'vuelidate/lib/validators'
 
@@ -130,14 +137,7 @@
       location: '',
       number: '',
       company: '',
-      select: null,
-      items: [
-        'Item 1',
-        'Item 2',
-        'Item 3',
-        'Item 4'
-      ],
-      checkbox: false
+    
     }),
 
     computed: {
@@ -194,13 +194,36 @@
     },
 
     methods: {
+      encode (data) {
+        return Object.keys(data)
+          .map(
+            key => `${encodeURIComponent(key)}=${encodeURIComponent(data[key])}`
+          )
+          .join("&");
+      },
       submit () {
         this.$v.$touch();
-        this.$store.commit('stepIncrement')
+        if (this.$v.$invalid) {
+          this.submitStatus = 'ERROR'
+        } else {
+          // do your submit logic here
+          this.$store.commit('stepIncrement');
+          const axiosConfig = {
+          header: { "Content-Type": "application/x-www-form-urlencoded" }
+          };
+          axios.post(
+            "/",
+            this.encode({
+              "form-name": "booking-form",
+              ...this.form
+            }),
+            axiosConfig
+          );
+        }
+        
       },
       setDate(){
         this.menu2 = false;
-        // this.$store.commit('setDate', this.date)
       }
     }
   }

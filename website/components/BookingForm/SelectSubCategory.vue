@@ -1,34 +1,31 @@
 <template>
-  <v-item-group>
-    <v-layout 
-      justify-start
-      row 
-      wrap
-      my-2 
-      fill-height
+  <v-layout 
+    v-if="this.$store.state.services.activeCat"
+    justify-start
+    row 
+    wrap
+    my-2 
+    fill-height
+  >
+    <v-flex
+      v-for="subCategory in selectedCategory.services"
+      :key="subCategory.name"
+      xs12
+      sm7 
     >
-      <v-flex
-        v-for="subCategory in selectedCategory.services"
-        :key="subCategory.name"
-        xs12
-        sm7 
+      
+      <v-btn
+        :color="subCategory.content.active ? 'secondary' : 'white'"
+        :class="{'white--text': subCategory.content.active}"
+        :value="subCategory.content.active"
+        class="accent--text"
+        round
+        @click="select(subCategory.name)"
       >
-        <v-item>
-          <v-btn
-            slot-scope="{ active, toggle }"
-            :color="active ? 'secondary' : 'white'"
-            :class="{'white--text': active}"
-            :value="active"
-            class="accent--text"
-            round
-            @click="select(toggle, active, selectedCategory.name, subCategory.name)"
-          >
-            {{ subCategory.name }}
-          </v-btn>
-        </v-item>
-      </v-flex>
-    </v-layout>
-  </v-item-group>
+        {{ subCategory.name }}
+      </v-btn>
+    </v-flex>
+  </v-layout>
 </template>
 
 <script>
@@ -39,15 +36,9 @@ export default {
     },
   },
   methods:{
-    select(toggle, active, Category, subCategory){
-
-      toggle();
-
-      let changeActive = !active
-
+    select(subCategory){
       this.$store.dispatch('selectSubCategory',  {
         subCategory: subCategory,
-        active: changeActive,
       })
 
     }

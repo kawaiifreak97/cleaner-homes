@@ -56,9 +56,10 @@ export const mutations = {
 }
 
 export const actions = {
-  stepDecrement(context, state){
-    if (state.step == 2) {
-      context.dispatch('resetSubCat')
+  stepDecrement(context){
+    if (context.state.step == 2) {
+      context.dispatch('resetForm')
+      console.log('hi decrement')
     }
     context.commit('stepDecrement')
   },
