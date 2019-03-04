@@ -230,7 +230,7 @@
         
       },
       setDate(){
-        this.menu2 = false;
+        this.form.menu2 = false;
       }
     }
   }
