@@ -2,8 +2,6 @@
   <form 
     name="booking-form"
     method="post"
-    data-netlify="true"
-    data-netlify-honeypot="bot"
     @submit.prevent="submit"
   >
     <v-text-field
@@ -17,6 +15,7 @@
       @input="$v.form.name.$touch()"
       @blur="$v.form.name.$touch()"
     />
+    <input type="hidden" name="booking-form" value="le-form" />
     <v-text-field
       v-model="form.otherName"
       :error-messages="otherNameErrors"
