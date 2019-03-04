@@ -7,70 +7,70 @@
     @submit.prevent="submit"
   >
     <v-text-field
-      v-model="name"
+      v-model="form.name"
       :error-messages="nameErrors"
       :counter="15"
       label="Name"
-      name="Name"
+      name="name"
       prepend-icon="face"
       required
-      @input="$v.name.$touch()"
-      @blur="$v.name.$touch()"
+      @input="$v.form.name.$touch()"
+      @blur="$v.form.name.$touch()"
     />
     <v-text-field
-      v-model="otherName"
+      v-model="form.otherName"
       :error-messages="otherNameErrors"
       class="hide"
       label="bot"
       name="bot"
       prepend-icon="face"
-      @input="$v.name.$touch()"
-      @blur="$v.name.$touch()"
+      @input="$v.form.otherName.$touch()"
+      @blur="$v.form.otherName.$touch()"
     />
     <v-text-field
-      v-model="company"
+      v-model="form.company"
       :error-messages="companyErrors"
       :counter="15"
       prepend-icon="business_center"
       label="Company name"
       name="company"
-      @input="$v.company.$touch()"
-      @blur="$v.company.$touch()"
+      @input="$v.form.company.$touch()"
+      @blur="$v.form.company.$touch()"
     />
     <v-text-field
-      v-model="email"
+      v-model="form.email"
       :error-messages="emailErrors"
       label="Email"
       name="email"
       prepend-icon="email"
       required
-      @input="$v.email.$touch()"
-      @blur="$v.email.$touch()"
+      @input="$v.form.email.$touch()"
+      @blur="$v.form.email.$touch()"
     />
     <v-text-field
-      v-model="number"
+      v-model="form.number"
       :error-messages="numberErrors"
       prepend-icon="call"
       label="Phone number"
       name="number"
       required
-      @input="$v.number.$touch()"
-      @blur="$v.number.$touch()"
+      @input="$v.form.number.$touch()"
+      @blur="$v.form.number.$touch()"
     />
     <v-text-field
-      v-model="location"
+      v-model="form.location"
       :error-messages="locationErrors"
       :counter="25"
       prepend-icon="add_location"
       label="Job location"
       name="location"
       required
-      @input="$v.location.$touch()"
-      @blur="$v.location.$touch()"
+      @input="$v.form.location.$touch()"
+      @blur="$v.form.location.$touch()"
     />
     <v-menu
       :close-on-content-click="false"
-      v-model="menu2"
+      v-model="form.menu2"
       :nudge-right="40"
       lazy
       transition="scale-transition"
@@ -81,18 +81,18 @@
     >
       <v-text-field
         slot="activator"
-        v-model="date"
+        v-model="form.date"
         :error-messages="dateErrors"
         label="Date of job commence"
         name="date"
         prepend-icon="event"
         readonly
         required
-        @input="$v.date.$touch()"
-        @blur="$v.date.$touch()"
+        @input="$v.form.date.$touch()"
+        @blur="$v.form.date.$touch()"
       />
       <v-date-picker 
-        v-model="date" 
+        v-model="form.date" 
         @input="setDate()"/>
     </v-menu>
 
@@ -120,75 +120,79 @@
     mixins: [validationMixin],
 
     validations: {
-      name: { required, alphaSpace,  maxLength: maxLength(15) },
-      otherName: { alphaSpace, maxLength: maxLength(10)  },
-      company: { alphaSpace, maxLength: maxLength(15) },
-      email: { required, email },
-      number: { required, numeric},
-      date: { required },
-      location:{ required, alphaNumSpace, maxLength: maxLength(25) },
+      form:{
+        name: { required, alphaSpace,  maxLength: maxLength(15) },
+        otherName: { alphaSpace, maxLength: maxLength(10)  },
+        company: { alphaSpace, maxLength: maxLength(15) },
+        email: { required, email },
+        number: { required, numeric},
+        date: { required },
+        location:{ required, alphaNumSpace, maxLength: maxLength(25) },
+      }
+      
     },
     data: () => ({
-      name: '',
-      otherName:'',
-      email: '',
-      date:'',
-      menu2:'',
-      location: '',
-      number: '',
-      company: '',
-    
+      form:{
+        name: '',
+        otherName:'',
+        email: '',
+        date:'',
+        menu2:'',
+        location: '',
+        number: '',
+        company: '',
+      },
     }),
 
     computed: {
       otherNameErrors(){
         const errors = []
-        if (!this.$v.otherName.$dirty) return errors
-        !this.$v.otherName.alphaNumSpace && errors.push('Feild can only contain numbers and letters')
-        !this.$v.otherName.maxLength && errors.push('Name must be at most 10 characters long')
+        if (!this.$v.form.otherName.$dirty) return errors
+        !this.$v.form.otherName.alphaNumSpace && errors.push('Feild can only contain numbers and letters')
+        !this.$v.form.otherName.maxLength && errors.push('Name must be at most 10 characters long')
         return errors
       },
       locationErrors () {
         const errors = []
-        if (!this.$v.location.$dirty) return errors
-        !this.$v.location.required && errors.push('Job location is required')
-        !this.$v.location.alphaNumSpace && errors.push('Feild can only contain numbers and letters')
-        !this.$v.name.maxLength && errors.push('Name must be at most 25 characters long')
+        if (!this.$v.form.location.$dirty) return errors
+        !this.$v.form.location.required && errors.push('Job location is required')
+        !this.$v.form.location.alphaNumSpace && errors.push('Feild can only contain numbers and letters')
+        !this.$v.form.name.maxLength && errors.push('Name must be at most 25 characters long')
         return errors
       },
       dateErrors () {
         const errors = []
-        if (!this.$v.date.$dirty) return errors
-        !this.$v.date.required && errors.push('Date is required')
+        if (!this.$v.form.date.$dirty) return errors
+        !this.$v.form.date.required && errors.push('Date is required')
         return errors
       },
       nameErrors () {
         const errors = []
-        if (!this.$v.name.$dirty) return errors
-        !this.$v.name.maxLength && errors.push('Name must be at most 15 characters long')
-        !this.$v.name.required && errors.push('Name is required.')
-        !this.$v.name.alphaSpace && errors.push('Name can only contain letters.')
+        if (!this.$v.form.name.$dirty) return errors
+        !this.$v.form.name.maxLength && errors.push('Name must be at most 15 characters long')
+        !this.$v.form.name.required && errors.push('Name is required.')
+        !this.$v.form.name.alphaSpace && errors.push('Name can only contain letters.')
         return errors
       },
       companyErrors () {
         const errors = []
-        if (!this.$v.company.$dirty) return errors
-        !this.$v.company.maxLength && errors.push('Company name must be at most 15 characters long')
-        !this.$v.company.alphaSpace && errors.push('Company name can only contain letters')
+        if (!this.$v.form.company.$dirty) return errors
+        !this.$v.form.company.maxLength && errors.push('Company name must be at most 15 characters long')
+        !this.$v.form.company.alphaSpace && errors.push('Company name can only contain letters')
         return errors
       },
       emailErrors () {
         const errors = []
-        if (!this.$v.email.$dirty) return errors
-        !this.$v.email.email && errors.push('Must be valid e-mail')
-        !this.$v.email.required && errors.push('E-mail is required')
+        if (!this.$v.form.email.$dirty) return errors
+        !this.$v.form.email.email && errors.push('Must be valid e-mail')
+        !this.$v.form.email.required && errors.push('E-mail is required')
         return errors
       },
       numberErrors () {
         const errors = []
-        if (!this.$v.number.$dirty) return errors
-        !this.$v.number.numeric && errors.push('Must be numeric value')
-        !this.$v.number.required && errors.push('Phone number is required')
+        if (!this.$v.form.number.$dirty) return errors
+        !this.$v.form.number.numeric && errors.push('Must be numeric value')
+        !this.$v.form.number.required && errors.push('Phone number is required')
         return errors
       }
     },
