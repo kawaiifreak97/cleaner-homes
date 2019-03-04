@@ -18,8 +18,8 @@
     <v-text-field
       class="hide"
       type="hidden" 
-      name="booking-form" 
-      value="le-form" />
+      name="form-name" 
+      value="booking-form" />
     <v-text-field
       v-model="form.otherName"
       :error-messages="otherNameErrors"
