@@ -15,7 +15,11 @@
       @input="$v.form.name.$touch()"
       @blur="$v.form.name.$touch()"
     />
-    <input type="hidden" name="booking-form" value="le-form" />
+    <v-text-field
+      class="hide"
+      type="hidden" 
+      name="booking-form" 
+      value="le-form" />
     <v-text-field
       v-model="form.otherName"
       :error-messages="otherNameErrors"
