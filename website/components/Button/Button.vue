@@ -7,10 +7,9 @@
     color="white"
     ma-0
   >
-    <span class="primary--text btn-text" >
+    <span class="primary--text btn-text">
       <slot> Book now </slot> 
     </span>
-    
   </v-btn>
 </template>
 

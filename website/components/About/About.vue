@@ -17,9 +17,7 @@
     >
       <p> {{ description }}</p>
     </v-flex>
-
   </v-layout>
-  
 </template>
 
 <script>

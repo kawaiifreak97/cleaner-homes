@@ -16,7 +16,8 @@
         >
           <v-flex 
             xs4
-            sm3>
+            sm3
+          >
             <v-layout column>
               <v-flex mb-2>
                 <h4>Company</h4>
@@ -26,7 +27,8 @@
                 :key="link.name"
               >
                 <div
-                  v-if="link.privacy" >
+                  v-if="link.privacy"
+                >
                   <div>
                     <v-dialog
                       v-model="dialog"
@@ -40,11 +42,11 @@
                       </a>
                     </v-dialog>
                   </div>
-                  
                 </div>
                 <a
                   v-else-if="!link.privacy"
-                  class="footer-links black--text">
+                  class="footer-links black--text"
+                >
                   {{ link.name }}
                 </a>
               </v-flex>
@@ -52,7 +54,8 @@
           </v-flex>
           <v-flex 
             xs4
-            sm3 >
+            sm3
+          >
             <v-layout column>
               <v-flex mb-2>
                 <h4>Contact us</h4>
@@ -80,12 +83,12 @@
           </v-flex>
           <v-flex 
             xs1
-            sm3>
+            sm3
+          >
             <v-layout 
               class="text-xs-center"
             >
-              <v-flex 
-              >
+              <v-flex>
                 <div 
                   class="hidden-xs-only text-xs-center"
                 >
@@ -94,7 +97,7 @@
                     href="/"
                     class="logo"
                   >
-                    <work/>
+                    <work />
                   </a>
                 </div>
               </v-flex>

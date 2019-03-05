@@ -6,7 +6,6 @@
   >
     <v-flex xs11>
       <Title>{{ title }}</Title>
-      
     </v-flex>
 
     <v-flex xs12>
@@ -30,11 +29,12 @@
               <Testimonial
                 :name="testimonial.content.name"
                 :company="testimonial.content.company"
-                :quote="testimonial.content.quote"/>
+                :quote="testimonial.content.quote"
+              />
             </v-flex>
           </v-layout>
         </div>
-        <div class="swiper-pagination"/>
+        <div class="swiper-pagination" />
       </div>
     </v-flex>
   </v-layout>

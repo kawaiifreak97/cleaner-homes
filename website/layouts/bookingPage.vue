@@ -1,15 +1,15 @@
 <template>
-  <v-app >
+  <v-app>
     <Header 
-      :HeaderColor="fillHeader"
+      :header-color="fillHeader"
       app 
     />
     <v-content 
       class="behind"
     >
-      <nuxt/>
+      <nuxt />
     </v-content>
-    <Footer app/>
+    <Footer app />
   </v-app>
 </template>
 

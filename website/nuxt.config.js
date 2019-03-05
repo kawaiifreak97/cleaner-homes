@@ -7,11 +7,12 @@ module.exports = {
   ** Headers of the page
   */
   head: {
-    title: pkg.name,
+    title: 'Letting the household chores or weeds on the farm get away? Book now to get them done!',
     meta: [
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
-      { hid: 'description', name: 'description', content: pkg.description }
+      { hid: 'description', name: 'description', 
+        content: 'For all your agricultural spraying and house cleaning needs. farm spraying, gorse, ragwort, thistles, builders clean, office clean, window clean, move out clean. servicing dunedin, balclutha, waihola, queenstown, wanaka, gore ' },
     ],
     link: [
       { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
@@ -36,7 +37,6 @@ module.exports = {
     { src: '~/plugins/nuxt-vuex-router-sync.js', ssr: false },
     { src: '~/plugins/swiper.js', ssr: false },
     '@/plugins/submitForm.js'
-    // { src: '~/plugins/icons.js', ssr:false }
   ],
 
   /*
@@ -54,34 +54,8 @@ module.exports = {
     // Doc: https://github.com/nuxt-community/axios-module#usage
     '@nuxtjs/axios',
     'nuxt-svg-loader',
-    ['nuxt-fontawesome', {
-      // component: 'fa', 
-      imports: [
-        //import whole set
-        {
-          set: '@fortawesome/free-solid-svg-icons',
-          icons: ['fas']
-        },
-        // {
-        //   set:'@fortawesome/fontawesome-free-brands',
-        //   icons: ['fab']
-        // }
-      ]
-    }],
     ['storyblok-nuxt', { accessToken:'A2K4fPrQrUumCYDFlLUMtAtt', cacheProvider: 'memory' }]
   ],
-  fontawesome: {
-    imports: [
-      {
-        set: '@fortawesome/free-solid-svg-icons',
-        icons: ['fas']
-      },
-      // {
-      //   set:'@fortawesome/fontawesome-free-brands',
-      //   icons: ['fab']
-      // }
-    ]
-  },
   /*
   ** Axios module configuration
   */
@@ -96,15 +70,6 @@ module.exports = {
     ** You can extend webpack config here
     */
     extend(config, ctx) {
-      //nuxt svg plugin
-      // const svgRule = config.module.rules.find(rule => rule.test.test('.svg'));
-
-      // svgRule.test = /\.(png|jpe?g|gif|webp)$/;
-
-      // config.module.rules.push({
-      //   test: /\.svg$/,
-      //   loader: 'vue-svg-loader',
-      // });
 
       // Run ESLint on save
       if (ctx.isDev && ctx.isClient) {
@@ -112,7 +77,10 @@ module.exports = {
           enforce: 'pre',
           test: /\.(js|vue)$/,
           loader: 'eslint-loader',
-          exclude: /(node_modules)/
+          exclude: /(node_modules)/,
+          options : {
+            fix : true
+          }
         })
       }
     }

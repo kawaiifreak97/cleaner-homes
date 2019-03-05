@@ -33,6 +33,15 @@
 <script>
 import BookingForm from '@/components/BookingForm/BookingForm.vue'
 export default {
+  head () {
+    return {
+      title: 'Book house cleaning and agricultural spraying services within Otago',
+      meta: [
+        { hid: 'description', name: 'description', 
+          content: 'book now for spraying and cleaning services. We will come and quote the job for free! ' }
+      ]
+    }
+  },
   layout: 'bookingPage',
   scrollToTop: true,
   fetch (context) {

@@ -10,6 +10,7 @@
         :description="service.description"
         :tags="service.tags"
         :image="service.image"
+        :alt="service.alt_text"
       />
     </v-flex>
   </v-layout>
@@ -19,6 +20,20 @@
   import ServiceFull from '@/components/Services/ServiceFull.vue'
 
   export default{
+    head () {
+      let service = this.service;
+      
+      return {
+        title: `${service.name}  `,
+        meta: [
+          {
+            hid: `description`,
+            name: 'description',
+            content: `book ${service.name} services across otago`
+          }
+        ]
+      }
+    },
     components:{
       ServiceFull
     },

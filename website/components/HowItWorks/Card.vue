@@ -34,16 +34,16 @@
             <v-icon 
               color="primary"
               class="icon-responsive"
-            > {{ stepIcon }} </v-icon>
+            >
+              {{ stepIcon }}
+            </v-icon>
           </div>
-
-          
         </v-flex>
         <v-flex 
           hidden-sm-and-up
           xs12
         >
-          <div style="height:25px;"/>
+          <div style="height:25px;" />
         </v-flex>
         <v-flex xs12>
           <h1>{{ title }}</h1>

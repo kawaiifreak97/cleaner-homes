@@ -4,7 +4,6 @@
     row
     wrap
     justify-center
-    
   > 
     <v-flex xs12>
       <Title>

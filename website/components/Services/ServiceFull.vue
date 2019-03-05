@@ -14,6 +14,7 @@
       >
         <v-img
           :src="image"
+          :alt="alt"
           height="200px"
           style="position:relative"
         >
@@ -106,6 +107,10 @@ export default {
       type: Array
     },
     image:{
+      required: true,
+      type: String
+    },
+    alt:{
       required: true,
       type: String
     }

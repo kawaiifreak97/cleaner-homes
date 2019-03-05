@@ -1,16 +1,16 @@
 <template>
-  <v-app >
+  <v-app>
     <Header 
-      :HeaderColor="transparentHeader"
+      :header-color="transparentHeader"
       app 
     />
     
     <v-content 
       class="behind"
     >
-      <nuxt/>
+      <nuxt />
     </v-content>
-    <Footer app/>
+    <Footer app />
   </v-app>
 </template>
 

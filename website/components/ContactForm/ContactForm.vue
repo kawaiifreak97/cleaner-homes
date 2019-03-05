@@ -18,7 +18,9 @@
         <h3 
           style="font-weight: 400"
           color="primary"
-        >{{ phone }}</h3>
+        >
+          {{ phone }}
+        </h3>
       </v-flex>
       <v-flex   
         xs8
@@ -36,7 +38,7 @@
             xs5
           >
             <div class="text-xs-center">
-              <logo/>
+              <logo />
             </div>
           </v-flex>
           <v-flex xs3>
@@ -60,7 +62,6 @@
       </v-flex>
     </v-layout>
   </v-card>
-
 </template>
 
 <script>

@@ -24,7 +24,9 @@
         xs12 
         sm6
       >
-        <Button :link="'bookingPage'">{{ button }}</Button>
+        <Button :link="'bookingPage'">
+          {{ button }}
+        </Button>
       </v-flex>
     </v-layout>
   </v-img>

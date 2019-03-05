@@ -27,9 +27,10 @@
                 <v-icon 
                   color="black"
                   large
-                >format_quote</v-icon>
+                >
+                  format_quote
+                </v-icon>
               </div>
-              
             </v-layout>
           </v-flex>
           <v-flex xs9>
@@ -37,15 +38,22 @@
               column
             >
               <v-flex>
-                <h3 style="font-weight:400">{{ quote }}</h3>
+                <h3 style="font-weight:400">
+                  {{ quote }}
+                </h3>
               </v-flex>
               <v-flex>
                 <h4 
                   class="primary--text"
-                  style="font-weight:400">{{ name }}</h4>
+                  style="font-weight:400"
+                >
+                  {{ name }}
+                </h4>
               </v-flex>
               <v-flex>
-                <h4 style="font-weight:200">{{ company }}</h4>
+                <h4 style="font-weight:200">
+                  {{ company }}
+                </h4>
               </v-flex>
             </v-layout>
           </v-flex>

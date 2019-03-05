@@ -13,7 +13,6 @@
         fluid
         fill-height  
         style="position:relative; z-index:100;"
-
       >
         <!-- set max width to vh, if set to % code breaks -->
         <v-layout
@@ -75,7 +74,7 @@
                     >
                       {{ heroBtnPopup }}
                     </Button>
-                    <ContactForm/>
+                    <ContactForm />
                   </v-dialog>
                 </div>
               </v-flex>
@@ -84,7 +83,9 @@
                 md12
               >
                 <div class="text-xs-center">
-                  <Button :scrollto="heroBtnScroll.scrollto">{{ heroBtnScroll.name }}</Button>
+                  <Button :scrollto="heroBtnScroll.scrollto">
+                    {{ heroBtnScroll.name }}
+                  </Button>
                 </div>
               </v-flex>
             </v-layout>
