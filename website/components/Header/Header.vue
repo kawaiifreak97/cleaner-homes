@@ -1,7 +1,7 @@
 <template>
   <div>
     <v-toolbar
-      :color="HeaderColor"
+      :color="headerColor"
       scroll-off-screen
       fixed
       dark

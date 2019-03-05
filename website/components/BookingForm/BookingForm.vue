@@ -4,23 +4,23 @@
     max-width="90vw"
   >
     <v-card-title 
-      v-show="step <= 3"
+      v-show="stepNumber <= 3"
       class=" headline font-weight-regular justify-space-between">
       <span class="">{{ currentStep.title }}</span>
       <v-avatar
         color="primary lighten-2"
         class="subheading white--text"
         size="24"
-        v-text="step"
+        v-text="stepNumber"
       />
     </v-card-title>
     <v-container>
       <v-window 
-        v-model="step"
+        v-model="stepNumber"
       >
         <v-window-item 
           v-for="step in steps"
-          :key="step.name"
+          :key="step.name"  
           :value="step.number"
         >
           <keep-alive>
@@ -30,7 +30,7 @@
       </v-window>
     </v-container>
     <v-divider/>
-    <v-card-actions v-show="step <= 3">
+    <v-card-actions v-show="stepNumber <= 3">
       <v-btn
         :disabled="backBtn"
         flat
@@ -40,7 +40,7 @@
       </v-btn>
       <v-spacer/> 
       <v-btn
-        v-if="step <= 2"
+        v-if="stepNumber <= 2"
         :disabled="isValid"
         color="primary"
         depressed
@@ -80,14 +80,14 @@
       selectedService(){
         return this.$store.state.services.selectedService.name
       },
-      step(){
+      stepNumber(){
         return this.$store.state.bookingForm.step
       },
       steps(){
         return this.$store.state.bookingForm.steps
       },
       isValid () {
-        switch (this.step) {
+        switch (this.stepNumber) {
           case 1:
             let enabled = true;
             if (this.selectedCategory.selected) {
@@ -117,7 +117,7 @@
         return 'hi'
       },
       currentStep () {
-        switch (this.step) {
+        switch (this.stepNumber) {
           case 1: 
             return {
               component: 'SelectCategory',
@@ -148,7 +148,7 @@
         }
       },
       backBtn(){
-        switch (this.step) {
+        switch (this.stepNumber) {
           case 1:
             return true
             break;
@@ -166,7 +166,7 @@
             break;
 
           default:
-            return 'sorry something went wrong'
+            return true
             break;
         }
         
