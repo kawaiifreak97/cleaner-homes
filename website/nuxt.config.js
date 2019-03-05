@@ -7,7 +7,7 @@ module.exports = {
   ** Headers of the page
   */
   head: {
-    title: 'Letting the household chores or weeds on the farm get away? Book now to get them done!',
+    title: 'Cleaner homes and pastures',
     meta: [
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
