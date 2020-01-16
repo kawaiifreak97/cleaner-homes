@@ -15,7 +15,7 @@ module.exports = {
         content: 'For all your agricultural spraying and house cleaning needs. farm spraying, gorse, ragwort, thistles, builders clean, office clean, window clean, move out clean. servicing dunedin, balclutha, waihola, queenstown, wanaka, gore ' },
     ],
     link: [
-      { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
+      { rel: 'icon', type: 'image/x-icon', href: '/logo-primary.ico' },
       { rel: 'stylesheet', href: 'https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Material+Icons' },
       { rel:'stylesheet', href:"https://fonts.googleapis.com/css?family=Muli:200,400" },
       { rel: 'stylesheet', href:'https://use.fontawesome.com/releases/v5.0.6/css/all.css'}
